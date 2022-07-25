@@ -1,7 +1,7 @@
 import Link from "next/link";
 import ProfileImage from "./profile-image";
 import Head from "next/head";
-import Layout from "../../components/layout";
+import Layout from "@/components/layout";
 
 export default function FirstPost() {
   return (
