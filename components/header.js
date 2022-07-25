@@ -1,7 +1,8 @@
 import Link from "next/link";
 
 const navigation = [
-  { name: 'Posts', href: '/posts/first-post' },
+  { name: 'First Post', href: '/posts/first-post' },
+  { name: 'Posts', href: '/posts' },
 ];
 
 export default function Header() {
