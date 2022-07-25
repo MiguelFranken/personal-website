@@ -1,9 +1,8 @@
+import Link from 'next/link';
+
 export default function Home() {
   const navigation = [
-    { name: 'Solutions', href: '#' },
-    { name: 'Pricing', href: '#' },
-    { name: 'Docs', href: '#' },
-    { name: 'Company', href: '#' },
+    {name: 'Posts', href: '/posts/first-post'},
   ]
 
   return (
@@ -21,9 +20,9 @@ export default function Home() {
             </a>
             <div className="hidden ml-10 space-x-8 lg:block">
               {navigation.map((link) => (
-                <a key={link.name} href={link.href} className="text-base font-medium text-white hover:text-indigo-50">
-                  {link.name}
-                </a>
+                <Link key={link.name} href={link.href}>
+                  <a className="text-base font-medium text-white hover:text-indigo-50">{link.name}</a>
+                </Link>
               ))}
             </div>
           </div>
