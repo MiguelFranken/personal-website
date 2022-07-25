@@ -16,6 +16,15 @@ export default function FirstPost() {
         </Link>
       </h2>
       <ProfileImage />
+      <div>
+        <p>Hello World</p>
+
+        <style jsx>{`
+          p {
+            color: red;
+          }
+        `}</style>
+      </div>
     </>
   )
 }
