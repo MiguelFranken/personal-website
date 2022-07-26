@@ -1,10 +1,21 @@
-import Layout from "@/components/layout";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import CardModal from "@/pages/cards/modal";
 
 export default function Cards() {
+  const [open, setOpen] = useState(false);
+  const [activeCard, setActiveCard] = useState(0);
+
+  const showCardDetails = (index) => {
+    setActiveCard(index);
+    setOpen(true);
+  };
+
   const sampleCard = (index: number) => (
-    <div className="bg-white overflow-hidden shadow rounded-lg w-full aspect-[3989/6615]">
+    <div
+      onClick={() => showCardDetails(index)}
+      className="cursor-pointer bg-white overflow-hidden shadow rounded-lg w-full aspect-[3989/6615] transition transform hover:scale-105"
+    >
       <div className="w-full h-full relative">
         <Image
           src={`/cards/${index}.svg`}
@@ -17,9 +28,9 @@ export default function Cards() {
   );
 
   return (
-    <Layout>
+    <>
+      <CardModal setOpen={setOpen} open={open} index={activeCard} />
       <div className="grid gap-4 grid-cols-5 grid-rows-3">
-        {sampleCard(0)}
         {sampleCard(1)}
         {sampleCard(2)}
         {sampleCard(3)}
@@ -43,6 +54,6 @@ export default function Cards() {
         {sampleCard(21)}
         {sampleCard(22)}
       </div>
-    </Layout>
+    </>
   );
 }

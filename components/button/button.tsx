@@ -6,7 +6,7 @@ import classNames from "classnames";
 export interface ButtonProps {
   text?: string;
   size?: "small" | "medium" | "large";
-  onClick: MouseEventHandler<HTMLButtonElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   className?: string;
 }
 
