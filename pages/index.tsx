@@ -1,20 +1,10 @@
 import Head from "next/head";
 import Layout from "@/components/layout";
-import { getSortedPostsData } from "@/lib/posts";
-import ListItem from "./list-item";
-import { GetStaticProps } from "next";
-import Dropdown from "@/components/dropdown";
+import Card from "@/components/card";
+import Button from "@/components/button/button";
+import Input from "@/components/input/input";
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
-};
-
-export default function Home({ allPostsData }) {
+export default function Home() {
   return (
     <>
       <Head>
@@ -22,15 +12,20 @@ export default function Home({ allPostsData }) {
       </Head>
 
       <Layout>
-        <div className="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
-          <div className="grid gap-16 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
-            {allPostsData.map((post) => (
-              <ListItem key={post.id} post={post} />
-            ))}
+        <Button onClick={() => console.log("clicked")} text="Click Me" />
+        <Input className="my-4" />
+        <div className="flex w-full gap-2">
+          <div className="flex-1">
+            <Card>
+              <div>Test</div>
+            </Card>
+          </div>
+          <div className="flex-1">
+            <Card>
+              <div>Test</div>
+            </Card>
           </div>
         </div>
-
-        <Dropdown />
       </Layout>
     </>
   );
