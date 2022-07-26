@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Layout from "@/components/layout";
-import { getSortedPostsData } from '../lib/posts';
+import { getSortedPostsData } from '@/lib/posts';
 import ListItem from "./list-item";
+import { GetStaticProps } from 'next';
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async (context) => {
   const allPostsData = getSortedPostsData();
   return {
     props: {

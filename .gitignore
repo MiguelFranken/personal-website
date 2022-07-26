@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+
+# ide
 .idea
 
 # testing
@@ -31,3 +33,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# generated
+next-env.d.ts

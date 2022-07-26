@@ -1,9 +1,8 @@
-import '../styles/globals.css'
+import '@/styles/globals.css';
+import type { AppProps } from 'next/app';
 import { CounterContextProvider } from "./store";
 
-// TODO
-// - State Management with either redux or zustand
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <CounterContextProvider>
       <Component {...pageProps} />
