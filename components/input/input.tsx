@@ -7,12 +7,14 @@ export interface InputProps {
   label?: string;
   className?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
+  value?: string;
 }
 
 const input: FC<InputProps> = ({
   label,
   placeholder,
   onChange,
+  value,
   className: passedClassName,
   ...props
 }) => {
@@ -32,6 +34,7 @@ const input: FC<InputProps> = ({
           id={id}
           className={className}
           onChange={onChange}
+          value={value}
           placeholder={placeholder ?? "Placeholder..."}
           {...props}
         />
