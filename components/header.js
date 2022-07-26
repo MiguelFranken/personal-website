@@ -1,8 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 
 const navigation = [
-  { name: "First Post", href: "/posts/first-post" },
+  { name: "Home", href: "/" },
   { name: "Posts", href: "/posts" },
 ];
 
