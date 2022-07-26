@@ -3,6 +3,7 @@ import Layout from "@/components/layout";
 import { getSortedPostsData } from "@/lib/posts";
 import ListItem from "./list-item";
 import { GetStaticProps } from "next";
+import Dropdown from "@/components/dropdown";
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const allPostsData = getSortedPostsData();
@@ -28,6 +29,8 @@ export default function Home({ allPostsData }) {
             ))}
           </div>
         </div>
+
+        <Dropdown />
       </Layout>
     </>
   );
