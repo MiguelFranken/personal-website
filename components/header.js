@@ -1,8 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const navigation = [
-  { name: 'First Post', href: '/posts/first-post' },
-  { name: 'Posts', href: '/posts' },
+  { name: "First Post", href: "/posts/first-post" },
+  { name: "Posts", href: "/posts" },
 ];
 
 export default function Header() {
@@ -13,16 +14,13 @@ export default function Header() {
           <div className="flex items-center">
             <a href="#">
               <span className="sr-only">Workflow</span>
-              <img
-                className="h-10 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-mark.svg?color=white"
-                alt=""
-              />
             </a>
             <div className="hidden ml-10 space-x-8 lg:block">
               {navigation.map((link) => (
                 <Link key={link.name} href={link.href}>
-                  <a className="text-base font-medium text-white hover:text-indigo-50">{link.name}</a>
+                  <a className="text-base font-medium text-white hover:text-indigo-50">
+                    {link.name}
+                  </a>
                 </Link>
               ))}
             </div>
@@ -44,12 +42,16 @@ export default function Header() {
         </div>
         <div className="py-4 flex flex-wrap justify-center space-x-6 lg:hidden">
           {navigation.map((link) => (
-            <a key={link.name} href={link.href} className="text-base font-medium text-white hover:text-indigo-50">
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-base font-medium text-white hover:text-indigo-50"
+            >
               {link.name}
             </a>
           ))}
         </div>
       </nav>
     </header>
-  )
+  );
 }

@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Layout from "@/components/layout";
-import { getSortedPostsData } from '@/lib/posts';
+import { getSortedPostsData } from "@/lib/posts";
 import ListItem from "./list-item";
-import { GetStaticProps } from 'next';
+import { GetStaticProps } from "next";
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const allPostsData = getSortedPostsData();
@@ -11,7 +11,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       allPostsData,
     },
   };
-}
+};
 
 export default function Home({ allPostsData }) {
   return (
@@ -23,11 +23,12 @@ export default function Home({ allPostsData }) {
       <Layout>
         <div className="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
           <div className="grid gap-16 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
-            {allPostsData.map((post) => (<ListItem key={post.id} post={post} />))}
+            {allPostsData.map((post) => (
+              <ListItem key={post.id} post={post} />
+            ))}
           </div>
         </div>
-
       </Layout>
     </>
-  )
+  );
 }

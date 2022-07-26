@@ -1,6 +1,6 @@
 import Image from "next/image";
 import vercelLogo from "../../public/vercel.svg";
-import styles from '../../styles/Home.module.css'
+import styles from "../../styles/Home.module.css";
 
 const ProfileImage = () => (
   <span className={styles.logo}>

@@ -2,10 +2,10 @@ import Link from "next/link";
 import ProfileImage from "./profile-image";
 import Head from "next/head";
 import Layout from "@/components/layout";
-import {useContext, useState} from "react";
-import {CounterContext} from "../store";
-import styles from './post.module.css';
-import cn from 'classnames';
+import { useContext, useState } from "react";
+import { CounterContext } from "../store";
+import styles from "./post.module.css";
+import cn from "classnames";
 
 export default function FirstPost() {
   const [state, dispatch] = useContext(CounterContext);
@@ -20,7 +20,9 @@ export default function FirstPost() {
       <h1>First Post</h1>
       <h2>
         <Link href="/">
-          <a className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Back to home</a>
+          <a className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Back to home
+          </a>
         </Link>
       </h2>
       <ProfileImage />
@@ -29,7 +31,7 @@ export default function FirstPost() {
         <button
           type="button"
           className={styles.btn}
-          onClick={() => dispatch({ type: 'increment' })}
+          onClick={() => dispatch({ type: "increment" })}
         >
           Increment
         </button>
@@ -45,16 +47,14 @@ export default function FirstPost() {
           Toggle Active State
         </button>
         <p
-          className={
-            cn({
-              [styles.active]: isActive,
-              [styles.inactive]: !isActive,
-            })
-          }
+          className={cn({
+            [styles.active]: isActive,
+            [styles.inactive]: !isActive,
+          })}
         >
-          { isActive ? 'Active' : 'Not Active' }
+          {isActive ? "Active" : "Not Active"}
         </p>
       </div>
     </Layout>
-  )
+  );
 }

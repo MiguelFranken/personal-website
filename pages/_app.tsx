@@ -1,5 +1,5 @@
-import '@/styles/globals.css';
-import type { AppProps } from 'next/app';
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
 import { CounterContextProvider } from "./store";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <CounterContextProvider>
       <Component {...pageProps} />
     </CounterContextProvider>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
