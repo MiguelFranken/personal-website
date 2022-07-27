@@ -1,15 +1,15 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { ArticlesContextProvider } from "./store";
-import Navigation from "@/components/navigation";
 import React from "react";
+import Layout from "@/components/layout";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ArticlesContextProvider>
-      <Navigation>
+      <Layout>
         <Component {...pageProps} />
-      </Navigation>
+      </Layout>
     </ArticlesContextProvider>
   );
 }
