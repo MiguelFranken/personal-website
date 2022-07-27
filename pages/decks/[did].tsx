@@ -4,7 +4,7 @@ import Image from "next/image";
 import Rating from "@/pages/decks/rating";
 import Button from "@/components/button/button";
 import Breadcrumb from "@/components/breadcrumb";
-import Cards from "@/pages/cards";
+import Snap from "@/pages/decks/snap";
 
 const ShowDeck: FC = () => {
   const router = useRouter();
@@ -87,7 +87,10 @@ const ShowDeck: FC = () => {
           </div>
         </div>
       </div>
-      <Cards />
+      <div className="flex flex-col gap-4">
+        <h3 className="text-gray-800 font-medium text-lg">All Cards</h3>
+        <Snap />
+      </div>
     </>
   );
 };

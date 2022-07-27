@@ -10,3 +10,4 @@
 - [React & Redux in TypeScript - Complete Guide](https://github.com/piotrwitek/react-redux-typescript-guide)
 - [State management with contexts](https://dev.to/elisealcala/react-context-with-usereducer-and-typescript-4obm)
 - [Bulletproof React](https://github.com/alan2207/bulletproof-react)
+- [Flowbite](https://flowbite.com/)
