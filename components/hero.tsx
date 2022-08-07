@@ -1,142 +1,70 @@
-import { ChevronRightIcon, StarIcon } from "@heroicons/react/solid";
+import Spline from "@splinetool/react-spline";
 
-export default function Example() {
+import { GlobeIcon, BriefcaseIcon } from "@heroicons/react/outline";
+
+export default function Hero() {
+  const scene = "https://prod.spline.design/PpI5IThe69TDEQdI/scene.splinecode";
+  //const scene = "https://prod.spline.design/qKGZ5-liTt8lFNs0/scene.splinecode";
+
   return (
-    <div className="bg-white pb-8 sm:pb-12 lg:pb-12">
+    <div className="bg-white">
       <div className="pt-8 overflow-hidden sm:pt-12 lg:relative lg:py-48">
         <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24">
           <div>
             <div>
               <img
-                className="h-11 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
+                className="h-48 w-48 object-cover rounded-md"
+                src="/portrait.jpg"
                 alt="Workflow"
               />
             </div>
             <div className="mt-20">
-              <div>
-                <a href="#" className="inline-flex space-x-4">
-                  <span className="rounded bg-indigo-50 px-2.5 py-1 text-xs font-semibold text-indigo-600 tracking-wide uppercase">
-                    What's new
-                  </span>
-                  <span className="inline-flex items-center text-sm font-medium text-indigo-600 space-x-1">
-                    <span>Just shipped version 0.1.0</span>
-                    <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
-                  </span>
-                </a>
-              </div>
               <div className="mt-6 sm:max-w-xl">
-                <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
-                  Server management for growing teams
+                <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl tracking-wide">
+                  Miguel Franken
                 </h1>
+                <div className="font-light text-gray-700 mt-6 flex flex-col gap-1">
+                  <div className="flex gap-1.5">
+                    <GlobeIcon className="h-6 w-6" aria-hidden="true" />
+                    <span>Cologne</span>
+                  </div>
+                  <div className="flex gap-1.5">
+                    <BriefcaseIcon className="h-6 w-6" aria-hidden="true" />
+                    <span>Fullstack Software Engineer</span>
+                  </div>
+                </div>
+
                 <p className="mt-6 text-xl text-gray-500">
-                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
-                  qui lorem cupidatat commodo.
+                  Hey Folks! Welcome to my personal website where you can
+                  discover more about me, my amazing work and some of somewhat
+                  weird hobbies.
                 </p>
-              </div>
-              <form action="#" className="mt-12 sm:max-w-lg sm:w-full sm:flex">
-                <div className="min-w-0 flex-1">
-                  <label htmlFor="hero-email" className="sr-only">
-                    Email address
-                  </label>
-                  <input
-                    id="hero-email"
-                    type="email"
-                    className="block w-full border border-gray-300 rounded-md px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                    placeholder="Enter your email"
-                  />
-                </div>
-                <div className="mt-4 sm:mt-0 sm:ml-3">
-                  <button
-                    type="submit"
-                    className="block w-full rounded-md border border-transparent px-5 py-3 bg-indigo-600 text-base font-medium text-white shadow hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:px-10"
-                  >
-                    Notify me
-                  </button>
-                </div>
-              </form>
-              <div className="mt-6">
-                <div className="inline-flex items-center divide-x divide-gray-300">
-                  <div className="flex-shrink-0 flex pr-5">
-                    <StarIcon
-                      className="h-5 w-5 text-yellow-400"
-                      aria-hidden="true"
-                    />
-                    <StarIcon
-                      className="h-5 w-5 text-yellow-400"
-                      aria-hidden="true"
-                    />
-                    <StarIcon
-                      className="h-5 w-5 text-yellow-400"
-                      aria-hidden="true"
-                    />
-                    <StarIcon
-                      className="h-5 w-5 text-yellow-400"
-                      aria-hidden="true"
-                    />
-                    <StarIcon
-                      className="h-5 w-5 text-yellow-400"
-                      aria-hidden="true"
-                    />
+                <form action="#" className="mt-6 sm:max-w-lg sm:w-full sm:flex">
+                  <div className="mt-4 sm:mt-0">
+                    <a
+                      href="https://github.com/miguelfranken"
+                      className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-gray-900 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-700"
+                    >
+                      <svg
+                        className="-ml-1 mr-2 h-5 w-5 text-white fill-current"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                      </svg>
+                      GitHub
+                    </a>
                   </div>
-                  <div className="min-w-0 flex-1 pl-5 py-1 text-sm text-gray-500 sm:py-3">
-                    <span className="font-medium text-gray-900">
-                      Rated 5 stars
-                    </span>{" "}
-                    by over{" "}
-                    <span className="font-medium text-indigo-600">
-                      500 beta users
-                    </span>
-                  </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
 
         <div className="sm:mx-auto sm:max-w-3xl sm:px-6">
-          <div className="py-12 sm:relative sm:mt-12 sm:py-16 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-            <div className="hidden sm:block">
-              <div className="absolute inset-y-0 left-1/2 w-screen bg-gray-50 rounded-l-3xl lg:left-80 lg:right-0 lg:w-full" />
-              <svg
-                className="absolute top-8 right-1/2 -mr-3 lg:m-0 lg:left-0"
-                width={404}
-                height={392}
-                fill="none"
-                viewBox="0 0 404 392"
-              >
-                <defs>
-                  <pattern
-                    id="837c3e70-6c3a-44e6-8854-cc48c737b659"
-                    x={0}
-                    y={0}
-                    width={20}
-                    height={20}
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <rect
-                      x={0}
-                      y={0}
-                      width={4}
-                      height={4}
-                      className="text-gray-200"
-                      fill="currentColor"
-                    />
-                  </pattern>
-                </defs>
-                <rect
-                  width={404}
-                  height={392}
-                  fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)"
-                />
-              </svg>
-            </div>
+          <div className="sm:relative lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 pr-32">
             <div className="relative pl-4 -mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full lg:pl-12">
-              <img
-                className="w-full rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto lg:max-w-none"
-                src="https://tailwindui.com/img/component-images/top-nav-with-multi-column-layout-screenshot.jpg"
-                alt=""
-              />
+              <Spline scene={scene} />
             </div>
           </div>
         </div>

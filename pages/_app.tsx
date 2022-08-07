@@ -2,14 +2,14 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { ArticlesContextProvider } from "@/lib/store";
 import React from "react";
-import Layout from "@/components/layout";
+import Container from "@/components/container";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ArticlesContextProvider>
-      <Layout>
+      <Container>
         <Component {...pageProps} />
-      </Layout>
+      </Container>
     </ArticlesContextProvider>
   );
 }
