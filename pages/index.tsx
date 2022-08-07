@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Awesome Title</title>
+        <title>Miguel Franken</title>
       </Head>
 
       <Card title="Add Article" actionTitle="Save" onClick={addArticle}>
