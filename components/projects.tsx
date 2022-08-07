@@ -39,50 +39,44 @@ const posts = [
   },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export default function Projects() {
   return (
     <div className="pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
-      <div className="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
+      <div className="relative max-w-lg mx-auto divide-y-2 divide-yellow-100/10 lg:max-w-7xl">
         <div>
           <h2>
-            <span className="text-3xl tracking-wider font-extrabold text-white sm:text-4xl">
+            <span className="text-3xl tracking-wider font-extrabold text-white sm:text-6xl">
               Projects
             </span>
           </h2>
           <p className="mt-3 text-xl text-white sm:mt-4">
             Here you could find some of the hobby projects I have been working
             on. I am mainly interested in complex dynamic multi-user
-            applications and building static websites. In my professional work
-            and in side projects I have been working with frameworks such as
-            React, NextJS, Angular, Vue, Strapi and Nuxt.
+            applications and building static websites.
           </p>
         </div>
         <div className="mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
           {posts.map((post) => (
             <div key={post.title}>
-              <div>
-                <a href={post.category.href} className="inline-block">
-                  <span
-                    className={classNames(
-                      post.category.color,
-                      "inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium"
-                    )}
-                  >
-                    {post.category.name}
-                  </span>
-                </a>
-              </div>
+              {/*
+                <div>
+                  <a href={post.category.href} className="inline-block">
+                    <span
+                      className={classNames(
+                        post.category.color,
+                        "inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium"
+                      )}
+                    >
+                      {post.category.name}
+                    </span>
+                  </a>
+                </div>
+                */}
               <div className="mt-4">
                 <img className="h-16 w-auto" src={post.image} alt="Workflow" />
               </div>
               <a href={post.href} className="block mt-4">
-                <p className="text-xl font-semibold text-gray-100">
-                  {post.title}
-                </p>
+                <p className="text-xl font-semibold text-white">{post.title}</p>
                 <p className="mt-3 text-base text-white">{post.description}</p>
               </a>
               {/*<div className="mt-6 flex items-center">

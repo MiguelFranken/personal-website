@@ -49,7 +49,7 @@ export default function Hero() {
             </div>
             <div className="mt-20">
               <div className="mt-6 sm:max-w-xl">
-                <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl tracking-wide">
+                <h1 className="text-5xl font-extrabold text-gray-900 sm:text-7xl tracking-wide">
                   Miguel Franken
                 </h1>
                 <div className="font-light text-gray-700 mt-6 flex flex-col gap-1">

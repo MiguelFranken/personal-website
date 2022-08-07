@@ -1,4 +1,4 @@
-import { HeartIcon } from "@heroicons/react/outline";
+import { HeartIcon } from "@heroicons/react/solid";
 
 const navigation = [
   {
@@ -49,8 +49,8 @@ export default function Footer() {
         <div className="mt-8 md:mt-0 md:order-1">
           <p className="text-center text-base text-gray-100 flex justify-center items-center gap-1">
             <span>&copy; 2022 Miguel Franken. Made with</span>
-            <HeartIcon className="w-4 h-4" />
-            <span> in Cologne.</span>
+            <HeartIcon className="w-5 h-5 fill-red-600" />
+            <span> in Cologne with NextJS.</span>
           </p>
         </div>
       </div>

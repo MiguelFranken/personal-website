@@ -3,9 +3,9 @@ import classNames from "classnames";
 import Projects from "@/components/projects";
 
 export default function Skewed() {
-  // TODO MF: Get rid of the -m-16 mb-16 hack
+  // TODO MF: Get rid of the -m-16 mb-32 hack
   return (
-    <div className="overflow-hidden relative -mt-16 mb-16">
+    <div className="overflow-hidden relative -mt-16 mb-32">
       <div className="!block">
         <div className={classNames(styles.section, styles.mbSection)}>
           <div className="absolute inset-0">
