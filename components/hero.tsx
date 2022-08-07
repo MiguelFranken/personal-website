@@ -1,6 +1,6 @@
 import Spline from "@splinetool/react-spline";
 
-import { GlobeIcon, BriefcaseIcon } from "@heroicons/react/outline";
+import { GlobeIcon, BriefcaseIcon, MailIcon } from "@heroicons/react/outline";
 
 const navigation = [
   {
@@ -28,6 +28,11 @@ const navigation = [
         />
       </svg>
     ),
+  },
+  {
+    name: "Mail",
+    href: "mailto:miguelfranken90@gmail.com",
+    icon: () => <MailIcon className="w-6 h-6" />,
   },
 ];
 
