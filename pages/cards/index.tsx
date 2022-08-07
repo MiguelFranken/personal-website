@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import CardModal from "@/pages/cards/modal";
+import CardModal from "@/components/modal";
 
 export default function Cards() {
   const [open, setOpen] = useState(false);

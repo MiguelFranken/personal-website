@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Button from "@/components/button/button";
-import { Deck } from "@/pages/decks/types";
+import { Deck } from "@/lib/types";
 import ReactHtmlParser from "react-html-parser";
 import Link from "next/link";
 

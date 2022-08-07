@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { ArticlesContextProvider } from "./store";
+import { ArticlesContextProvider } from "@/lib/store";
 import React from "react";
 import Layout from "@/components/layout";
 

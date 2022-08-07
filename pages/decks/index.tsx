@@ -1,5 +1,5 @@
-import DeckCard from "@/pages/decks/deck";
-import { Deck } from "@/pages/decks/types";
+import DeckCard from "@/components/deck";
+import { Deck } from "@/lib/types";
 
 export default function Decks() {
   const deck0: Deck = {

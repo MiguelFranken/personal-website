@@ -2,7 +2,7 @@ import Head from "next/head";
 import Card from "@/components/card/card";
 import Input from "@/components/input/input";
 import React, { useContext, useState } from "react";
-import { ArticlesContext } from "@/pages/store";
+import { ArticlesContext } from "@/lib/store";
 
 export default function Home() {
   const { dispatch } = useContext(ArticlesContext);

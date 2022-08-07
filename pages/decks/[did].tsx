@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import Rating from "@/pages/decks/rating";
+import Rating from "@/components/rating";
 import Button from "@/components/button/button";
 import Breadcrumb from "@/components/breadcrumb";
-import Snap from "@/pages/decks/snap";
+import Snap from "@/components/snap";
 
 const ShowDeck: FC = () => {
   const router = useRouter();

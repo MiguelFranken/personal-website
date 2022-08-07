@@ -1,6 +1,6 @@
 import Layout from "@/components/layout";
 import { useContext } from "react";
-import { ArticlesContext } from "../store";
+import { ArticlesContext } from "../../lib/store";
 
 export default function Posts() {
   const { state } = useContext(ArticlesContext);
