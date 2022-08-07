@@ -1,10 +1,8 @@
 import Head from "next/head";
-import Layout from "@/components/layout";
 import Card from "@/components/card/card";
 import Input from "@/components/input/input";
 import React, { useContext, useState } from "react";
 import { ArticlesContext } from "@/pages/store";
-import CardHeader from "@/components/card/card-header";
 
 export default function Home() {
   const { dispatch } = useContext(ArticlesContext);

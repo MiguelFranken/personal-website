@@ -36,7 +36,7 @@ const ShowDeck: FC = () => {
 
             <div className="text-sm text-gray-900 ">
               <h1 className="text-4xl leading-6 font-bold text-gray-900">
-                Celestial Deck
+                Celestial Deck {did}
               </h1>
               <h2 className="text-2xl leading-4 text-gray-400 mt-3 font-medium">
                 Major Arcana
