@@ -1,3 +1,5 @@
+import { ChevronRightIcon } from "@heroicons/react/outline";
+
 const posts = [
   {
     title: "The Mix",
@@ -8,7 +10,7 @@ const posts = [
       color: "bg-indigo-100 text-indigo-800",
     },
     description:
-      "PWA that controls wirelessly music instruments via MIDI over WebRTC and produces sound output. A separate wirelessly connected device can additionally be connected to quality loudspeakers.",
+      "PWA that controls wireless music instruments via MIDI over WebRTC and produces sound output. A separate wireless connected device can additionally be connected to quality loudspeakers. PWA orchestrates all music instruments and can add additional sounds such as drum sounds or various effects.",
     date: "Mar 16, 2020",
     datetime: "2020-03-16",
     author: {
@@ -40,6 +42,38 @@ const posts = [
 ];
 
 export default function Projects() {
+  const card = (post) => {
+    return (
+      <a
+        key={post.title}
+        href={post.href}
+        className="relative inline-block group focus:outline-none focus:ring"
+      >
+        <span className="absolute inset-0 transition-transform translate-x-0 translate-y-0 bg-yellow-200/10 group-hover:translate-y-1.5 group-hover:translate-x-1.5"></span>
+
+        <span className="relative inline-flex px-8 py-3 border-2 border-yellow-200/20">
+          <div>
+            <div className="mt-4">
+              <img className="h-24 w-auto" src={post.image} alt="Workflow" />
+            </div>
+            <div className="block mt-4">
+              <p className="text-2xl font-bold text-white tracking-wider uppercase">
+                {post.title}
+              </p>
+              <p className="mt-3 text-base text-white font-light">
+                {post.description}
+              </p>
+            </div>
+            <div className="my-4 font-bold tracking-widest text-red-500 flex gap-1 items-center">
+              <span>Learn More</span>
+              <ChevronRightIcon className="w-4 h-4 stroke-4" />
+            </div>
+          </div>
+        </span>
+      </a>
+    );
+  };
+
   return (
     <div className="pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
       <div className="relative max-w-lg mx-auto divide-y-2 divide-yellow-100/10 lg:max-w-7xl">
@@ -55,54 +89,9 @@ export default function Projects() {
             applications and building static websites.
           </p>
         </div>
-        <div className="mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
-          {posts.map((post) => (
-            <div key={post.title}>
-              {/*
-                <div>
-                  <a href={post.category.href} className="inline-block">
-                    <span
-                      className={classNames(
-                        post.category.color,
-                        "inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium"
-                      )}
-                    >
-                      {post.category.name}
-                    </span>
-                  </a>
-                </div>
-                */}
-              <div className="mt-4">
-                <img className="h-16 w-auto" src={post.image} alt="Workflow" />
-              </div>
-              <a href={post.href} className="block mt-4">
-                <p className="text-xl font-semibold text-white">{post.title}</p>
-                <p className="mt-3 text-base text-white">{post.description}</p>
-              </a>
-              {/*<div className="mt-6 flex items-center">
-                  <div className="flex-shrink-0">
-                    <a href={post.author.href}>
-                      <span className="sr-only">{post.author.name}</span>
-                      <img
-                        className="h-10 w-10 rounded-full"
-                        src={post.author.imageUrl}
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                  <div className="ml-3">
-                    <p className="text-sm font-medium text-gray-900">
-                      <a href={post.author.href}>{post.author.name}</a>
-                    </p>
-                    <div className="flex space-x-1 text-sm text-white">
-                      <time dateTime={post.datetime}>{post.date}</time>
-                      <span aria-hidden="true">&middot;</span>
-                      <span>{post.readingTime} read</span>
-                    </div>
-                  </div>
-                </div>*/}
-            </div>
-          ))}
+        <div className="mt-12 grid gap-16 pt-12 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
+          {/* shadow-sm rounded-xl */}
+          {posts.map((post) => card(post))}
         </div>
       </div>
     </div>

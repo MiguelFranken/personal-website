@@ -9,6 +9,9 @@ module.exports = {
       borderWidth: {
         20: "20px",
       },
+      strokeWidth: {
+        4: "4",
+      },
       backgroundImage: {
         conic: "conic-gradient(var(--tw-gradient-stops))",
         "conic-to-t": "conic-gradient(at top, var(--tw-gradient-stops))",
