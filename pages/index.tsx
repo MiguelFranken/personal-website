@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Hero from "@/components/hero";
-import Projects from "@/components/projects";
 import Footer from "@/components/footer";
+import Skewed from "@/components/skewed";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
       </Head>
 
       <Hero />
-      <Projects />
+      <Skewed />
       <Footer />
     </>
   );

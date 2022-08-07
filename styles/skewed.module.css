@@ -1,0 +1,34 @@
+.section {
+    --sectionAngleSin: 0.052;
+
+    --scrollbarWidth: 0px;
+    --windowWidth: calc(100vw - var(--scrollbarWidth));
+    --sectionAngleHeight: calc(var(--windowWidth)*var(--sectionAngleSin));
+    --sectionMargin: calc(var(--sectionAngleHeight)*-1);
+
+    @apply relative;
+}
+
+.-mtSection {
+    margin-top: var(--sectionMargin);
+}
+
+.mtSection {
+    margin-top: var(--sectionAngleHeight);
+}
+
+.-mbSection {
+    margin-bottom: var(--sectionMargin);
+}
+
+.mbSection {
+    margin-bottom: var(--sectionAngleHeight);
+}
+
+.ptSection {
+    padding-top: var(--sectionAngleHeight);
+}
+
+.pbSection {
+    padding-bottom: var(--sectionAngleHeight);
+}

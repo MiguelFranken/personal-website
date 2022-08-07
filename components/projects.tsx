@@ -45,30 +45,20 @@ function classNames(...classes) {
 
 export default function Projects() {
   return (
-    <div className="bg-white pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+    <div className="pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
       <div className="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
         <div>
           <h2>
-            <span className="bg-gray-900 px-4 py-1 text-3xl tracking-wider font-extrabold text-white sm:text-4xl">
+            <span className="text-3xl tracking-wider font-extrabold text-white sm:text-4xl">
               Projects
             </span>
           </h2>
-          <p className="mt-3 text-xl text-gray-500 sm:mt-4">
+          <p className="mt-3 text-xl text-white sm:mt-4">
             Here you could find some of the hobby projects I have been working
-            on. I am mainly interested in frontend development of complex
-            dynamic multi-user applications and static websites using frameworks
-            such as Angular, Vue, Strapi and Nuxt. I develop, deploy and
-            maintain my projects with CI/CD workflows using GitHub Action, which
-            automatically control test cases, calculate test coverage, and
-            incrementally deploy changes to the software automatically when they
-            run successfully. I also use deployment platforms such as Vercel or
-            Netlify. I also enjoy demonstrating my strong interest in UI/UX
-            design. I like to apply design thinking methods for iterative
-            design, prototyping and evaluation with the goal of designing
-            user-friendly interfaces in a user-centered way. To do this, I
-            create hand-drawn wireframes for idea development and prototypes
-            with Figma to learn more about how users interact with the
-            interface.
+            on. I am mainly interested in complex dynamic multi-user
+            applications and building static websites. In my professional work
+            and in side projects I have been working with frameworks such as
+            React, NextJS, Angular, Vue, Strapi and Nuxt.
           </p>
         </div>
         <div className="mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
@@ -90,35 +80,33 @@ export default function Projects() {
                 <img className="h-16 w-auto" src={post.image} alt="Workflow" />
               </div>
               <a href={post.href} className="block mt-4">
-                <p className="text-xl font-semibold text-gray-900">
+                <p className="text-xl font-semibold text-gray-100">
                   {post.title}
                 </p>
-                <p className="mt-3 text-base text-gray-500">
-                  {post.description}
-                </p>
+                <p className="mt-3 text-base text-white">{post.description}</p>
               </a>
-              <div className="mt-6 flex items-center">
-                <div className="flex-shrink-0">
-                  <a href={post.author.href}>
-                    <span className="sr-only">{post.author.name}</span>
-                    <img
-                      className="h-10 w-10 rounded-full"
-                      src={post.author.imageUrl}
-                      alt=""
-                    />
-                  </a>
-                </div>
-                <div className="ml-3">
-                  <p className="text-sm font-medium text-gray-900">
-                    <a href={post.author.href}>{post.author.name}</a>
-                  </p>
-                  <div className="flex space-x-1 text-sm text-gray-500">
-                    <time dateTime={post.datetime}>{post.date}</time>
-                    <span aria-hidden="true">&middot;</span>
-                    <span>{post.readingTime} read</span>
+              {/*<div className="mt-6 flex items-center">
+                  <div className="flex-shrink-0">
+                    <a href={post.author.href}>
+                      <span className="sr-only">{post.author.name}</span>
+                      <img
+                        className="h-10 w-10 rounded-full"
+                        src={post.author.imageUrl}
+                        alt=""
+                      />
+                    </a>
                   </div>
-                </div>
-              </div>
+                  <div className="ml-3">
+                    <p className="text-sm font-medium text-gray-900">
+                      <a href={post.author.href}>{post.author.name}</a>
+                    </p>
+                    <div className="flex space-x-1 text-sm text-white">
+                      <time dateTime={post.datetime}>{post.date}</time>
+                      <span aria-hidden="true">&middot;</span>
+                      <span>{post.readingTime} read</span>
+                    </div>
+                  </div>
+                </div>*/}
             </div>
           ))}
         </div>
