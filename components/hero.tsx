@@ -69,15 +69,19 @@ export default function Hero() {
                   weird hobbies.
                 </p>
                 <form action="#" className="mt-6 sm:max-w-lg sm:w-full sm:flex">
-                  <div className="mt-4 sm:mt-0 flex justify-center space-x-2 md:order-2">
+                  <div className="mt-4 sm:mt-0 flex justify-center space-x-4 md:order-2">
                     {navigation.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
-                        className="inline-flex gap-2 items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-gray-900 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-700"
+                        className="relative inline-block group focus:outline-none focus:ring"
                       >
-                        <item.icon className="h-6 w-6" aria-hidden="true" />
-                        <span>{item.name}</span>
+                        <span className="absolute inset-0 transition-transform translate-x-0 translate-y-0 bg-gradient-to-r from-yellow-300 to-yellow-200 group-hover:translate-y-1.5 group-hover:translate-x-1.5"></span>
+
+                        <span className="relative inline-flex justify-center items-center gap-2 px-8 py-3 text-sm font-bold tracking-widest uppercase border-2 border-current">
+                          <item.icon className="h-6 w-6" aria-hidden="true" />
+                          <span>{item.name}</span>
+                        </span>
                       </a>
                     ))}
                   </div>
