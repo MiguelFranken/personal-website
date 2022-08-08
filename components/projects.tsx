@@ -51,7 +51,7 @@ export default function Projects() {
       >
         <span className="absolute inset-0 transition-transform translate-x-0 translate-y-0 bg-yellow-200/10 group-hover:translate-y-1.5 group-hover:translate-x-1.5"></span>
 
-        <span className="relative inline-flex px-8 py-3 border-2 border-yellow-200/20">
+        <span className="relative inline-flex px-8 py-3 border-2 h-full border-yellow-200/20">
           <div>
             <div className="mt-4">
               <img className="h-24 w-auto" src={post.image} alt="Workflow" />
