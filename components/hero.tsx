@@ -1,6 +1,5 @@
 import { BriefcaseIcon, GlobeIcon, MailIcon } from "@heroicons/react/outline";
-import SplineArt from "@/components/spline";
-import SplineArtSmall from "@/components/splinesmall";
+import Spline from "@splinetool/react-spline";
 
 const navigation = [
   {
@@ -38,10 +37,10 @@ const navigation = [
 
 export default function Hero() {
   return (
-    <div>
-      <div className="pt-12 overflow-hidden sm:pt-24 lg:relative xl:py-48">
-        <div className="mx-auto max-w-md sm:max-w-3xl lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24">
-          <div className="px-8 sm:px-16 lg:px-8 2xl:px-0">
+    <div className="w-full relative z-50">
+      <div className="overflow-hidden lg:relative pt-12 sm:pt-24 xl:pt-48">
+        <div className="z-20 mx-auto max-w-md sm:max-w-3xl lg:max-w-7xl lg:grid lg:grid-cols-3 lg:gap-24">
+          <div className="lg:col-span-2 px-8 sm:px-16 lg:px-8 2xl:px-0 z-50">
             <div>
               <img
                 className="h-48 w-48 object-cover border-2 border-current"
@@ -93,17 +92,13 @@ export default function Hero() {
             </div>
           </div>
         </div>
-
-        <div className="h-96 my-16 lg:hidden">
-          <SplineArtSmall />
-        </div>
-
-        <div className="hidden lg:block sm:mx-auto sm:max-w-3xl sm:px-6">
-          <div className="sm:relative lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-screen max-h-fit lg:pr-32">
-            <div className="relative pl-4 -mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full lg:pl-12">
-              <SplineArt />
-            </div>
-          </div>
+      </div>
+      <div className="mt-12 lg:mt-0 lg:absolute lg:top-0 lg:right-0 w-full lg:w-2/3 lg:h-screen flex items-center">
+        <div className="h-full lg:h-2/3 flex-1 overflow-hidden">
+          <Spline
+            scene="https://prod.spline.design/PpI5IThe69TDEQdI/scene.splinecode"
+            className="ml-32 lg:ml-64"
+          />
         </div>
       </div>
     </div>

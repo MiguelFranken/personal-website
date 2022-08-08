@@ -10,8 +10,13 @@ export default function Home() {
         <title>Miguel Franken</title>
       </Head>
 
-      <Hero />
-      <Skewed />
+      <div className="z-50">
+        <Hero />
+      </div>
+
+      <div className="z-10 -mt-16 lg:mt-12">
+        <Skewed />
+      </div>
       <Footer />
     </>
   );
