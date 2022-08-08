@@ -25,6 +25,7 @@ export default function SplineArt() {
     splineObject.current = spline.findObjectById(
       "f6b040e4-21ca-4c89-a488-847fe74fa205"
     );
+    setSplineScale(getScaleValue());
   };
 
   const setSplineScale = (scale) => {
