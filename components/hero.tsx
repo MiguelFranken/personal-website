@@ -38,7 +38,7 @@ const navigation = [
 
 export default function Hero() {
   return (
-    <div className="bg-white">
+    <div>
       <div className="pt-12 overflow-hidden sm:pt-24 lg:relative xl:py-48">
         <div className="mx-auto max-w-md sm:max-w-3xl lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24">
           <div className="px-8 sm:px-16 lg:px-8 2xl:px-0">
