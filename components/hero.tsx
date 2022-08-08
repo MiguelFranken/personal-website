@@ -94,10 +94,10 @@ export default function Hero() {
         </div>
       </div>
       <div className="mt-12 lg:mt-0 lg:absolute lg:top-0 lg:right-0 w-full lg:w-2/3 lg:h-screen flex items-center">
-        <div className="h-full lg:h-2/3 flex-1 overflow-hidden">
+        <div className="h-full lg:h-full flex-1 overflow-hidden flex items-center">
           <Spline
             scene="https://prod.spline.design/PpI5IThe69TDEQdI/scene.splinecode"
-            className="ml-32 lg:ml-64"
+            className="ml-16 md:ml-24 lg:ml-64"
           />
         </div>
       </div>
