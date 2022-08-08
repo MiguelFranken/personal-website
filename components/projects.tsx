@@ -54,7 +54,11 @@ export default function Projects() {
         <span className="relative inline-flex px-8 py-3 border-2 h-full border-yellow-200/20">
           <div>
             <div className="mt-4">
-              <img className="h-24 w-auto" src={post.image} alt="Workflow" />
+              <object
+                type="image/svg+xml"
+                className="h-24 w-auto"
+                data={post.image}
+              />
             </div>
             <div className="block mt-4">
               <p className="text-2xl font-bold text-white tracking-wider uppercase">
@@ -85,7 +89,7 @@ export default function Projects() {
           </h2>
           <p className="mt-3 text-xl text-white sm:mt-4">
             Here you could find some of the hobby projects I have been working
-            on. I am mainly interested in complex dynamic multi-user
+            on! I am mainly interested in complex dynamic multi-user
             applications and building static websites.
           </p>
         </div>

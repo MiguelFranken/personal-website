@@ -51,7 +51,7 @@ export default function Hero() {
             </div>
             <div className="mt-20">
               <div className="mt-6 sm:max-w-xl">
-                <h1 className="text-5xl font-extrabold text-gray-900 sm:text-7xl tracking-wide">
+                <h1 className="text-5xl font-extrabold pb-1 -mb-1 bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-yellow-500 sm:text-7xl tracking-wide">
                   Miguel Franken
                 </h1>
                 <div className="font-light text-gray-700 mt-6 flex flex-col gap-1">
@@ -61,14 +61,14 @@ export default function Hero() {
                   </div>
                   <div className="flex gap-1.5">
                     <BriefcaseIcon className="h-6 w-6" aria-hidden="true" />
-                    <span>Fullstack Software Engineer</span>
+                    <span>Fullstack Software Engineer (2+ Years)</span>
                   </div>
                 </div>
 
                 <p className="mt-6 text-xl text-gray-500">
                   Hey Folks! Welcome to my personal website where you can
-                  discover more about me, my amazing work and some of somewhat
-                  weird hobbies.
+                  discover more about me, my interest for web development and
+                  where you can find me when I&apos;m not working.
                 </p>
                 <form action="#" className="mt-6 sm:max-w-lg sm:w-full sm:flex">
                   <div className="items-baseline mt-4 sm:mt-0 flex-col md:flex md:flex-row justify-center gap-4 space-y-4 lg:space-y-0 md:order-2 w-full lg:w-min">
