@@ -34,7 +34,7 @@ export default function Footer() {
     <footer className="bg-gray-900">
       {/* px-4 sm:px-6 lg:px-8 */}
       <div className="max-w-7xl mx-auto py-12 md:flex md:items-center md:justify-between">
-        <div className="flex justify-center space-x-6 md:order-2">
+        <div className="flex justify-center space-x-6 md:order-2 pr-8 xl:pr-0">
           {navigation.map((item) => (
             <a
               key={item.name}
@@ -46,12 +46,15 @@ export default function Footer() {
             </a>
           ))}
         </div>
-        <div className="mt-8 md:mt-0 md:order-1">
-          <p className="text-center text-base text-gray-100 flex justify-center items-center gap-1">
-            <span>&copy; 2022 Miguel Franken. Made with</span>
-            <HeartIcon className="w-5 h-5 fill-red-600" />
-            <span> in Cologne with NextJS.</span>
-          </p>
+        <div className="mt-8 md:mt-0">
+          <div className="text-base text-gray-100 flex flex-col md:flex-row justify-center items-center gap-1">
+            <div>&copy; 2022 Miguel Franken.</div>
+            <div className="flex items-center justify-center gap-1">
+              <span>Made with</span>
+              <HeartIcon className="w-5 h-5 fill-red-600 inline-block" />
+              <span> in Cologne with NextJS.</span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
