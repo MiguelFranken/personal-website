@@ -1,5 +1,7 @@
 import { BriefcaseIcon, GlobeIcon, MailIcon } from "@heroicons/react/outline";
 import SplineArt from "@/components/spline";
+import Spline from "@splinetool/react-spline";
+import SplineArtSmall from "@/components/splinesmall";
 
 const navigation = [
   {
@@ -93,8 +95,12 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="sm:mx-auto sm:max-w-3xl sm:px-6">
-          <div className="sm:relative lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 h-screen pr-32">
+        <div className="h-96 my-16 lg:hidden">
+          <SplineArtSmall />
+        </div>
+
+        <div className="hidden lg:block sm:mx-auto sm:max-w-3xl sm:px-6">
+          <div className="sm:relative lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-screen max-h-fit lg:pr-32">
             <div className="relative pl-4 -mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full lg:pl-12">
               <SplineArt />
             </div>
