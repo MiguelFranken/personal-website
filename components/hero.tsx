@@ -1,8 +1,5 @@
-import Spline from "@splinetool/react-spline";
-
 import { BriefcaseIcon, GlobeIcon, MailIcon } from "@heroicons/react/outline";
-import { useEffect, useRef } from "react";
-import { SPEObject } from "@splinetool/runtime";
+import SplineArt from "@/components/spline";
 
 const navigation = [
   {
@@ -39,52 +36,6 @@ const navigation = [
 ];
 
 export default function Hero() {
-  const scene = "https://prod.spline.design/PpI5IThe69TDEQdI/scene.splinecode";
-
-  const splineObject = useRef<SPEObject>();
-
-  const getScaleValue = () => {
-    const screenWidth = window.innerWidth;
-    if (screenWidth > 1640) {
-      return 1;
-    } else if (screenWidth > 1484) {
-      return 0.9;
-    } else if (screenWidth > 1330) {
-      return 0.8;
-    } else if (screenWidth > 1186) {
-      return 0.7;
-    }
-    return 0.5;
-  };
-
-  const onLoad = (spline) => {
-    splineObject.current = spline.findObjectById(
-      "f6b040e4-21ca-4c89-a488-847fe74fa205"
-    );
-  };
-
-  const setSplineScale = (scale) => {
-    if (splineObject.current) {
-      const newScale = splineObject.current.scale;
-      newScale.x = scale;
-      newScale.y = scale;
-      newScale.z = scale;
-      splineObject.current.scale = newScale;
-    } else {
-      console.error("spline object is undefined");
-    }
-  };
-
-  useEffect(() => {
-    function scaleSpline() {
-      if (splineObject.current && splineObject.current.scale) {
-        setSplineScale(getScaleValue());
-      }
-    }
-    window.addEventListener("resize", scaleSpline);
-    return () => window.removeEventListener("resize", scaleSpline);
-  }, []);
-
   return (
     <div className="bg-white">
       <div className="pt-12 overflow-hidden sm:pt-24 lg:relative lg:py-48">
@@ -145,7 +96,7 @@ export default function Hero() {
         <div className="sm:mx-auto sm:max-w-3xl sm:px-6">
           <div className="sm:relative lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 h-screen pr-32">
             <div className="relative pl-4 -mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full lg:pl-12">
-              <Spline scene={scene} onLoad={onLoad} />
+              <SplineArt />
             </div>
           </div>
         </div>
