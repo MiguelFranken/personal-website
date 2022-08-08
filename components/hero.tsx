@@ -1,6 +1,5 @@
 import { BriefcaseIcon, GlobeIcon, MailIcon } from "@heroicons/react/outline";
 import SplineArt from "@/components/spline";
-import Spline from "@splinetool/react-spline";
 import SplineArtSmall from "@/components/splinesmall";
 
 const navigation = [
