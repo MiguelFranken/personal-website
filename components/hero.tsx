@@ -42,12 +42,12 @@ export default function Hero() {
 
   return (
     <div className="bg-white">
-      <div className="pt-8 overflow-hidden sm:pt-12 lg:relative lg:py-48">
+      <div className="pt-12 overflow-hidden sm:pt-24 lg:relative lg:py-48">
         <div className="mx-auto max-w-md sm:max-w-3xl lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24">
-          <div>
+          <div className="px-8 sm:px-16 lg:px-8 2xl:px-0">
             <div>
               <img
-                className="h-48 w-48 object-cover rounded-md"
+                className="h-48 w-48 object-cover border-2 border-current"
                 src="/portrait.jpg"
                 alt="Workflow"
               />
@@ -74,20 +74,21 @@ export default function Hero() {
                   weird hobbies.
                 </p>
                 <form action="#" className="mt-6 sm:max-w-lg sm:w-full sm:flex">
-                  <div className="mt-4 sm:mt-0 flex justify-center space-x-4 md:order-2">
+                  <div className="items-baseline mt-4 sm:mt-0 flex-col md:flex md:flex-row justify-center gap-4 space-y-4 lg:space-y-0 md:order-2 w-full lg:w-min">
                     {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="relative inline-block group focus:outline-none focus:ring"
-                      >
-                        <span className="absolute inset-0 transition-transform translate-x-0 translate-y-0 bg-gradient-to-r from-yellow-300 to-yellow-200 group-hover:translate-y-1.5 group-hover:translate-x-1.5"></span>
+                      <div key={item.name}>
+                        <a
+                          href={item.href}
+                          className="relative inline-block group focus:outline-none focus:ring w-full"
+                        >
+                          <span className="absolute inset-0 transition-transform translate-x-0 translate-y-0 bg-gradient-to-r from-yellow-300 to-yellow-200 group-hover:translate-y-1.5 group-hover:translate-x-1.5"></span>
 
-                        <span className="relative inline-flex justify-center items-center gap-2 px-8 py-3 text-sm font-bold tracking-widest uppercase border-2 border-current">
-                          <item.icon className="h-6 w-6" aria-hidden="true" />
-                          <span>{item.name}</span>
-                        </span>
-                      </a>
+                          <span className="w-full relative inline-flex justify-center items-center gap-2 px-8 py-3 text-sm font-bold tracking-widest uppercase border-2 border-current">
+                            <item.icon className="h-6 w-6" aria-hidden="true" />
+                            <span>{item.name}</span>
+                          </span>
+                        </a>
+                      </div>
                     ))}
                   </div>
                 </form>
