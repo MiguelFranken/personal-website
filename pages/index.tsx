@@ -3,6 +3,7 @@ import Hero from "@/components/hero";
 import Footer from "@/components/footer";
 import Technologies from "@/components/technologies";
 import Projects from "@/components/projects";
+import Feed from "@/components/feed";
 
 export default function Home() {
   return (
@@ -22,6 +23,10 @@ export default function Home() {
 
         <div className="pb-12">
           <Technologies />
+        </div>
+
+        <div>
+          <Feed />
         </div>
 
         <Footer />

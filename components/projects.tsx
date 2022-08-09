@@ -81,7 +81,7 @@ export default function Projects() {
   };
 
   return (
-    <SkewedSection>
+    <SkewedSection bg="bg-conic-to-l from-yellow-200 via-red-500 to-fuchsia-500">
       <Container className="pt-16 pb-20 lg:pt-24 lg:pb-28 relative divide-y-2 divide-yellow-100/10">
         <div>
           <h2>
