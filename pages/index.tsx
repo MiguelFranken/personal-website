@@ -20,7 +20,7 @@ export default function Home() {
           <Skewed />
         </div>
 
-        <div>
+        <div className="pb-12">
           <Technologies />
         </div>
 
