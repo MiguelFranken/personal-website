@@ -3,7 +3,7 @@ import { SPEObject } from "@splinetool/runtime";
 import Spline from "@splinetool/react-spline";
 
 export default function SplineArt() {
-  const scene = "https://prod.spline.design/PpI5IThe69TDEQdI/scene.splinecode";
+  const scene = "https://prod.spline.design/E7Pa8QkNKx1Y51B1/scene.splinecode";
 
   const splineObject = useRef<SPEObject>();
 
@@ -11,44 +11,58 @@ export default function SplineArt() {
     const screenWidth = window.innerWidth;
     if (screenWidth > 1640) {
       return 1;
-    } else if (screenWidth > 1484) {
+    } else if (screenWidth >= 1526) {
       return 0.9;
     } else if (screenWidth > 1330) {
       return 0.8;
-    } else if (screenWidth > 1186) {
+    } else if (screenWidth >= 1280) {
       return 0.7;
+    } else if (screenWidth >= 1024) {
+      return 0.6;
+    } else if (screenWidth >= 768) {
+      return 0.8;
+    } else if (screenWidth >= 640) {
+      return 0.7;
+    } else if (screenWidth >= 480) {
+      return 0.55;
+    } else {
+      return 0.4;
     }
-    return 0.5;
   };
 
   const onLoad = (spline) => {
-    splineObject.current = spline.findObjectById(
-      "f6b040e4-21ca-4c89-a488-847fe74fa205"
+    const object = spline.findObjectById(
+      "90e8997d-4160-4a25-abaa-5e2df5d25073"
     );
-    setSplineScale(getScaleValue());
+    if (object) {
+      splineObject.current = object;
+      setSplineScale();
+    }
   };
 
-  const setSplineScale = (scale) => {
+  const setSplineScale = () => {
     if (splineObject.current) {
+      const scaleValue = getScaleValue();
       const newScale = splineObject.current.scale;
-      newScale.x = scale;
-      newScale.y = scale;
-      newScale.z = scale;
+      newScale.x = scaleValue;
+      newScale.y = scaleValue;
+      newScale.z = scaleValue;
       splineObject.current.scale = newScale;
+      console.log(newScale);
     } else {
       console.error("spline object is undefined");
     }
   };
 
   useEffect(() => {
-    function scaleSpline() {
+    const scaleSpline = () => {
       if (splineObject.current && splineObject.current.scale) {
-        setSplineScale(getScaleValue());
+        setSplineScale();
       }
-    }
+    };
     window.addEventListener("resize", scaleSpline);
     return () => window.removeEventListener("resize", scaleSpline);
-  }, []);
+  });
 
   return <Spline scene={scene} onLoad={onLoad} />;
 }

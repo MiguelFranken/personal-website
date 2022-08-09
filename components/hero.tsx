@@ -1,5 +1,5 @@
 import { BriefcaseIcon, GlobeIcon, MailIcon } from "@heroicons/react/outline";
-import Spline from "@splinetool/react-spline";
+import SplineArt from "@/components/spline";
 
 const navigation = [
   {
@@ -93,12 +93,11 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className="mt-12 lg:mt-0 lg:absolute lg:top-0 lg:right-0 w-full lg:w-2/3 lg:h-screen flex items-center">
-        <div className="h-full lg:h-full flex-1 overflow-hidden flex items-center">
-          <Spline
-            scene="https://prod.spline.design/E7Pa8QkNKx1Y51B1/scene.splinecode"
-            className="ml-16 md:ml-24 lg:ml-64"
-          />
+      <div className="-mt-4 sm:mt-16 md:mt-24 lg:mt-0 lg:absolute lg:top-0 lg:right-0 w-full lg:w-2/3 lg:h-screen flex items-center">
+        <div className="max-h-96 sm:max-h-128 md:max-h-128 lg:max-h-max lg:h-full flex-1 overflow-hidden flex items-center">
+          <div className="-ml-16 sm:-ml-16 md:ml-8 lg:ml-40 xl:ml-52 2xl:ml-64 3xl:ml-72">
+            <SplineArt />
+          </div>
         </div>
       </div>
     </div>

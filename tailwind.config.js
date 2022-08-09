@@ -12,6 +12,9 @@ module.exports = {
       strokeWidth: {
         4: "4",
       },
+      spacing: {
+        128: "32rem",
+      },
       backgroundImage: {
         conic: "conic-gradient(var(--tw-gradient-stops))",
         "conic-to-t": "conic-gradient(at top, var(--tw-gradient-stops))",
