@@ -48,7 +48,6 @@ export default function SplineArt() {
       newScale.y = scaleValue;
       newScale.z = scaleValue;
       splineObject.current.scale = newScale;
-      console.log(newScale);
     } else {
       console.error("spline object is undefined");
     }
