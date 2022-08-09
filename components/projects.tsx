@@ -83,7 +83,7 @@ export default function Projects() {
       <div className="relative max-w-lg mx-auto divide-y-2 divide-yellow-100/10 lg:max-w-7xl">
         <div>
           <h2>
-            <span className="text-5xl tracking-wider font-extrabold text-white sm:text-6xl">
+            <span className="tracking-wider font-extrabold text-white text-5xl sm:text-6xl">
               Projects
             </span>
           </h2>

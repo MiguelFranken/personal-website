@@ -2,6 +2,7 @@ import Head from "next/head";
 import Hero from "@/components/hero";
 import Footer from "@/components/footer";
 import Skewed from "@/components/skewed";
+import Technologies from "@/components/technologies";
 
 export default function Home() {
   return (
@@ -14,10 +15,17 @@ export default function Home() {
         <Hero />
       </div>
 
-      <div className="z-10 -mt-16 lg:mt-12">
-        <Skewed />
+      <div className="space-y-24">
+        <div className="z-10 -mt-16 lg:mt-12">
+          <Skewed />
+        </div>
+
+        <div>
+          <Technologies />
+        </div>
+
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 }
