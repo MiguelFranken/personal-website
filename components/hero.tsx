@@ -38,7 +38,7 @@ const navigation = [
 export default function Hero() {
   return (
     <div className="w-full relative z-50">
-      <div className="overflow-hidden lg:relative pt-12 sm:pt-24 xl:pt-48">
+      <div className="lg:relative pt-12 sm:pt-24 xl:pt-48">
         <div className="z-20 mx-auto max-w-md sm:max-w-3xl lg:max-w-7xl lg:grid lg:grid-cols-3 lg:gap-24">
           <div className="lg:col-span-2 px-8 sm:px-16 lg:px-8 2xl:px-0 z-50">
             <div>
@@ -70,7 +70,7 @@ export default function Hero() {
                   where you can find me when I&apos;m not working.
                 </p>
                 <form action="#" className="mt-6 sm:max-w-lg sm:w-full sm:flex">
-                  <div className="items-baseline mt-4 sm:mt-0 flex-col md:flex md:flex-row justify-center gap-4 space-y-4 lg:space-y-0 md:order-2 w-full lg:w-min">
+                  <div className="items-baseline mt-4 sm:mt-0 flex-col md:flex md:flex-row gap-4 space-y-4 lg:space-y-0 md:order-2 w-full lg:w-min">
                     {navigation.map((item) => (
                       <div key={item.name}>
                         <a
