@@ -1,4 +1,5 @@
 import { HeartIcon } from "@heroicons/react/solid";
+import Container from "@/components/container";
 
 const navigation = [
   {
@@ -32,9 +33,8 @@ const navigation = [
 export default function Footer() {
   return (
     <footer className="bg-gray-900">
-      {/* px-4 sm:px-6 lg:px-8 */}
-      <div className="max-w-7xl mx-auto py-12 md:flex md:items-center md:justify-between">
-        <div className="flex justify-center space-x-6 md:order-2 pr-8 xl:pr-0">
+      <Container className="py-12 md:flex md:items-center md:justify-between">
+        <div className="flex justify-center space-x-6 md:order-2">
           {navigation.map((item) => (
             <a
               key={item.name}
@@ -56,7 +56,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

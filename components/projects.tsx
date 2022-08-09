@@ -1,4 +1,5 @@
 import { ChevronRightIcon } from "@heroicons/react/outline";
+import Container from "@/components/container";
 
 const posts = [
   {
@@ -79,7 +80,7 @@ export default function Projects() {
   };
 
   return (
-    <div className="pt-16 pb-20 lg:pt-24 lg:pb-28 relative divide-y-2 divide-yellow-100/10 mx-auto max-w-md sm:max-w-3xl lg:max-w-7xl px-8 sm:px-16 lg:px-8 2xl:px-0">
+    <Container className="pt-16 pb-20 lg:pt-24 lg:pb-28 relative divide-y-2 divide-yellow-100/10">
       <div>
         <h2>
           <span className="tracking-wider font-extrabold text-white text-5xl sm:text-6xl">
@@ -96,6 +97,6 @@ export default function Projects() {
         {/* shadow-sm rounded-xl */}
         {posts.map((post) => card(post))}
       </div>
-    </div>
+    </Container>
   );
 }

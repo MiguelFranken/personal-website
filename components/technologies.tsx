@@ -13,6 +13,7 @@ import {
   VercelLogo,
   VueLogo,
 } from "@/components/logos";
+import Container from "@/components/container";
 
 type Technology = {
   name: string;
@@ -126,7 +127,7 @@ export default function Technologies() {
   );
 
   return (
-    <div className="mx-auto max-w-md sm:max-w-3xl lg:max-w-7xl space-y-20 text-gray-900 px-8 sm:px-16 lg:px-8 2xl:px-0">
+    <Container className="space-y-20 text-gray-900">
       <div className="flex flex-col gap-5 lg:items-center">
         <h1 className="inline-block tracking-wider font-extrabold text-gray-900 text-5xl sm:text-6xl">
           Skills & Tools
@@ -140,6 +141,6 @@ export default function Technologies() {
       <div className="flex flex-col lg:flex-row lg:flex-wrap gap-16 lg:justify-center lg:px-16">
         {technologies.map(gridCell)}
       </div>
-    </div>
+    </Container>
   );
 }
