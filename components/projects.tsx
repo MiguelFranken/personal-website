@@ -1,5 +1,6 @@
 import { ChevronRightIcon } from "@heroicons/react/outline";
 import Container from "@/components/container";
+import SkewedSection from "@/components/skewed-section";
 
 const posts = [
   {
@@ -80,23 +81,25 @@ export default function Projects() {
   };
 
   return (
-    <Container className="pt-16 pb-20 lg:pt-24 lg:pb-28 relative divide-y-2 divide-yellow-100/10">
-      <div>
-        <h2>
-          <span className="tracking-wider font-extrabold text-white text-5xl sm:text-6xl">
-            Projects
-          </span>
-        </h2>
-        <p className="mt-3 text-xl text-white sm:mt-4">
-          Here you could find some of the hobby projects I have been working on!
-          I am mainly interested in complex dynamic multi-user applications and
-          building static websites.
-        </p>
-      </div>
-      <div className="mt-12 grid gap-16 pt-12 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
-        {/* shadow-sm rounded-xl */}
-        {posts.map((post) => card(post))}
-      </div>
-    </Container>
+    <SkewedSection>
+      <Container className="pt-16 pb-20 lg:pt-24 lg:pb-28 relative divide-y-2 divide-yellow-100/10">
+        <div>
+          <h2>
+            <span className="tracking-wider font-extrabold text-white text-5xl sm:text-6xl">
+              Projects
+            </span>
+          </h2>
+          <p className="mt-3 text-xl text-white sm:mt-4">
+            Here you could find some of the hobby projects I have been working
+            on! I am mainly interested in complex dynamic multi-user
+            applications and building static websites.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-16 pt-12 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
+          {/* shadow-sm rounded-xl */}
+          {posts.map((post) => card(post))}
+        </div>
+      </Container>
+    </SkewedSection>
   );
 }

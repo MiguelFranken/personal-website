@@ -1,9 +1,12 @@
 import styles from "@/styles/skewed.module.css";
 import classNames from "classnames";
-import Projects from "@/components/projects";
+import { ReactElement } from "react";
 
-export default function Skewed() {
-  // TODO MF: Get rid of the -m-16 mb-32 hack
+type SkewedSectionProps = {
+  children: ReactElement | ReactElement[];
+};
+
+export default function SkewedSection({ children }: SkewedSectionProps) {
   return (
     <div className="overflow-hidden relative">
       <div className="!block">
@@ -14,7 +17,7 @@ export default function Skewed() {
             </div>
           </div>
           <div className={classNames("relative", styles.ptSection)}>
-            <Projects />
+            {children}
           </div>
         </div>
       </div>
