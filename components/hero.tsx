@@ -50,7 +50,7 @@ export default function Hero() {
             </div>
             <div className="mt-20">
               <div className="mt-6 sm:max-w-xl">
-                <h1 className="text-5xl font-extrabold pb-1 -mb-1 bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-yellow-500 sm:text-7xl tracking-wide">
+                <h1 className="text-5xl font-extrabold pb-1 -mb-1 bg-clip-text text-gray-900 sm:text-7xl tracking-wide">
                   Miguel Franken
                 </h1>
                 <div className="font-light text-gray-700 mt-6 flex flex-col gap-1">
