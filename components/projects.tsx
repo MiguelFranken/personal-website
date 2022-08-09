@@ -79,24 +79,22 @@ export default function Projects() {
   };
 
   return (
-    <div className="pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
-      <div className="relative max-w-lg mx-auto divide-y-2 divide-yellow-100/10 lg:max-w-7xl">
-        <div>
-          <h2>
-            <span className="tracking-wider font-extrabold text-white text-5xl sm:text-6xl">
-              Projects
-            </span>
-          </h2>
-          <p className="mt-3 text-xl text-white sm:mt-4">
-            Here you could find some of the hobby projects I have been working
-            on! I am mainly interested in complex dynamic multi-user
-            applications and building static websites.
-          </p>
-        </div>
-        <div className="mt-12 grid gap-16 pt-12 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
-          {/* shadow-sm rounded-xl */}
-          {posts.map((post) => card(post))}
-        </div>
+    <div className="pt-16 pb-20 lg:pt-24 lg:pb-28 relative divide-y-2 divide-yellow-100/10 mx-auto max-w-md sm:max-w-3xl lg:max-w-7xl px-8 sm:px-16 lg:px-8 2xl:px-0">
+      <div>
+        <h2>
+          <span className="tracking-wider font-extrabold text-white text-5xl sm:text-6xl">
+            Projects
+          </span>
+        </h2>
+        <p className="mt-3 text-xl text-white sm:mt-4">
+          Here you could find some of the hobby projects I have been working on!
+          I am mainly interested in complex dynamic multi-user applications and
+          building static websites.
+        </p>
+      </div>
+      <div className="mt-12 grid gap-16 pt-12 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
+        {/* shadow-sm rounded-xl */}
+        {posts.map((post) => card(post))}
       </div>
     </div>
   );
