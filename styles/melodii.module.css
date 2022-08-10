@@ -1,0 +1,20 @@
+.section {
+    --sectionAngleSin: 0.052;
+
+    --scrollbarWidth: 0px;
+    --windowWidth: calc(100vw - var(--scrollbarWidth));
+    --sectionAngleHeight: calc(var(--windowWidth)*var(--sectionAngleSin));
+    --sectionMargin: calc(var(--sectionAngleHeight)*-1);
+}
+
+.removeMbSection {
+    margin-bottom: var(--sectionMargin);
+}
+
+.coverImage {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
