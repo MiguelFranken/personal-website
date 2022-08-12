@@ -11,7 +11,8 @@ export type ProjectArticleProps = {
   title: string;
   description: string;
   image: string;
-  demo: boolean;
+  demo?: string;
+  github?: string;
   children?: ReactElement;
 };
 
@@ -21,6 +22,7 @@ export default function ArticleLayout({
   image,
   children,
   demo,
+  github,
 }: ProjectArticleProps) {
   return (
     <>
@@ -58,7 +60,7 @@ export default function ArticleLayout({
                 <span className="block text-sm text-gray-900 font-medium tracking-wide uppercase">
                   Introducing
                 </span>
-                <span className="mt-1 pb-1 -mb-1 block text-5xl sm:text-6xl leading-8 font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-fuchsia-500">
+                <span className="mt-1 pb-1 -mb-1 block text-5xl sm:text-6xl leading-8 font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-amber-300">
                   {title}
                 </span>
               </h1>
@@ -69,7 +71,7 @@ export default function ArticleLayout({
                 <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                   <div className="mt-3 sm:mt-0">
                     <a
-                      href="#"
+                      href={demo}
                       className="relative inline-block group focus:outline-none focus:ring w-full"
                     >
                       <span className="absolute inset-0 transition-transform translate-x-0 translate-y-0 bg-gradient-to-r from-yellow-300 to-yellow-200 group-hover:translate-y-1.5 group-hover:translate-x-1.5"></span>
@@ -172,7 +174,12 @@ export default function ArticleLayout({
             </div>
           </div>
           <div>
-            <div className="prose prose-indigo prose-lg text-gray-500">
+            <div
+              className={classNames(
+                styles.articleBody,
+                "prose prose-yellow prose-base text-gray-500 prose-h1:bg-clip-text prose-h1:text-transparent prose-h1:bg-gradient-to-r prose-h1:from-yellow-400 prose-h1:to-yellow-300 prose-h1:mb-0 prose-h1:inline-block prose-a:font-semibold prose-a:decoration-2 prose-a:text-yellow-400 prose-a:underline-offset-2 prose-h2:prose-h3:text-gray-900"
+              )}
+            >
               {children}
             </div>
           </div>

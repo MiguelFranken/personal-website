@@ -103,7 +103,7 @@ export default function Feed() {
         <div className="flex items-center gap-1.5">
           <CalendarIcon className="w-4 h-4 fill-current" />
           <span>
-            {milestone.begin} - {milestone.end}
+            {milestone.begin}&#8211;{milestone.end}
           </span>
         </div>
         <div className="flex items-center gap-1">

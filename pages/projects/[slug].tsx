@@ -51,7 +51,8 @@ export default function ProjectPage({
       title={frontmatter.title}
       description={frontmatter.description}
       image={frontmatter.image}
-      demo={!!frontmatter.demo}
+      demo={frontmatter.demo}
+      github={frontmatter.github}
     >
       <MDXRemote {...mdxSource} components={components} />
     </ArticleLayout>
