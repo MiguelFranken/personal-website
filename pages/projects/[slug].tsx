@@ -1,13 +1,13 @@
 import fs from "fs";
-import matter from "gray-matter";
 import ArticleLayout from "@/components/article-layout";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { GetStaticProps } from "next";
+import Video from "@/components/video";
 
 interface ProjectPageProps {
   mdxSource: MDXRemoteSerializeResult;
-  data: any;
+  frontmatter: Record<string, string>;
 }
 
 export async function getStaticPaths() {
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 
   const paths = files.map((fileName) => ({
     params: {
-      slug: fileName.replace(".md", ""),
+      slug: fileName.replace(".mdx", ""),
     },
   }));
 
@@ -28,27 +28,30 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps<{
   mdxSource: MDXRemoteSerializeResult;
 }> = async ({ params: { slug } }) => {
-  const fileName = fs.readFileSync(`articles/${slug}.md`, "utf-8");
-  const { data, content } = matter(fileName);
-  const mdxSource = await serialize(content);
+  const content = fs.readFileSync(`articles/${slug}.mdx`, "utf-8");
+  const mdxSource = await serialize(content, { parseFrontmatter: true });
+  const frontmatter = mdxSource.frontmatter;
 
   return {
     props: {
-      data,
+      frontmatter,
       mdxSource,
     },
   };
 };
 
-const components = {};
+const components = { Video };
 
-export default function ProjectPage({ mdxSource, data }: ProjectPageProps) {
+export default function ProjectPage({
+  mdxSource,
+  frontmatter,
+}: ProjectPageProps) {
   return (
     <ArticleLayout
-      title={data.title}
-      description={data.description}
-      image={data.image}
-      demo={!!data.demo}
+      title={frontmatter.title}
+      description={frontmatter.description}
+      image={frontmatter.image}
+      demo={!!frontmatter.demo}
     >
       <MDXRemote {...mdxSource} components={components} />
     </ArticleLayout>

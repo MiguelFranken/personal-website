@@ -5,6 +5,7 @@ import Container from "@/components/container";
 import styles from "@/styles/melodii.module.css";
 import classNames from "classnames";
 import { ReactElement } from "react";
+import Footer from "@/components/footer";
 
 export type ProjectArticleProps = {
   title: string;
@@ -64,15 +65,15 @@ export default function ArticleLayout({
               <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                 {description}
               </p>
-              <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                <div className="mt-3 sm:mt-0">
-                  <a
-                    href="#"
-                    className="relative inline-block group focus:outline-none focus:ring w-full"
-                  >
-                    <span className="absolute inset-0 transition-transform translate-x-0 translate-y-0 bg-gradient-to-r from-yellow-300 to-yellow-200 group-hover:translate-y-1.5 group-hover:translate-x-1.5"></span>
+              {demo && (
+                <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                  <div className="mt-3 sm:mt-0">
+                    <a
+                      href="#"
+                      className="relative inline-block group focus:outline-none focus:ring w-full"
+                    >
+                      <span className="absolute inset-0 transition-transform translate-x-0 translate-y-0 bg-gradient-to-r from-yellow-300 to-yellow-200 group-hover:translate-y-1.5 group-hover:translate-x-1.5"></span>
 
-                    {demo && (
                       <span className="w-full relative inline-flex justify-center items-center gap-2 px-8 py-3 text-sm font-bold tracking-widest uppercase border-2 border-current">
                         <ExternalLinkIcon
                           className="h-6 w-6 fill-current"
@@ -80,10 +81,10 @@ export default function ArticleLayout({
                         />
                         <span>Live Demo</span>
                       </span>
-                    )}
-                  </a>
+                    </a>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
           <div className="flex items-end">
@@ -98,8 +99,8 @@ export default function ArticleLayout({
           </div>
         </div>
 
-        <div className="mt-32 relative overflow-hidden">
-          <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
+        <div className="my-32 relative overflow-hidden">
+          <div className="pointer-events-none hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
             <div
               className="relative h-full text-lg max-w-prose mx-auto"
               aria-hidden="true"
@@ -116,16 +117,16 @@ export default function ArticleLayout({
                     id="74b3fd99-0a6f-4271-bef2-e80eeafdf357"
                     x={0}
                     y={0}
-                    width={20}
-                    height={20}
+                    width={24}
+                    height={24}
                     patternUnits="userSpaceOnUse"
                   >
                     <rect
                       x={0}
                       y={0}
-                      width={4}
-                      height={4}
-                      className="text-gray-200"
+                      width={8}
+                      height={8}
+                      className="text-yellow-400/50"
                       fill="currentColor"
                     />
                   </pattern>
@@ -134,38 +135,6 @@ export default function ArticleLayout({
                   width={404}
                   height={384}
                   fill="url(#74b3fd99-0a6f-4271-bef2-e80eeafdf357)"
-                />
-              </svg>
-              <svg
-                className="absolute top-1/2 right-full transform -translate-y-1/2 -translate-x-32"
-                width={404}
-                height={384}
-                fill="none"
-                viewBox="0 0 404 384"
-              >
-                <defs>
-                  <pattern
-                    id="f210dbf6-a58d-4871-961e-36d5016a0f49"
-                    x={0}
-                    y={0}
-                    width={20}
-                    height={20}
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <rect
-                      x={0}
-                      y={0}
-                      width={4}
-                      height={4}
-                      className="text-gray-200"
-                      fill="currentColor"
-                    />
-                  </pattern>
-                </defs>
-                <rect
-                  width={404}
-                  height={384}
-                  fill="url(#f210dbf6-a58d-4871-961e-36d5016a0f49)"
                 />
               </svg>
               <svg
@@ -180,16 +149,16 @@ export default function ArticleLayout({
                     id="d3eb07ae-5182-43e6-857d-35c643af9034"
                     x={0}
                     y={0}
-                    width={20}
-                    height={20}
+                    width={24}
+                    height={24}
                     patternUnits="userSpaceOnUse"
                   >
                     <rect
                       x={0}
                       y={0}
-                      width={4}
-                      height={4}
-                      className="text-gray-200"
+                      width={8}
+                      height={8}
+                      className="text-fuchsia-400/50"
                       fill="currentColor"
                     />
                   </pattern>
@@ -209,6 +178,8 @@ export default function ArticleLayout({
           </div>
         </div>
       </Container>
+
+      <Footer />
     </>
   );
 }
