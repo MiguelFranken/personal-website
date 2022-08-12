@@ -32,7 +32,16 @@ const navigation = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900">
+    <footer className="bg-gray-900 relative">
+      <div className="absolute bottom-full z-50 w-full">
+        <svg viewBox="0 0 2903 171" fill="none">
+          <path
+            d="M0 34.2252C289.285 82.1454 487.783 79.3303 794.265 34.2252C1100.75 -10.8799 1220.58 -11.9338 1471.8 34.2252C1705.26 77.1204 1901.69 71.1427 2187.4 34.2252C2464 -1.5142 2620.54 1.1688 2903 34.2252V171H0V34.2252Z"
+            fill="#111827"
+          />
+        </svg>
+      </div>
+
       <Container className="py-12 md:flex md:items-center md:justify-between">
         <div className="flex justify-center space-x-6 md:order-2">
           {navigation.map((item) => (

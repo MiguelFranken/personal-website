@@ -25,7 +25,7 @@ export default function Home() {
           <Technologies />
         </div>
 
-        <div>
+        <div className="pb-16">
           <Feed />
         </div>
 
