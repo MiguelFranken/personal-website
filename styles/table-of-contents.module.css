@@ -1,0 +1,31 @@
+.toc > ul {
+    @apply overflow-x-hidden font-normal text-gray-600;
+}
+
+.toc > ul > li {
+    @apply py-2;
+}
+
+.toc > ul > li > a {
+    @apply block pl-2.5 font-medium tracking-wide border-l-2 border-transparent duration-200 hover:text-gray-900 transition-none hover:text-yellow-400 hover:border-yellow-400 after:content-['#'] after:text-yellow-400 after:ml-2 after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-100;
+}
+
+.toc > ul > li > ul > li > a {
+    @apply pl-6 border-l font-light tracking-wide border-l-2 border-transparent duration-200 hover:text-gray-900 transition-none hover:text-yellow-400 hover:border-yellow-400 after:content-['#'] after:text-yellow-400 after:ml-2 after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-100;
+}
+
+.toc > ul > li > ul {
+    @apply pt-2;
+}
+
+.toc > ul > li > ul > li {
+    @apply py-2;
+}
+
+.toc > ul > li > ul > li:last-of-type {
+    @apply pb-0;
+}
+
+.active > a {
+    @apply text-yellow-400;
+}

@@ -6,10 +6,13 @@ import { GetStaticProps } from "next";
 import Video from "@/components/video";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneLight } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import rehypeSlug from "rehype-slug";
+import rehypeExtractHeadings, { Heading } from "@/lib/rehypeExtractHeadings";
 
 interface ProjectPageProps {
   mdxSource: MDXRemoteSerializeResult;
   frontmatter: Record<string, string>;
+  headings: Heading[];
 }
 
 export async function getStaticPaths() {
@@ -30,14 +33,23 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps<{
   mdxSource: MDXRemoteSerializeResult;
 }> = async ({ params: { slug } }) => {
+  const headings = [];
+
   const content = fs.readFileSync(`articles/${slug}.mdx`, "utf-8");
-  const mdxSource = await serialize(content, { parseFrontmatter: true });
+  const mdxSource = await serialize(content, {
+    parseFrontmatter: true,
+    mdxOptions: {
+      remarkPlugins: [],
+      rehypePlugins: [rehypeSlug, [rehypeExtractHeadings, { headings }]],
+    },
+  });
   const frontmatter = mdxSource.frontmatter;
 
   return {
     props: {
       frontmatter,
       mdxSource,
+      headings,
     },
   };
 };
@@ -59,6 +71,7 @@ const components = {
 export default function ProjectPage({
   mdxSource,
   frontmatter,
+  headings,
 }: ProjectPageProps) {
   return (
     <ArticleLayout
@@ -67,6 +80,7 @@ export default function ProjectPage({
       image={frontmatter.image}
       demo={frontmatter.demo}
       github={frontmatter.github}
+      headings={headings}
     >
       <MDXRemote {...mdxSource} components={components} />
     </ArticleLayout>

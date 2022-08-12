@@ -6,6 +6,8 @@ import styles from "@/styles/melodii.module.css";
 import classNames from "classnames";
 import { ReactElement } from "react";
 import Footer from "@/components/footer";
+import TableOfContents from "@/components/table-of-contents";
+import { Heading } from "@/lib/rehypeExtractHeadings";
 
 export type ProjectArticleProps = {
   title: string;
@@ -13,6 +15,7 @@ export type ProjectArticleProps = {
   image: string;
   demo?: string;
   github?: string;
+  headings: Heading[];
   children?: ReactElement;
 };
 
@@ -23,7 +26,10 @@ export default function ArticleLayout({
   children,
   demo,
   github,
+  headings,
 }: ProjectArticleProps) {
+  // flex overflow-y-auto sticky top-28 flex-col justify-between pt-10 pb-6 h-[calc(100vh-5rem)]
+
   return (
     <>
       <Head>
@@ -56,14 +62,14 @@ export default function ArticleLayout({
             </nav>
 
             <div className="flex flex-col sm:items-center lg:items-start justify-center">
-              <h1>
+              <div>
                 <span className="block text-sm text-gray-900 font-medium tracking-wide uppercase">
                   Introducing
                 </span>
                 <span className="mt-1 pb-1 -mb-1 block text-5xl sm:text-6xl leading-8 font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-amber-300">
                   {title}
                 </span>
-              </h1>
+              </div>
               <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                 {description}
               </p>
@@ -101,14 +107,16 @@ export default function ArticleLayout({
           </div>
         </div>
 
-        <div className="my-32 relative overflow-hidden">
+        <div className="my-32 relative">
+          <TableOfContents headings={headings} />
+
           <div className="pointer-events-none hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
             <div
               className="relative h-full text-lg max-w-prose mx-auto"
               aria-hidden="true"
             >
               <svg
-                className="absolute top-12 left-full transform translate-x-32"
+                className="absolute bottom-1/2 left-full transform translate-x-32"
                 width={404}
                 height={384}
                 fill="none"
@@ -177,7 +185,7 @@ export default function ArticleLayout({
             <div
               className={classNames(
                 styles.articleBody,
-                "prose prose-yellow prose-base text-gray-500 prose-h1:bg-clip-text prose-h1:text-transparent prose-h1:bg-gradient-to-r prose-h1:from-yellow-400 prose-h1:to-yellow-300 prose-h1:mb-0 prose-h1:inline-block prose-a:font-semibold prose-a:decoration-2 prose-a:text-yellow-400 prose-a:underline-offset-2 prose-h2:prose-h3:text-gray-900"
+                "prose prose-yellow prose-lg text-gray-500 prose-h1:bg-clip-text prose-h1:text-transparent prose-h1:bg-gradient-to-r prose-h1:from-yellow-400 prose-h1:to-yellow-300 prose-h1:mb-0 prose-h1:scroll-mt-4 prose-h1:inline-block prose-a:font-semibold prose-a:decoration-2 prose-a:text-yellow-400 prose-a:underline-offset-2 prose-h2:prose-h3:text-gray-900 hover:prose-a:underline-offset-4"
               )}
             >
               {children}
