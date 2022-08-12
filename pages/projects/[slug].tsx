@@ -4,6 +4,8 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { GetStaticProps } from "next";
 import Video from "@/components/video";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { atomOneLight } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
 interface ProjectPageProps {
   mdxSource: MDXRemoteSerializeResult;
@@ -40,7 +42,19 @@ export const getStaticProps: GetStaticProps<{
   };
 };
 
-const components = { Video };
+const highlighter = (code) => (
+  <SyntaxHighlighter language="typescript" style={atomOneLight}>
+    {code}
+  </SyntaxHighlighter>
+);
+
+const components = {
+  Video,
+  pre: (props) => {
+    const code = props.children.props.children;
+    return highlighter(code);
+  },
+};
 
 export default function ProjectPage({
   mdxSource,
