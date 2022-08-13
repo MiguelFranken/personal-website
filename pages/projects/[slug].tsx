@@ -1,5 +1,5 @@
 import fs from "fs";
-import ArticleLayout from "@/components/layout/article-layout";
+import ArticleLayout from "@/components/article/article-layout";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { GetStaticProps } from "next";

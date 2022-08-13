@@ -1,0 +1,7 @@
+.wrapper {
+    @apply prose prose-yellow prose-lg text-gray-500 prose-h1:bg-clip-text prose-h1:text-transparent prose-h1:bg-gradient-to-r prose-h1:from-yellow-400 prose-h1:to-yellow-300 prose-h1:mb-0 prose-h1:scroll-mt-6 prose-h1:inline-block prose-a:font-semibold prose-a:decoration-2 prose-a:text-yellow-400 prose-a:underline-offset-2 prose-h2:prose-h3:text-gray-900 hover:prose-a:underline-offset-4;
+}
+
+.wrapper > hr {
+    @apply border-t-0 border-b-4 border-b-yellow-100;
+}
