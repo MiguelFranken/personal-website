@@ -97,8 +97,8 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
   );
 
   return (
-    <div className="sticky top-0 inset-y-0 w-full h-full relative bg-green-500/25">
-      <div className="absolute top-0 right-0 py-16">
+    <div className="lg:sticky lg:top-0 lg:inset-y-0 w-full lg:h-full relative">
+      <div className="lg:absolute lg:top-0 lg:right-0 pt-8 lg:pt-16 pb-16">
         <h4 className="pl-2.5 mb-2 text-sm font-semibold tracking-wide text-gray-900 uppercase lg:text-xs">
           Table of contents
         </h4>

@@ -78,9 +78,8 @@ export default function ArticleBody({ headings, children }: ArticleBodyProps) {
   );
 
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden lg:overflow-visible">
       <TableOfContents headings={headings} />
-      <AbsolutePattern />
       <MarkdownWrapper>{children}</MarkdownWrapper>
     </div>
   );
