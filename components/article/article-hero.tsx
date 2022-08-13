@@ -244,10 +244,10 @@ export default function ArticleHero({
   const Hero = () => (
     <div className="mt-24 space-y-20 sm:space-y-6">
       <div className="text-center">
-        <h1 className="text-5xl tracking-tight font-bold text-amber-600 sm:tracking-tight md:text-6xl md:tracking-tight">
+        <h1 className="text-5xl tracking-tight font-bold text-gray-900 sm:tracking-tight md:text-6xl md:tracking-tight">
           {title}
         </h1>
-        <p className="mt-3 max-w-md mx-auto text-lg text-white md:mt-5 md:text-xl md:max-w-3xl">
+        <p className="mt-3 max-w-md mx-auto text-lg text-gray-900 md:mt-5 md:text-xl md:max-w-3xl">
           {description}
         </p>
       </div>
