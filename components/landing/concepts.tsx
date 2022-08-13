@@ -35,8 +35,8 @@ const concepts: Concept[] = [
 
 export default function Concepts() {
   const ConceptCard = ({ title, description, link, image, odd }: Concept) => (
-    <div className="relative lg:grid lg:grid-cols-2 lg:gap-16">
-      <div className={classNames({ ["order-last"]: !!odd }, "relative")}>
+    <div className="relative lg:grid lg:grid-cols-2 lg:gap-16 space-y-8 lg:space-y-0">
+      <div className={classNames({ ["lg:order-last"]: !!odd }, "relative")}>
         <h3 className="text-2xl font-bold text-gray-900 tracking-tight sm:text-3xl sm:tracking-tight">
           {title}
         </h3>
@@ -67,8 +67,8 @@ export default function Concepts() {
   );
 
   return (
-    <Container className="space-y-32">
-      <div className="flex flex-col gap-12 lg:items-center">
+    <Container className="space-y-20 md:space-y-32">
+      <div className="space-y-12 lg:space-y-0 lg:flex lg:flex-col lg:gap-12 lg:items-center">
         <h1 className="inline-block tracking-wider font-extrabold text-gray-900 text-5xl sm:text-6xl relative">
           <div className="absolute -bottom-2 -left-4 -right-4 z-[-1]">
             <Wave />
@@ -85,7 +85,7 @@ export default function Concepts() {
         </h2>
       </div>
 
-      <div className="space-y-32">
+      <div className="space-y-20 md:space-y-32">
         {concepts.map((concept, index) => (
           <ConceptCard key={concept.title} odd={index % 2 == 1} {...concept} />
         ))}
