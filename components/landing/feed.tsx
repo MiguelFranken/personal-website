@@ -1,5 +1,5 @@
-import SkewedSection from "@/components/skewed-section";
-import Container from "@/components/container";
+import SkewedSection from "@/components/layout/skewed-section";
+import Container from "@/components/layout/container";
 
 import {
   AcademicCapIcon,
@@ -74,7 +74,7 @@ const milestones: Milestone[] = [
 ];
 
 export default function Feed() {
-  const timeline = (milestone: Milestone) => (
+  const Timeline = ({ milestone }) => (
     <li className="ml-12">
       <span className="flex absolute -left-6 justify-center items-center w-12 h-12 bg-blue-200 rounded-full ring-4 ring-white">
         {milestone.job ? (
@@ -126,7 +126,9 @@ export default function Feed() {
         </div>
         <div className="mt-12 pt-12">
           <ol className="relative border-l border-gray-200 ml-6 space-y-10">
-            {milestones.map(timeline)}
+            {milestones.map((milestone) => (
+              <Timeline milestone={milestone} key={milestone.begin}></Timeline>
+            ))}
           </ol>
         </div>
       </Container>

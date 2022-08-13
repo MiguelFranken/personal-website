@@ -1,5 +1,5 @@
 import fs from "fs";
-import ArticleLayout from "@/components/article-layout";
+import ArticleLayout from "@/components/layout/article-layout";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { GetStaticProps } from "next";
@@ -7,7 +7,7 @@ import Video from "@/components/video";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneLight } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import rehypeSlug from "rehype-slug";
-import rehypeExtractHeadings, { Heading } from "@/lib/rehypeExtractHeadings";
+import rehypeExtractHeadings, { Heading } from "@/lib/rehype-extract-headings";
 
 interface ProjectPageProps {
   mdxSource: MDXRemoteSerializeResult;

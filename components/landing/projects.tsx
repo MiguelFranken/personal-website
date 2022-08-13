@@ -1,6 +1,6 @@
 import { ChevronRightIcon } from "@heroicons/react/outline";
-import Container from "@/components/container";
-import SkewedSection from "@/components/skewed-section";
+import Container from "@/components/layout/container";
+import SkewedSection from "@/components/layout/skewed-section";
 import Link from "next/link";
 
 const posts = [

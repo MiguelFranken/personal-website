@@ -1,5 +1,5 @@
 import { HeartIcon } from "@heroicons/react/solid";
-import Container from "@/components/container";
+import Container from "@/components/layout/container";
 
 const navigation = [
   {

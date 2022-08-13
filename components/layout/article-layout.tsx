@@ -1,13 +1,13 @@
 import Head from "next/head";
 import Link from "next/link";
 import { ExternalLinkIcon } from "@heroicons/react/outline";
-import Container from "@/components/container";
-import styles from "@/styles/melodii.module.css";
+import Container from "@/components/layout/container";
+import styles from "@/styles/article-layout.module.css";
 import classNames from "classnames";
 import { ReactElement } from "react";
 import Footer from "@/components/footer";
-import TableOfContents from "@/components/table-of-contents";
-import { Heading } from "@/lib/rehypeExtractHeadings";
+import TableOfContents from "@/components/article/table-of-contents";
+import { Heading } from "@/lib/rehype-extract-headings";
 
 export type ProjectArticleProps = {
   title: string;
@@ -56,12 +56,12 @@ export default function ArticleLayout({
               >
                 <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                   <div className="flex items-center justify-between w-full md:w-auto">
-                    <Link href="/">
+                    <Link href="/pages">
                       <a className="flex flex-col gap-3">
                         <img
                           className="h-24 w-24 object-cover border-2 border-current"
                           src="/portrait.jpg"
-                          alt="Workflow"
+                          alt="Miguel Franken"
                         />
                         <span className="font-extrabold text-3xl tracking-wide leading-8">
                           Miguel Franken

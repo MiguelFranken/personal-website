@@ -1,5 +1,5 @@
 import styles from "@/styles/table-of-contents.module.css";
-import { Heading } from "@/lib/rehypeExtractHeadings";
+import { Heading } from "@/lib/rehype-extract-headings";
 import { useEffect, useRef, useState } from "react";
 
 type TableOfContentsProps = {
@@ -46,7 +46,7 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
       headingElements.forEach((element) => observer.observe(element));
 
       return () => observer.disconnect();
-    }, []);
+    });
   };
 
   useIntersectionObserver(setActiveId);

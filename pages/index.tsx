@@ -1,9 +1,9 @@
 import Head from "next/head";
-import Hero from "@/components/hero";
+import Hero from "@/components/landing/hero";
 import Footer from "@/components/footer";
-import Technologies from "@/components/technologies";
-import Projects from "@/components/projects";
-import Feed from "@/components/feed";
+import Technologies from "@/components/landing/technologies";
+import Projects from "@/components/landing/projects";
+import Feed from "@/components/landing/feed";
 
 export default function Home() {
   return (

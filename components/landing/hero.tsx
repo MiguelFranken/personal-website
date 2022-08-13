@@ -1,5 +1,5 @@
 import { BriefcaseIcon, GlobeIcon, MailIcon } from "@heroicons/react/outline";
-import SplineArt from "@/components/spline";
+import SplineArt from "@/components/landing/spline";
 
 const navigation = [
   {
@@ -69,7 +69,10 @@ export default function Hero() {
                   discover more about me, my interest for web development and
                   where you can find me when I&apos;m not working.
                 </p>
-                <form action="#" className="mt-6 sm:max-w-lg sm:w-full sm:flex">
+                <form
+                  action="@/components/landing/hero#"
+                  className="mt-6 sm:max-w-lg sm:w-full sm:flex"
+                >
                   <div className="items-baseline mt-4 sm:mt-0 flex-col md:flex md:flex-row gap-4 space-y-4 lg:space-y-0 md:order-2 w-full lg:w-min">
                     {navigation.map((item) => (
                       <div key={item.name}>
@@ -93,7 +96,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className="-mt-4 sm:mt-16 md:mt-24 lg:mt-0 lg:absolute lg:top-0 lg:right-0 w-full lg:w-2/3 lg:h-screen flex items-center">
+      <div className="-mt-4 sm:mt-16 md:mt-24 lg:mt-0 lg:absolute lg:top-0 lg:right-0 w-full lg:w-2/3 lg:h-screen flex items-center pointer-events-none">
         <div className="max-h-96 sm:max-h-128 md:max-h-128 lg:max-h-max lg:h-full flex-1 overflow-hidden flex items-center">
           <div className="-ml-16 sm:-ml-16 md:ml-8 lg:ml-40 xl:ml-52 2xl:ml-64 3xl:ml-72">
             <SplineArt />

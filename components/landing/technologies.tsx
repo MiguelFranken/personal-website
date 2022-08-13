@@ -13,7 +13,7 @@ import {
   VercelLogo,
   VueLogo,
 } from "@/components/logos";
-import Container from "@/components/container";
+import Container from "@/components/layout/container";
 
 type Technology = {
   name: string;
@@ -106,8 +106,12 @@ const technologies: TechnologyCategory[] = [
   },
 ];
 
+type GridCellProps = {
+  category: TechnologyCategory;
+};
+
 export default function Technologies() {
-  const gridCell = (category: TechnologyCategory) => (
+  const GridCell = ({ category }: GridCellProps) => (
     <div className="flex flex-col sm:items-start lg:items-center gap-4 lg:gap-6">
       <div className="font-medium text-md uppercase text-white bg-gray-900 px-4 py-2">
         {category.title}
@@ -139,7 +143,9 @@ export default function Technologies() {
         </h2>
       </div>
       <div className="flex flex-col lg:flex-row lg:flex-wrap gap-16 lg:justify-center lg:px-16">
-        {technologies.map(gridCell)}
+        {technologies.map((category) => (
+          <GridCell category={category} key={category.title} />
+        ))}
       </div>
     </Container>
   );
