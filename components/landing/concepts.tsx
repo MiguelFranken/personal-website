@@ -29,13 +29,13 @@ const concepts: Concept[] = [
     title: "StudyTrekker",
     description: "TODO",
     link: "/projects/cardly",
-    image: "/cardly.png",
+    image: "/studytrekker.png",
   },
 ];
 
 export default function Concepts() {
   const ConceptCard = ({ title, description, link, image, odd }: Concept) => (
-    <div className="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-16">
+    <div className="relative lg:grid lg:grid-cols-2 lg:gap-16">
       <div className={classNames({ ["order-last"]: !!odd }, "relative")}>
         <h3 className="text-2xl font-bold text-gray-900 tracking-tight sm:text-3xl sm:tracking-tight">
           {title}
@@ -67,7 +67,7 @@ export default function Concepts() {
   );
 
   return (
-    <Container>
+    <Container className="space-y-32">
       <div className="flex flex-col gap-12 lg:items-center">
         <h1 className="inline-block tracking-wider font-extrabold text-gray-900 text-5xl sm:text-6xl relative">
           <div className="absolute -bottom-2 -left-4 -right-4 z-[-1]">
@@ -85,9 +85,11 @@ export default function Concepts() {
         </h2>
       </div>
 
-      {concepts.map((concept, index) => (
-        <ConceptCard key={concept.title} odd={index % 2 == 1} {...concept} />
-      ))}
+      <div className="space-y-32">
+        {concepts.map((concept, index) => (
+          <ConceptCard key={concept.title} odd={index % 2 == 1} {...concept} />
+        ))}
+      </div>
     </Container>
   );
 }
