@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 export type ButtonProps = {
   href: string;
   text: string;
-  icon: ReactElement;
+  icon?: ReactElement;
 };
 
 export default function Button({ href, text, icon }: ButtonProps) {

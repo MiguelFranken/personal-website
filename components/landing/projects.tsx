@@ -1,7 +1,6 @@
-import { ChevronRightIcon } from "@heroicons/react/outline";
 import Container from "@/components/layout/container";
 import SkewedSection from "@/components/layout/skewed-section";
-import Link from "next/link";
+import Card from "@/components/card";
 
 const posts = [
   {
@@ -21,40 +20,6 @@ const posts = [
 ];
 
 export default function Projects() {
-  const Card = ({ post }) => {
-    return (
-      <Link href={post.href}>
-        <a className="cursor-pointer relative inline-block group focus:outline-none focus:ring">
-          <span className="absolute inset-0 transition-transform translate-x-0 translate-y-0 bg-yellow-200/10 group-hover:translate-y-1.5 group-hover:translate-x-1.5"></span>
-
-          <span className="relative inline-flex px-8 py-3 border-2 h-full border-yellow-200/20">
-            <div>
-              <div className="mt-4">
-                <object
-                  type="image/svg+xml"
-                  className="h-24 w-auto pointer-events-none"
-                  data={post.image}
-                />
-              </div>
-              <div className="block mt-4">
-                <p className="text-2xl font-bold text-white tracking-wider uppercase">
-                  {post.title}
-                </p>
-                <p className="mt-3 text-base text-white font-light">
-                  {post.description}
-                </p>
-              </div>
-              <div className="my-4 font-bold tracking-widest text-red-500 flex gap-1 items-center">
-                <span>Learn More</span>
-                <ChevronRightIcon className="w-4 h-4 stroke-4" />
-              </div>
-            </div>
-          </span>
-        </a>
-      </Link>
-    );
-  };
-
   return (
     <SkewedSection bg="bg-conic-to-l from-yellow-200 via-red-500 to-fuchsia-500">
       <Container className="pt-16 pb-20 lg:pt-24 lg:pb-28 relative divide-y-2 divide-yellow-100/10">
@@ -73,7 +38,7 @@ export default function Projects() {
         <div className="mt-12 grid gap-16 pt-12 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
           {/* shadow-sm rounded-xl */}
           {posts.map((post) => (
-            <Card post={post} key={post.title} />
+            <Card {...post} key={post.title} />
           ))}
         </div>
       </Container>

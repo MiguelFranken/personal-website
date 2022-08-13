@@ -4,6 +4,7 @@ import Footer from "@/components/footer";
 import Technologies from "@/components/landing/technologies";
 import Projects from "@/components/landing/projects";
 import Feed from "@/components/landing/feed";
+import Concepts from "@/components/landing/concepts";
 
 export default function Home() {
   return (
@@ -25,8 +26,10 @@ export default function Home() {
           <Technologies />
         </div>
 
-        <div className="pb-16">
-          <Feed />
+        <Feed />
+
+        <div className="pb-32">
+          <Concepts />
         </div>
 
         <Footer />
