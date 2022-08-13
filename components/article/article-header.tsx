@@ -4,6 +4,7 @@ import { ArticleHeroProps } from "@/components/article/types";
 import Container from "@/components/layout/container";
 import classNames from "classnames";
 import Link from "next/link";
+import Video from "@/components/video";
 
 export default function ArticleHeader({
   title,
@@ -11,6 +12,7 @@ export default function ArticleHeader({
   demo,
   github,
   image,
+  video,
 }: ArticleHeroProps) {
   const NewPattern = () => (
     <div className="absolute inset-y-0 h-full w-full" aria-hidden="true">
@@ -223,11 +225,18 @@ export default function ArticleHeader({
           <Wave />
 
           <Container>
-            <img
-              className="relative border-2 border-current box-border"
-              src={image}
-              alt="TODO"
-            />
+            {image && (
+              <img
+                className="relative border-2 border-current box-border"
+                src={image}
+                alt="TODO"
+              />
+            )}
+            {video && (
+              <div className="relative border-2 border-current box-border w-full h-full">
+                <Video src={video} />
+              </div>
+            )}
           </Container>
         </div>
       </div>

@@ -78,6 +78,7 @@ export default function ProjectPage({
       title={frontmatter.title}
       description={frontmatter.description}
       image={frontmatter.image}
+      video={frontmatter.video}
       demo={frontmatter.demo}
       github={frontmatter.github}
       headings={headings}

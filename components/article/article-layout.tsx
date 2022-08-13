@@ -14,6 +14,7 @@ export default function ArticleLayout({
   title,
   description,
   image,
+  video,
   children,
   demo,
   github,
@@ -23,6 +24,7 @@ export default function ArticleLayout({
     demo,
     github,
     image,
+    video,
     title,
     description,
   };

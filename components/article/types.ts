@@ -4,7 +4,8 @@ import { ReactElement } from "react";
 export type ArticleHeroProps = {
   title: string;
   description: string;
-  image: string;
+  image?: string;
+  video?: string;
   demo?: string;
   github?: string;
 };
@@ -17,7 +18,8 @@ export type ArticleBodyProps = {
 export type ProjectArticleProps = {
   title: string;
   description: string;
-  image: string;
+  image?: string;
+  video?: string;
   demo?: string;
   github?: string;
   headings: Heading[];
