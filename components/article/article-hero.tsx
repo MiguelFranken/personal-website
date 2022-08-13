@@ -16,19 +16,18 @@ export default function ArticleHero({
   image,
   video,
 }: ArticleHeroProps) {
-  const NewPattern = () => (
+  const Pattern = () => (
     <div
-      className="hidden xl:block absolute inset-y-0 h-full w-full"
+      className="hidden md:block absolute inset-y-0 h-full w-full"
       aria-hidden="true"
     >
       <div className="relative h-full 2xl:m-16">
         <svg
           width={500}
           height={500}
-          className="absolute left-0 rotate-90 -translate-x-16 -translate-y-16 2xl:translate-x-0 2xl:translate-y-0"
+          className="absolute left-0 rotate-90 scale-90 xl:scale-100 -translate-x-48 lg:-translate-x-32 -translate-y-32 xl:-translate-x-16 xl:-translate-y-16 2xl:translate-x-0 2xl:translate-y-0"
           viewBox="0 0 566 566"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
         >
           <rect
             width="86"
@@ -96,10 +95,9 @@ export default function ArticleHero({
         <svg
           width={500}
           height={500}
-          className="absolute right-0 translate-x-16 -translate-y-16 2xl:translate-x-0 2xl:translate-y-0"
+          className="absolute right-0 scale-90 xl:scale-100 translate-x-48 lg:translate-x-32 -translate-y-32 xl:translate-x-16 xl:-translate-y-16 2xl:translate-x-0 2xl:translate-y-0"
           viewBox="0 0 566 566"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
         >
           <rect
             width="86"
@@ -251,7 +249,7 @@ export default function ArticleHero({
   return (
     <div className="bg-yellow-400 overflow-hidden">
       <div className="relative overflow-hidden">
-        <NewPattern />
+        <Pattern />
 
         <Container className="relative pt-32 pb-24">
           <Nav />
