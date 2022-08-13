@@ -8,6 +8,7 @@ import {
 } from "@/components/article/types";
 import ArticleHead from "@/components/article/article-head";
 import ArticleBody from "@/components/article/article-body";
+import ArticleHeader from "@/components/article/article-header";
 
 export default function ArticleLayout({
   title,
@@ -35,10 +36,13 @@ export default function ArticleLayout({
     <>
       <ArticleHead />
 
-      <Container className="pt-16 pb-32 space-y-32">
-        <ArticleHero {...heroProps} />
-        <ArticleBody {...bodyProps} />
-      </Container>
+      <ArticleHeader {...heroProps} />
+
+      <div className="bg-white">
+        <Container className="pt-16 pb-32 space-y-32">
+          <ArticleBody {...bodyProps} />
+        </Container>
+      </div>
 
       <Footer />
     </>
