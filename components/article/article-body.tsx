@@ -3,6 +3,8 @@ import MarkdownWrapper from "@/components/article/markdown-wrapper";
 import { ArticleBodyProps } from "@/components/article/types";
 
 export default function ArticleBody({ headings, children }: ArticleBodyProps) {
+  // TODO
+  /*
   const AbsolutePattern = () => (
     <div className="pointer-events-none hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
       <div
@@ -76,6 +78,7 @@ export default function ArticleBody({ headings, children }: ArticleBodyProps) {
       </div>
     </div>
   );
+  */
 
   return (
     <div className="relative overflow-hidden lg:overflow-visible">
