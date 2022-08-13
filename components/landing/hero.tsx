@@ -69,10 +69,7 @@ export default function Hero() {
                   discover more about me, my interest for web development and
                   where you can find me when I&apos;m not working.
                 </p>
-                <form
-                  action="@/components/landing/hero#"
-                  className="mt-6 sm:max-w-lg sm:w-full sm:flex"
-                >
+                <div className="mt-6 sm:max-w-lg sm:w-full sm:flex">
                   <div className="items-baseline mt-4 sm:mt-0 flex-col md:flex md:flex-row gap-4 space-y-4 lg:space-y-0 md:order-2 w-full lg:w-min">
                     {navigation.map((item) => (
                       <div key={item.name}>
@@ -90,7 +87,7 @@ export default function Hero() {
                       </div>
                     ))}
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>
