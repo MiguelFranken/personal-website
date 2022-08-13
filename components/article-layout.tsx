@@ -19,6 +19,8 @@ export type ProjectArticleProps = {
   children?: ReactElement;
 };
 
+export const siteTitle = "Miguel Franken";
+
 export default function ArticleLayout({
   title,
   description,
@@ -28,12 +30,20 @@ export default function ArticleLayout({
   github,
   headings,
 }: ProjectArticleProps) {
-  // flex overflow-y-auto sticky top-28 flex-col justify-between pt-10 pb-6 h-[calc(100vh-5rem)]
-
   return (
     <>
       <Head>
-        <title>Miguel Franken</title>
+        <title>Awesome Title</title>
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Some project description" />
+        <meta
+          property="og:image"
+          content={`https://og-image.vercel.app/${encodeURI(
+            siteTitle
+          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+        />
+        <meta name="og:title" content={siteTitle} />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
       <div className="pb-16">
