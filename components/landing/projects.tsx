@@ -12,7 +12,7 @@ const posts = [
   },
   {
     title: "Carbon",
-    href: "#",
+    href: "/projects/carbon",
     description:
       "Decentralized generative art project living on Ethereum blockchain. Rarity of unique digital collectibles (ERC721 NFTs) is determined by pseudo-randomly assigned traits and also how someone's wallet balance at the time of minting compares with the wallet balance of previous minters at the time they minted their token.",
     image: "/carbon.svg",

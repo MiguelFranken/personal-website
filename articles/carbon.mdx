@@ -1,0 +1,55 @@
+---
+title: 'Carbon'
+description: "Carbon is a decentralized generative art project where the rarity of the unique digital collectibles (NFTs) is determined by how someone's wallet balance at the time of minting compares with the wallet balance of previous minters at the time they minted their token. For that, the balance of each minter is stored on-chain in an Order Statistics Tree and is used to calculate the rank, i.e., its index in a sorted list of all balances."
+image: '/carbon/banner.png'
+---
+
+# Overview
+
+Carbon is a decentralized generative art project where the rarity of the unique digital collectibles ([ERC721 NFTs](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/#top)) is determined by how someone's wallet balance at the time of minting compares
+with the wallet balance of previous minters at the time they minted their token.
+
+Carbon tokens are fair-priced meaning that the cost for minting will always be 1% of that minter's wallet balance and is primarily decisive for the rarity of the minted NFT.
+The total supply of NFTs is limited to 10000 unique tokens and each image is stored decentralized on [IPFS](https://ipfs.io) and [Filecoin](https://filecoin.io) forever.
+
+---
+
+# In a Nutshell
+
+- Decentralized generative art project living on Ethereum chain
+- Unique digital collectibles ([ERC721 NFTs](https://eips.ethereum.org/EIPS/eip-721))
+- All about digital diamond image collectibles in different sizes!
+- 10 different diamond sizes and special diamonds for minters having the largest wallet balance at the time of minting
+- Diamond size is determined how someone's wallet balance at the time of minting compares with the wallet balance of previous minters at the time they minted their token
+- Limited to 10000 unique tokens
+- Images and metadata stored on [IPFS](https://github.com/cryptococks-xyz/cryptococks-contract#ipfs) and [Filecoin](https://filecoin.io) forever.
+- Integrated into [OpenSea marketplace collection](https://opensea.io/collection/todo)
+- Smart contract is verified & publicly available on [Etherscan](#) and [GitHub](#)
+
+---
+
+# Project Status
+
+The project is still in development. The contract has been deployed on a Ethereum test chain. Website minting functionality works, but more tests has to be done before going live on a Ethereum mainnet.
+
+---
+
+# Ethereum Contract
+
+When minting a Carbon token, we store on-chain your balance
+(or more specifically, the fee of 1% of your wallet balance) in an
+[Order Statistics Tree](https://en.wikipedia.org/wiki/Order_statistic_tree) in order to be able to efficiently find the rank of this balance, i.e. its index in a sorted list of balances of all minters.
+We calculate the [Percentile Rank (PR)](https://en.wikipedia.org/wiki/Percentile_rank), i.e., the percentage of
+balances in its frequency distribution that are less than the minter's current wallet balance.
+We bin the continuous PRs (e.g. 33% or 99%) uniformly into 10 intervals such that
+all bins have nearly identical widths. We map these 10 intervals (decentiles) to the 10 possible diamond sizes, so that PRs in [0,10) are mapped to diamond size 1, PRs in [20,30) are mapped to diamond size 2, ..., PRs in [90,100) are mapped to diamond size 10. Only the largest balance at the point in time of the mint will receive a special length, namely 11, which persists this information on the blockchain (i.e., see token URI and linked metadata fields).
+
+In other words, this means that someone's diamond will be as small as possible (length 1 of 10) if that minter's balance at the time of minting is no greater or equal to 10% of all the balances of the previous minters. 90% of previous minters have made a larger investment to obtain a Carbon NFT.
+
+---
+
+# Sustainability
+
+Storing and verifying your diamond size on-chain consumes a lot of energy, therefore 30% of all primary market sales will be donated to the [Trees for the Future](https://trees.org/) reforestation project via the crypto charity [The Giving Block](https://thegivingblock.com/donate/trees-for-the-future/).
+
+The revenue is donated in bundles at regular intervals and this process is defined in the ethereum contract itself so that the donating is automated. Even the creators of the project will not be able to change or disable this after the deployment of the contract. This makes the whole system very secure!
