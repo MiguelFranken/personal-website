@@ -2,12 +2,12 @@ import Container from "@/components/layout/container";
 import Footer from "@/components/footer";
 import {
   ArticleBodyProps,
-  ArticleHeroProps,
+  ArticleHeaderProps,
   ProjectArticleProps,
 } from "@/components/article/types";
 import ArticleHead from "@/components/article/article-head";
 import ArticleBody from "@/components/article/article-body";
-import ArticleHero from "@/components/article/article-hero";
+import ArticleHeader from "@/components/article/article-header";
 
 export default function ArticleLayout({
   title,
@@ -19,7 +19,7 @@ export default function ArticleLayout({
   github,
   headings,
 }: ProjectArticleProps) {
-  const heroProps: ArticleHeroProps = {
+  const heroProps: ArticleHeaderProps = {
     demo,
     github,
     image,
@@ -37,7 +37,7 @@ export default function ArticleLayout({
     <>
       <ArticleHead />
 
-      <ArticleHero {...heroProps} />
+      <ArticleHeader {...heroProps} />
 
       <div className="bg-white">
         <Container className="pt-16 pb-32 space-y-32">
