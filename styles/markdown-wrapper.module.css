@@ -3,7 +3,7 @@
 }
 
 .a {
-    @apply prose-a:decoration-2 prose-a:text-yellow-400 prose-a:underline-offset-2 prose-a:font-semibold hover:prose-a:underline-offset-4;
+    @apply prose-a:decoration-2 prose-a:text-gray-900 prose-a:underline-offset-2 prose-a:font-semibold hover:prose-a:underline-offset-4;
 }
 
 .headings {
