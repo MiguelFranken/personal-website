@@ -84,6 +84,13 @@ sudo snap install microk8s --classic --channel=1.24
 microk8s status --wait-ready
 ```
 
+We need to enable some addons we need later:
+```shell
+# From the virtual machine
+microk8s.enable dns
+microk8s.enable ingress
+```
+
 ## Access Remote Cluster
 
 To access a cluster, you need to know the location (i.e., the IP address of our virtual machine) of the cluster and have credentials to access it.
@@ -115,53 +122,191 @@ Our Kubernetes cluster obtains the Docker API image from the private GitHub pack
 If you want to fetch container images from a private repository from your Kubernetes cluster, you need a way for the kubelet on each node to authenticate to that repository. You can configure image pull secrets to make this possible.
 
 ```shell
-echo -n <your-github-username>:<PAT> | base64
+echo -n <YOUR_GITHUB_USERNAME>:<PAT> | base64
 # outputs <BASE_64_ENCODED_PAT>
 ```
 
-Insert `<BASE_64_ENCODED_PAT>` into `regcred.yml` and then apply the manifest by `kubectl apply -f regcred.yml`.
+Insert `<BASE_64_ENCODED_PAT>` into `regcred.yml`:
+
+```yaml
+# regcred.yml
+# stands for registry credentials
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/dockerconfigjson
+metadata:
+  name: regcred
+  namespace: default
+stringData:
+  .dockerconfigjson: '{"auths":{"ghcr.io":{"auth":"<BASE_64_ENCODED_PAT>"}}}'
+
+```
+
+Apply the manifest:
+```shell
+kubectl apply -f regcred.yml
+```
 
 ## API, Database & Redis Manifests
+
+Our infrastructure consist of three components: An API to retrieve NFT token data that is saved in the database component. When someone mints a new NFT token a Redis job is queued, which processes the minting of a new NFT token and stores new information in the database.
+
+The manifest file for the API might look like this:
+```yaml
+# api.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: api # note the service name here
+  labels:
+    app: carbon
+    tier: api
+spec:
+  ports:
+  - port: 3001
+  selector:
+    app: carbon
+    tier: api
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  labels:
+    app: carbon
+    tier: api
+spec: # Replica Set
+  selector:
+    matchLabels:
+      app: carbon
+      tier: api
+  strategy:
+    type: Recreate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: carbon
+        tier: api
+    spec:
+      containers:
+      - image: "ghcr.io/miguelfranken/api:latest"
+        name: api
+
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 3001
+          name: api
+
+        env:
+        - name: MYSQL_DATABASE
+          value: "carbon"
+        - name: MYSQL_USER
+          value: "root"
+        - name: MYSQL_HOST
+          value: "db"
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: cc-secrets
+              key: mysql_password
+      imagePullSecrets: # we pull images from a private repository
+      - name: regcred
+```
+
 ```shell
 # On your machine
-kubectl apply -f api.yaml
 kubectl apply -f db.yaml
 kubectl apply -f redis.yaml
+kubectl apply -f api.yaml
 ```
 
 ## Manage TLS Certification
 We use [cert-manager](https://cert-manager.io/) in our cluster to generate and manage signed TLS certificates from [Let's Encrypt](https://letsencrypt.org/getting-started/), using an [HTTP-01 challenge](https://letsencrypt.org/docs/challenge-types/#http-01-challenge).
+This makes our API accessible over `https`.
 
-We need to do is install [cert-manager](https://cert-manager.io/), and we'll install it the easy using [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
-This will create three Deployments, and a bunch of Services and Pods in a new namespace called `cert-manager`.
+We install [cert-manager](https://cert-manager.io/) by using [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
 
 ```shell
 # Install cert-manager resources from official YAML manifest file on GitHub
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
+```
 
-# To verify the installation, run the following command
+The installment will create three deployments, and a bunch of services and pods in a new namespace called `cert-manager`.
+We can verify if everything went as expected by running the follwoing command:
+```shell
 kubectl get pods --namespace cert-manager
+```
 
-# An Issuer is a custom resource which tells cert-manager how to sign a Certificate.
-# Let's Encrypt uses the Automatic Certificate Management Environment (ACME) protocol which is why the configuration below is under a key called `acme`.
-# The email address is only used by Let's Encrypt to remind you to renew the certificate after 30 days before expiry. You will only receive this email if something goes wrong when renewing the certificate with cert-manager.
+Now we have to add an Issuer which is a custom resource telling cert-manager how to sign a certificate.
+Let's Encrypt uses the Automatic Certificate Management Environment (ACME) protocol which is why the configuration below is under a key called `acme`.
+The email address is only used by Let's Encrypt to remind you to renew the certificate after 30 days before expiry. You will only receive this email if something goes wrong when renewing the certificate with cert-manager.
+
+```yaml
+# clusterissuer.yaml
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-production
+  namespace: cert-manager
+spec:
+  acme:
+    # The ACME server URL
+    server: https://acme-v02.api.letsencrypt.org/directory
+    # Email address used for ACME registration
+    email: <YOUR_EMAIL>
+    # Name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      name: letsencrypt-production
+    # Enable the HTTP-01 challenge provider
+    solvers:
+      - http01:
+          ingress:
+            class: public
+```
+
+Apply the issuer config:
+```
 kubectl apply -f clusterissuer.yaml
-
-# You can check the status of the issuer
-kubectl describe issuers.cert-manager.io letsencrypt-prod
 ```
 
 ## Manage External Cluster Access
 
-The API is running at this point already inside the Kubernetes cluster but there is no route or proxy through which Internet clients can connect to it, yet! So you won't be able to reach the API yet. Now we will create a Kubernetes Ingress object and this will trigger the creation of a various services which together allow Internet clients to reach the API running inside the Kubernetes cluster.
+The API is running at this point already inside the Kubernetes cluster but there is no route or proxy through which Internet clients can connect to it, yet!
+So you won't be able to reach the API yet.
+Now we will create a Kubernetes Ingress object and this will trigger the creation of a various services which together allow Internet clients to reach the API running inside the Kubernetes cluster.
 
-Enable Ingress Addon:
-```shell
-# from the virtual machine
-microk8s.enable dns
-microk8s.enable ingress
+Define the Ingress manifest:
+```yaml
+# ingress.yml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: default-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  ingressClassName: public
+  tls:
+    - secretName: ssl-web
+      hosts:
+        - <YOUR_DOMAIN>
+  rules:
+    - host: <YOUR_DOMAIN>
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: api
+                port:
+                  number: 3001
+
 ```
 
+Apply the Ingress manifest:
 ```shell
 # from the local machine
 kubectl apply -f ingress.yml
@@ -169,5 +314,5 @@ kubectl apply -f ingress.yml
 
 You can test the deployment via:
 ```shell
-curl -v https://<YOUR_DOMAIN>/token/count
+curl -v https://<YOUR_DOMAIN>/
 ```
