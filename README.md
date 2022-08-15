@@ -1,9 +1,8 @@
-# MeetUp Clone
+# Personal Website
 
 ## Stack
 - [HeadlessUI](https://headlessui.com)
 - [heroicons](https://github.com/tailwindlabs/heroicons)
-- [classnames](https://github.com/JedWatson/classnames)
 
 ## Help
 - [React TypeScript Cheatsheets](https://react-typescript-cheatsheet.netlify.app)
