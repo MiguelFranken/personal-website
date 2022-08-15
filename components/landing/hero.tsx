@@ -1,5 +1,7 @@
 import { BriefcaseIcon, GlobeIcon, MailIcon } from "@heroicons/react/outline";
 import SplineArt from "@/components/landing/spline";
+import portrait from "../../public/portrait.webp";
+import Image from "next/image";
 
 const navigation = [
   {
@@ -42,11 +44,14 @@ export default function Hero() {
         <div className="z-20 mx-auto max-w-md sm:max-w-3xl lg:max-w-7xl lg:grid lg:grid-cols-3 lg:gap-24">
           <div className="lg:col-span-2 px-8 sm:px-16 lg:px-8 2xl:px-0 z-50">
             <div>
-              <img
-                className="h-48 w-48 object-cover border-2 border-current"
-                src="/portrait.jpg"
-                alt="Workflow"
-              />
+              <div className="w-48 h-48 relative border-2 border-current">
+                <Image
+                  width={192}
+                  height={192}
+                  src={portrait}
+                  alt="Miguel Franken"
+                />
+              </div>
             </div>
             <div className="mt-20">
               <div className="mt-6 sm:max-w-xl">
