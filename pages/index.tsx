@@ -11,6 +11,15 @@ export default function Home() {
     <>
       <Head>
         <title>Miguel Franken</title>
+        <meta
+          name="description"
+          content="Personal website of full-stack web developer named Miguel Franken living and working in Cologne, Germany."
+        />
+        <meta
+          name="keywords"
+          content="development, full-stack development, web development, laravel, tailwind, nextjs, music, synthesizer, digital, vue, vuejs, angular, modern"
+        />
+        <meta name="author" content="Miguel Franken" />
       </Head>
 
       <div className="z-50">
