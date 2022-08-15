@@ -21,6 +21,7 @@ export default function Card({ href, image, title, description }: CardProps) {
                 type="image/svg+xml"
                 className="h-24 w-auto pointer-events-none"
                 data={image}
+                aria-label={title + ": " + description}
               />
             </div>
             <div className="block mt-4">
@@ -31,8 +32,8 @@ export default function Card({ href, image, title, description }: CardProps) {
                 {description}
               </p>
             </div>
-            <div className="my-4 font-bold tracking-widest text-red-500 flex gap-1 items-center">
-              <span>Learn More</span>
+            <div className="my-4 font-bold tracking-widest text-red-500 flex gap-1 items-center uppercase">
+              <span>Learn more in the project blog post</span>
               <ChevronRightIcon className="w-4 h-4 stroke-4" />
             </div>
           </div>

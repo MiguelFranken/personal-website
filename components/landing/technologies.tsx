@@ -134,7 +134,7 @@ export default function Technologies() {
     <Container className="space-y-20 text-gray-900">
       <div className="flex flex-col gap-5 lg:items-center">
         <h1 className="inline-block tracking-wider font-extrabold text-gray-900 text-5xl sm:text-6xl">
-          <img src="/tools.svg" className="h-24 w-auto" />
+          <img src="/tools.svg" className="h-24 w-auto" alt="Skills & Tools" />
         </h1>
         <h2 className="inline-block text-2xl sm:text-xl font-light text-gray-500 max-w-2xl">
           A developer&apos;s toolbox is a key ingredient in the quality he
