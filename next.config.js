@@ -10,6 +10,7 @@ const nextConfig = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  productionBrowserSourceMaps: true,
 };
 
 module.exports = nextConfig;
