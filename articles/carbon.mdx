@@ -22,9 +22,9 @@ The total supply of NFTs is limited to 10000 unique tokens and each image is sto
 - Unique digital collectibles ([ERC721 NFTs](https://eips.ethereum.org/EIPS/eip-721))
 - All about digital diamond image collectibles in different sizes!
 - 10 different diamond sizes and special diamonds for minters having the largest wallet balance at the time of minting
-- Diamond size is determined how someone's wallet balance at the time of minting compares with the wallet balance of previous minters at the time they minted their token
+- Diamond size is determined by how someone's wallet balance at the time of minting compares with the wallet balance of previous minters at the time they minted their token
 - Limited to 10000 unique tokens
-- Images and metadata stored on [IPFS](https://github.com/cryptococks-xyz/cryptococks-contract#ipfs) and [Filecoin](https://filecoin.io) forever.
+- Images and metadata stored on [IPFS](https://github.com/cryptococks-xyz/cryptococks-contract#ipfs) and [Filecoin](https://filecoin.io) forever
 - Integrated into [OpenSea marketplace collection](https://opensea.io/collection/todo)
 - Smart contract is verified & publicly available on [Etherscan](#) and [GitHub](#)
 
@@ -33,6 +33,8 @@ The total supply of NFTs is limited to 10000 unique tokens and each image is sto
 # Project Status
 
 The project is still in development. The contract has been deployed on a Ethereum test chain. Website minting functionality works, but more tests has to be done before going live on a Ethereum mainnet.
+
+Project also needs a new design update as the overall look & feel is not that good and some components are even buggy. We will work on it after getting everything tested!
 
 ---
 
@@ -64,6 +66,8 @@ Additionally, we store images decentralized on [IPFS](https://github.com/cryptoc
 
 # Ethereum Contract
 
+The contract source code is open-sourced and can be found [here](https://github.com/MiguelFranken/carbon-contract).
+
 When minting a Carbon token, we store on-chain your balance
 (or more specifically, the fee of 1% of your wallet balance) in an
 [Order Statistics Tree](https://en.wikipedia.org/wiki/Order_statistic_tree) in order to be able to efficiently find the rank of this balance, i.e. its index in a sorted list of balances of all minters.
@@ -80,11 +84,16 @@ In other words, this means that someone's diamond will be as small as possible (
 
 Storing and verifying your diamond size on-chain consumes a lot of energy, therefore 30% of all primary market sales will be donated to the [Trees for the Future](https://trees.org/) reforestation project via the crypto charity [The Giving Block](https://thegivingblock.com/donate/trees-for-the-future/).
 
-The revenue is donated in bundles at regular intervals and this process is defined in the ethereum contract itself so that the donating is automated. Even the creators of the project will not be able to change or disable this after the deployment of the contract. This makes the whole system very secure!
+The revenue is donated in bundles at regular intervals and this [process is defined in the ethereum contract itself](https://github.com/MiguelFranken/carbon-contract/blob/9efd627a099b23030918bf49a828a24204bc22c0/contracts/Carbon.sol#L146) so that the donating is automated. Even the creators of the project will not be able to change or disable this after the deployment of the contract. This makes the whole system very secure!
 
 ---
 
 # Kubernetes Cluster Tutorial
+
+As part of the project, an API was developed to which we send requests for token information needed on the website. The data is stored in a database and queried by the API. As soon as a user mints a NFT token or resells his token, an event is published on the blockchain, which we listen to via the API. Since potentially many NFTs are traded at the same time, we decided to use a Redis queue on which we dispatched jobs as soon as a token was created or passed on to another wallet.
+
+In the following I explain how we can successfully deploy the API, DB and Redis Queue in a Kubernetes cluster. After configuring the cluster on the virtual machine, a push to the main branch of the repository will automatically trigger a new deployment on the cluster.
+
 
 ## Prerequisites
 - Virtual Machine
@@ -102,7 +111,7 @@ First, connect to your virtual machine via SSH:
 ssh root@<IP_OF_VIRTUAL_MACHINE>
 ```
 
-We decided to install [MicroK8s](https://microk8s.io/), which is a minimal, lightweight Kubernetes you can run and use on practically any machine. It can be installed with a snap:
+Install [MicroK8s](https://microk8s.io/), which is a minimal, lightweight Kubernetes you can run and use on practically any machine. It can be installed with a snap:
 
 ```shell
 # Install
@@ -112,7 +121,7 @@ sudo snap install microk8s --classic --channel=1.24
 microk8s status --wait-ready
 ```
 
-We need to enable some addons we need later:
+We have to enable some addons that we will need later:
 ```shell
 # From the virtual machine
 microk8s.enable dns
@@ -121,7 +130,8 @@ microk8s.enable ingress
 
 ## Access Remote Cluster
 
-To access a cluster, you need to know the location (i.e., the IP address of our virtual machine) of the cluster and have credentials to access it.
+To access a cluster from your local machine, you need to know the location (i.e., the IP address of our virtual machine) of the cluster and have credentials to access it.
+We can get credentials to access the remote cluster by copyin the cluster config from the virtual machine to the local machine:
 
 ```shell
 # From the virtual machine
@@ -137,6 +147,9 @@ ssh -N -L localhost:16443:localhost:16443 root@<IP_OF_VIRTUAL_MACHINE>
 > If you have already configured other Kubernetes clusters, you should merge the output from the microk8s config with the existing config (copy the output, omitting the first two lines, and paste it onto the end of the existing config using a text editor). See [here](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) for more information.
 
 ## Create Secrets
+
+Your API might need some secrets that are use by the application as environment variables! Add for example an password secret for a database:
+
 ```
 # On your machine
 kubectl create secret generic cc-secrets --from-literal=mysql_password=<INSERT_MYSQL_PASSWORD>
@@ -144,7 +157,7 @@ kubectl create secret generic cc-secrets --from-literal=mysql_password=<INSERT_M
 
 ### Fetching Containers From Private Repositories
 
-We use GitHub packages to store our built API Docker container images alongside the project's code and allow private access to the published packages.
+We use [GitHub Packages](https://github.com/features/packages) to store our built API Docker container images alongside the project's code and allow private access to the published packages.
 Our Kubernetes cluster obtains the Docker API image from the private GitHub package registry, which requires setting up a personal access token that allows access to our published package. [The GitHub documentation describes how to create a PTA](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). Make sure that you grant your token `read:packages` permissions, which allows the token holder to download packages from GitHub Package Registry.
 
 If you want to fetch container images from a private repository from your Kubernetes cluster, you need a way for the kubelet on each node to authenticate to that repository. You can configure image pull secrets to make this possible.
