@@ -1,6 +1,7 @@
 import Container from "@/components/layout/container";
 import Button from "@/components/button";
 import classNames from "classnames";
+import Image from "next/image";
 
 type Concept = {
   title: string;
@@ -47,12 +48,14 @@ export default function Concepts() {
         </div>
       </div>
 
-      <img
-        className="border-2 border-current border-box w-full"
-        width={490}
-        src={image}
-        alt=""
-      />
+      <div className="relative w-fill aspect-video border-2 border-current border-box">
+        <Image
+          layout="fill"
+          objectFit="cover"
+          src={image}
+          alt={title + ": " + description}
+        />
+      </div>
     </div>
   );
 
