@@ -5,6 +5,7 @@ import Technologies from "@/components/landing/technologies";
 import Projects from "@/components/landing/projects";
 import Feed from "@/components/landing/feed";
 import Concepts from "@/components/landing/concepts";
+import React from "react";
 
 export default function Home() {
   return (
@@ -20,6 +21,10 @@ export default function Home() {
           content="development, full-stack development, web development, laravel, tailwind, nextjs, music, synthesizer, digital, vue, vuejs, angular, modern"
         />
         <meta name="author" content="Miguel Franken" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
       </Head>
 
       <div className="space-y-24">

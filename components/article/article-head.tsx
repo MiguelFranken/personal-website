@@ -1,12 +1,17 @@
 import Head from "next/head";
+import React from "react";
 
 export const siteTitle = "Miguel Franken";
 
 export default function ArticleHead() {
   return (
     <Head>
-      <title>Awesome Title</title>
+      <title>Miguel Franken</title>
       <link rel="icon" href="/favicon.ico" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover"
+      />
       <meta name="description" content="Some project description" />
       <meta
         property="og:image"

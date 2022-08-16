@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import React from "react";
+import Head from "next/head";
 
 const BorderContainer = (props) => {
   return (
@@ -12,9 +13,19 @@ const BorderContainer = (props) => {
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <BorderContainer>
-      <Component {...pageProps} />
-    </BorderContainer>
+    <>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <title>Miguel Franken</title>
+      </Head>
+
+      <BorderContainer>
+        <Component {...pageProps} />
+      </BorderContainer>
+    </>
   );
 }
 

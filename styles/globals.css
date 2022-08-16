@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  padding: env(safe-area-inset);
+}
+
 body {
   @apply bg-white;
 }
