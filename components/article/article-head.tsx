@@ -13,6 +13,7 @@ export default function ArticleHead() {
         content="width=device-width, initial-scale=1, viewport-fit=cover"
       />
       <meta name="description" content="Some project description" />
+      <meta name="theme-color" content="#facc15" />
       <meta
         property="og:image"
         content={`https://og-image.vercel.app/${encodeURI(
