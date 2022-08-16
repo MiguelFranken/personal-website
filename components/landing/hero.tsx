@@ -95,7 +95,7 @@ export default function Hero() {
     "Abstract 3D art image showing a dog paw, a music note, the tailwind wave logo and a yellow floating javascript logo";
 
   const HeroImageLarge = () => (
-    <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:-left-72 lg:-right-72 2xl:inset-x-0 lg:grid lg:grid-cols-2 lg:gap-24 lg:pr-16">
+    <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:-left-72 lg:-right-72 2xl:inset-x-0 lg:grid lg:grid-cols-2 lg:gap-24 lg:pr-16 pointer-events-none">
       <div className="lg:h-full relative lg:col-start-2">
         <Image
           src={heroImage}
@@ -124,7 +124,7 @@ export default function Hero() {
 
   return (
     <div className="overflow-hidden">
-      <div className="relative">
+      <div className="relative mb-4 -pb-4">
         <Container className="mt-12 sm:mt-24 xl:mt-48 lg:grid lg:grid-cols-3 lg:gap-24">
           <HeroText />
           <HeroImageLarge />
