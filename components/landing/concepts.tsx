@@ -44,7 +44,7 @@ export default function Concepts() {
         <p className="mt-3 text-lg text-gray-500">{description}</p>
 
         <div className="inline-block mt-5">
-          <Button href={link} text="Learn More" />
+          <Button href={link} text="Explore Concept" />
         </div>
       </div>
 
