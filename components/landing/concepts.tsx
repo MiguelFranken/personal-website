@@ -9,6 +9,7 @@ type Concept = {
   link: string;
   image: string;
   odd?: boolean;
+  tags: string[];
 };
 
 const concepts: Concept[] = [
@@ -18,6 +19,7 @@ const concepts: Concept[] = [
       "Conceptualized collaborative web application in which users work mainly on a board that contains multiple vertical lists in which they add, delete, modify and move around cards that represent some work to be done or some other information crucial for the user",
     link: "/projects/cardly",
     image: "/cardly.png",
+    tags: ["High-Fidelity Software Prototype"],
   },
   {
     title: "FurnitAR",
@@ -25,21 +27,40 @@ const concepts: Concept[] = [
       "With the conceptualized AR furniture app named FurnitAR one can furnish a room with augmented reality technology. The app allows placing pieces of furniture virtually in one's apartment and allows users to get an accurate impression of the size, design and functionality of the furniture in one's own home.",
     link: "/projects/furnitar",
     image: "/furniture.png",
+    tags: ["Paper Prototype"],
   },
   {
     title: "StudyTrekker",
     description: "TODO",
     link: "/projects/cardly",
     image: "/studytrekker.png",
+    tags: ["Medium-Fidelity Storyboard"],
   },
 ];
 
 export default function Concepts() {
-  const ConceptCard = ({ title, description, link, image, odd }: Concept) => (
+  const ConceptCard = ({
+    title,
+    description,
+    link,
+    image,
+    odd,
+    tags,
+  }: Concept) => (
     <div className="relative lg:grid lg:grid-cols-2 lg:gap-16 space-y-8 lg:space-y-0">
       <div className={classNames({ ["lg:order-last"]: !!odd }, "relative")}>
-        <h3 className="text-2xl font-bold text-gray-900 tracking-tight sm:text-3xl sm:tracking-tight">
+        <h3 className="relative inline-block text-2xl font-bold text-gray-900 tracking-tight sm:text-3xl sm:tracking-tight">
           {title}
+          <div className="flex -mb-4 ml-2 absolute bottom-full left-full w-max">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="w-full bg-amber-200 text-white text-sm font-medium px-2.5 py-0.5 rounded"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </h3>
         <p className="mt-3 text-lg text-gray-500">{description}</p>
 
