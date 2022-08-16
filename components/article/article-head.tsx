@@ -1,12 +1,13 @@
 import Head from "next/head";
 import React from "react";
+import { ArticleHeadProps } from "@/components/article/types";
 
 export const siteTitle = "Miguel Franken";
 
-export default function ArticleHead() {
+export default function ArticleHead({ title }: ArticleHeadProps) {
   return (
     <Head>
-      <title>Miguel Franken</title>
+      <title>{title} - Miguel Franken</title>
       <link rel="icon" href="/favicon.ico" />
       <meta
         name="viewport"

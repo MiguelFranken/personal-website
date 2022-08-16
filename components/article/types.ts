@@ -1,6 +1,10 @@
 import { Heading } from "@/lib/rehype-extract-headings";
 import { ReactElement } from "react";
 
+export type ArticleHeadProps = {
+  title: string;
+};
+
 export type ArticleHeaderProps = {
   title: string;
   description: string;

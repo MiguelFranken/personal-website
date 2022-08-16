@@ -3,6 +3,7 @@ import Footer from "@/components/footer";
 import {
   ArticleBodyProps,
   ArticleHeaderProps,
+  ArticleHeadProps,
   ProjectArticleProps,
 } from "@/components/article/types";
 import ArticleHead from "@/components/article/article-head";
@@ -33,9 +34,13 @@ export default function ArticleLayout({
     children,
   };
 
+  const headProps: ArticleHeadProps = {
+    title,
+  };
+
   return (
     <>
-      <ArticleHead />
+      <ArticleHead {...headProps} />
 
       <ArticleHeader {...heroProps} />
 
