@@ -30,10 +30,11 @@ const concepts: Concept[] = [
     tags: ["Paper Prototype"],
   },
   {
-    title: "StudyTrekker",
-    description: "TODO",
-    link: "/projects/cardly",
-    image: "/studytrekker.png",
+    title: "StudyTrakker",
+    description:
+      "An app that guides you to learn new content while studying. It is possible to set a timer to be able to work focused in time. Through the app you also have an overview of learning methods such as the Eisenhower Matrix.",
+    link: "/projects/studytrakker",
+    image: "/studytrakker.png",
     tags: ["Medium-Fidelity Storyboard"],
   },
 ];
