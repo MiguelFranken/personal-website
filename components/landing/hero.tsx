@@ -1,7 +1,8 @@
 import { BriefcaseIcon, GlobeIcon, MailIcon } from "@heroicons/react/outline";
-import SplineArt from "@/components/landing/spline";
 import portrait from "../../public/portrait.webp";
+import heroImage from "../../public/hero-image.webp";
 import Image from "next/image";
+import Container from "@/components/layout/container";
 
 const navigation = [
   {
@@ -38,73 +39,98 @@ const navigation = [
 ];
 
 export default function Hero() {
+  const HeroText = () => (
+    <div className="lg:col-span-2">
+      <div>
+        <div className="w-48 h-48 relative border-2 border-current">
+          <Image width={192} height={192} src={portrait} alt="Miguel Franken" />
+        </div>
+      </div>
+      <div className="mt-20">
+        <div className="mt-6 sm:max-w-xl">
+          <h1 className="text-5xl font-extrabold pb-1 -mb-1 bg-clip-text text-gray-900 sm:text-7xl tracking-wide">
+            Miguel Franken
+          </h1>
+          <div className="font-light text-gray-700 mt-6 flex flex-col gap-1">
+            <div className="flex gap-1.5">
+              <GlobeIcon className="h-6 w-6" aria-hidden="true" />
+              <span>Cologne</span>
+            </div>
+            <div className="flex gap-1.5">
+              <BriefcaseIcon className="h-6 w-6" aria-hidden="true" />
+              <span>Fullstack Software Engineer (2+ Years)</span>
+            </div>
+          </div>
+
+          <p className="mt-6 text-xl text-gray-500">
+            Hey Folks! Welcome to my personal website where you can discover
+            more about me, my interest for web development and where you can
+            find me when I&apos;m not working.
+          </p>
+          <div className="mt-6 sm:max-w-lg sm:w-full sm:flex">
+            <div className="items-baseline mt-4 sm:mt-0 flex-col md:flex md:flex-row gap-4 space-y-4 lg:space-y-0 md:order-2 w-full lg:w-min">
+              {navigation.map((item) => (
+                <div key={item.name}>
+                  <a
+                    href={item.href}
+                    className="relative inline-block group focus:outline-none focus:ring w-full"
+                  >
+                    <span className="absolute inset-0 transition-transform translate-x-0 translate-y-0 bg-gradient-to-r from-yellow-300 to-yellow-200 group-hover:translate-y-1.5 group-hover:translate-x-1.5"></span>
+
+                    <span className="w-full relative inline-flex justify-center items-center gap-2 px-8 py-3 text-sm font-bold tracking-widest uppercase border-2 border-current">
+                      <item.icon className="h-6 w-6" aria-hidden="true" />
+                      <span>{item.name}</span>
+                    </span>
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const alt =
+    "Abstract 3D art image showing a dog paw, a music note, the tailwind wave logo and a yellow floating javascript logo";
+
+  const HeroImageLarge = () => (
+    <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:-left-72 lg:-right-72 2xl:inset-x-0 lg:grid lg:grid-cols-2 lg:gap-24 lg:pr-16">
+      <div className="lg:h-full relative lg:col-start-2">
+        <Image
+          src={heroImage}
+          layout="fill"
+          className="object-contain object-left 2xl:object-center"
+          alt={alt}
+        />
+      </div>
+    </div>
+  );
+
+  const HeroImageSmall = () => (
+    <div className="lg:hidden w-full aspect-square md:aspect-video mt-24 relative overflow-hidden">
+      <div className="absolute inset-y-0 -inset-x-1/3">
+        <Image
+          src={heroImage}
+          layout="fill"
+          objectFit="contain"
+          objectPosition="center"
+          alt={alt}
+        />
+      </div>
+    </div>
+  );
+
   return (
-    <div className="w-full relative z-50">
-      <div className="lg:relative pt-12 sm:pt-24 xl:pt-48">
-        <div className="z-20 mx-auto max-w-md sm:max-w-3xl lg:max-w-7xl lg:grid lg:grid-cols-3 lg:gap-24">
-          <div className="lg:col-span-2 px-8 sm:px-16 lg:px-8 2xl:px-0 z-50">
-            <div>
-              <div className="w-48 h-48 relative border-2 border-current">
-                <Image
-                  width={192}
-                  height={192}
-                  src={portrait}
-                  alt="Miguel Franken"
-                />
-              </div>
-            </div>
-            <div className="mt-20">
-              <div className="mt-6 sm:max-w-xl">
-                <h1 className="text-5xl font-extrabold pb-1 -mb-1 bg-clip-text text-gray-900 sm:text-7xl tracking-wide">
-                  Miguel Franken
-                </h1>
-                <div className="font-light text-gray-700 mt-6 flex flex-col gap-1">
-                  <div className="flex gap-1.5">
-                    <GlobeIcon className="h-6 w-6" aria-hidden="true" />
-                    <span>Cologne</span>
-                  </div>
-                  <div className="flex gap-1.5">
-                    <BriefcaseIcon className="h-6 w-6" aria-hidden="true" />
-                    <span>Fullstack Software Engineer (2+ Years)</span>
-                  </div>
-                </div>
-
-                <p className="mt-6 text-xl text-gray-500">
-                  Hey Folks! Welcome to my personal website where you can
-                  discover more about me, my interest for web development and
-                  where you can find me when I&apos;m not working.
-                </p>
-                <div className="mt-6 sm:max-w-lg sm:w-full sm:flex">
-                  <div className="items-baseline mt-4 sm:mt-0 flex-col md:flex md:flex-row gap-4 space-y-4 lg:space-y-0 md:order-2 w-full lg:w-min">
-                    {navigation.map((item) => (
-                      <div key={item.name}>
-                        <a
-                          href={item.href}
-                          className="relative inline-block group focus:outline-none focus:ring w-full"
-                        >
-                          <span className="absolute inset-0 transition-transform translate-x-0 translate-y-0 bg-gradient-to-r from-yellow-300 to-yellow-200 group-hover:translate-y-1.5 group-hover:translate-x-1.5"></span>
-
-                          <span className="w-full relative inline-flex justify-center items-center gap-2 px-8 py-3 text-sm font-bold tracking-widest uppercase border-2 border-current">
-                            <item.icon className="h-6 w-6" aria-hidden="true" />
-                            <span>{item.name}</span>
-                          </span>
-                        </a>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="overflow-hidden">
+      <div className="relative">
+        <Container className="mt-12 sm:mt-24 xl:mt-48 lg:grid lg:grid-cols-3 lg:gap-24">
+          <HeroText />
+          <HeroImageLarge />
+        </Container>
       </div>
-      <div className="-mt-4 sm:mt-16 md:mt-24 lg:mt-0 lg:absolute lg:top-0 lg:right-0 w-full lg:w-2/3 lg:h-screen flex items-center pointer-events-none">
-        <div className="max-h-96 sm:max-h-128 md:max-h-128 lg:max-h-max lg:h-full flex-1 overflow-hidden flex items-center">
-          <div className="-ml-16 sm:-ml-16 md:ml-8 lg:ml-40 xl:ml-52 2xl:ml-64 3xl:ml-72">
-            <SplineArt />
-          </div>
-        </div>
-      </div>
+
+      <HeroImageSmall />
     </div>
   );
 }

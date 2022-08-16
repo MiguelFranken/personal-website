@@ -22,14 +22,9 @@ export default function Home() {
         <meta name="author" content="Miguel Franken" />
       </Head>
 
-      <div className="z-50">
-        <Hero />
-      </div>
-
       <div className="space-y-24">
-        <div className="z-10 -mt-16 lg:mt-12">
-          <Projects />
-        </div>
+        <Hero />
+        <Projects />
 
         <div className="pb-12">
           <Technologies />
