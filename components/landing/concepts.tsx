@@ -52,7 +52,7 @@ export default function Concepts() {
       <div className={classNames({ ["lg:order-last"]: !!odd }, "relative")}>
         <h3 className="relative inline-block text-2xl font-bold text-gray-900 tracking-tight sm:text-3xl sm:tracking-tight">
           {title}
-          <div className="flex -mb-4 ml-2 absolute bottom-full left-full w-max">
+          <div className="mt-3 sm:mt-0 flex sm:-mb-4 sm:ml-2 sm:absolute sm:bottom-full sm:left-full sm:w-max">
             {tags.map((tag) => (
               <span
                 key={tag}
@@ -92,7 +92,7 @@ export default function Concepts() {
   );
 
   return (
-    <Container className="space-y-20 md:space-y-32">
+    <Container className="space-y-20 md:space-y-32 overflow-hidden">
       <div className="space-y-12 lg:space-y-0 lg:flex lg:flex-col lg:gap-12 lg:items-center">
         <h1 className="inline-block tracking-wider font-extrabold text-gray-900 text-5xl sm:text-6xl relative">
           <div className="absolute -bottom-2 -left-4 -right-4 z-[-1]">
