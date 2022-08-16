@@ -56,7 +56,7 @@ export default function Concepts() {
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="w-full bg-amber-200 text-white text-sm font-medium px-2.5 py-0.5 rounded"
+                className="w-full bg-amber-300 tracking-normal text-white text-sm font-light px-1.5 py-0.5 rounded"
               >
                 {tag}
               </span>
