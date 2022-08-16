@@ -94,7 +94,10 @@ export default function Concepts() {
   return (
     <Container className="space-y-20 md:space-y-32 overflow-hidden">
       <div className="space-y-12 lg:space-y-0 lg:flex lg:flex-col lg:gap-12 lg:items-center">
-        <h1 className="inline-block tracking-wider font-extrabold text-gray-900 text-5xl sm:text-6xl relative">
+        <h1
+          className="inline-block tracking-wider font-extrabold text-gray-900 text-5xl sm:text-6xl relative"
+          id="concepts"
+        >
           <div className="absolute -bottom-2 -left-4 -right-4 z-[-1]">
             <Wave />
           </div>
