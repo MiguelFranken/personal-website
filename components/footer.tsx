@@ -33,12 +33,9 @@ const navigation = [
 export default function Footer() {
   return (
     <footer className="bg-gray-900 relative">
-      <div className="absolute bottom-full z-50 w-full">
-        <svg viewBox="0 0 2903 171" fill="none">
-          <path
-            d="M0 34.2252C289.285 82.1454 487.783 79.3303 794.265 34.2252C1100.75 -10.8799 1220.58 -11.9338 1471.8 34.2252C1705.26 77.1204 1901.69 71.1427 2187.4 34.2252C2464 -1.5142 2620.54 1.1688 2903 34.2252V171H0V34.2252Z"
-            fill="#111827"
-          />
+      <div className="absolute bottom-full -mb-0.5 z-50 w-full">
+        <svg fill="none" className="fill-gray-900" viewBox="0 0 2972 172">
+          <path d="M0 25c289 48 557 55 863 10 307-45 427-46 678 0 233 43 430 37 715 0 277-36 434-33 716 0v137H0V25Z" />
         </svg>
       </div>
 
