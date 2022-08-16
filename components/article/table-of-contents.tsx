@@ -99,7 +99,7 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
   return (
     <div className="lg:sticky lg:top-0 lg:inset-y-0 w-full lg:h-full relative">
       <div className="lg:absolute lg:top-0 lg:right-0 pt-8 lg:pt-16 pb-16">
-        <h4 className="pl-2.5 mb-2 text-sm font-semibold tracking-wide text-gray-900 uppercase lg:text-xs">
+        <h4 className="lg:pl-2.5 mb-2 text-sm font-semibold tracking-wide text-gray-900 uppercase lg:text-xs">
           Table of contents
         </h4>
         <nav className={styles.toc}>

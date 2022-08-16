@@ -7,11 +7,11 @@
 }
 
 .toc > ul > li > a {
-    @apply block pl-2.5 font-medium tracking-wide border-l-2 border-transparent duration-200 hover:text-gray-900 transition-none hover:text-yellow-400 hover:border-yellow-400 after:content-['#'] after:text-yellow-400 after:ml-2 after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-100;
+    @apply block hover:text-gray-900 lg:pl-2.5 font-medium tracking-wide lg:border-l-2 lg:border-transparent lg:duration-200 lg:transition-none hover:text-yellow-400 lg:hover:border-yellow-400 lg:after:content-['#'] lg:after:text-yellow-400 lg:after:ml-2 lg:after:opacity-0 lg:hover:after:opacity-100 lg:after:transition-opacity lg:after:duration-100;
 }
 
 .toc > ul > li > ul > li > a {
-    @apply pl-6 border-l font-light tracking-wide border-l-2 border-transparent duration-200 hover:text-gray-900 transition-none hover:text-yellow-400 hover:border-yellow-400 after:content-['#'] after:text-yellow-400 after:ml-2 after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-100;
+    @apply pl-3.5 lg:pl-6 lg:border-l font-light tracking-wide lg:border-l-2 lg:border-transparent lg:duration-200 hover:text-gray-900 lg:transition-none lg:hover:text-yellow-400 lg:hover:border-yellow-400 lg:after:content-['#'] lg:after:text-yellow-400 lg:after:ml-2 lg:after:opacity-0 lg:hover:after:opacity-100 lg:after:transition-opacity lg:after:duration-100;
 }
 
 .toc > ul > li > ul {
