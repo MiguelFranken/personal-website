@@ -4,7 +4,7 @@ import React from "react";
 
 const BorderContainer = (props) => {
   return (
-    <div className="bg-clip-border border-l-20 border-t-20 border-gray-900 min-h-screen bg">
+    <div className="bg-clip-border sm:border-l-20 border-t-20 border-gray-900 min-h-screen bg">
       {props.children}
     </div>
   );
