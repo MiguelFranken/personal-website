@@ -84,7 +84,7 @@ export default function Feed() {
         )}
       </span>
       <h3 className="flex items-center text-md uppercase font-medium text-sky-200/90">
-        {milestone.role}
+        <span className="mix-blend-hard-light">{milestone.role}</span>
         {milestone.latest && (
           <span className="bg-blue-100/25 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded ml-3">
             Latest
@@ -99,7 +99,7 @@ export default function Feed() {
           {milestone.description}
         </p>
       )}
-      <div className="flex mb-4 text-sm font-light leading-none text-sky-200/90 gap-4">
+      <div className="space-y-4 sm:flex sm:space-y-0 mb-4 text-sm font-light leading-none text-sky-200/90 gap-4 mix-blend-hard-light">
         <div className="flex items-center gap-1.5">
           <CalendarIcon className="w-4 h-4 fill-current" />
           <span>
