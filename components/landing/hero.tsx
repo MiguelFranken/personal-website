@@ -100,6 +100,7 @@ export default function Hero() {
         <Image
           src={heroImage}
           layout="fill"
+          priority
           className="object-contain object-left 2xl:object-center"
           alt={alt}
         />
