@@ -58,7 +58,7 @@ export default function Hero() {
             </div>
             <div className="flex gap-1.5">
               <BriefcaseIcon className="h-6 w-6" aria-hidden="true" />
-              <span>Fullstack Software Engineer (2+ Years)</span>
+              <span>Fullstack Software Engineer (3+ Years)</span>
             </div>
           </div>
 
