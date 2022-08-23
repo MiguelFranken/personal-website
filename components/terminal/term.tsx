@@ -2,16 +2,8 @@ import classNames from "classnames";
 import styles from "@/styles/term.module.css";
 import { forwardRef, KeyboardEventHandler, useState } from "react";
 
-export type TerminalCommands = {
-  [command: string]: () => void;
-};
-
 const Term = (props, ref) => {
   const [value, setValue] = useState("");
-
-  const pushToHistory = () => {
-    console.log("push to history");
-  };
 
   /*
   const commands = useMemo(
