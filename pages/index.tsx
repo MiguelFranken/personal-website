@@ -14,7 +14,7 @@ export default function Home() {
         <title>Miguel Franken</title>
         <meta
           name="description"
-          content="Personal website of full-stack web developer named Miguel Franken living and working in Cologne, Germany."
+          content="Miguel Franken - Cologne-based Full Stack Web Developer"
         />
         <meta
           name="keywords"

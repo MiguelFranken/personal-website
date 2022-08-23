@@ -54,7 +54,7 @@ export default function Hero() {
           <div className="font-light text-gray-700 mt-6 flex flex-col gap-1">
             <div className="flex gap-1.5">
               <GlobeIcon className="h-6 w-6" aria-hidden="true" />
-              <span>Cologne</span>
+              <span>Cologne, Germany</span>
             </div>
             <div className="flex gap-1.5">
               <BriefcaseIcon className="h-6 w-6" aria-hidden="true" />
