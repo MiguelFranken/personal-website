@@ -65,7 +65,7 @@ export default function Terminal() {
         await pushToHistory(item);
       },
     }),
-    [pushToHistory]
+    [pushToHistory, resetHistory]
   );
 
   // add initial history
