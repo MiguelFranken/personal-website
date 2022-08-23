@@ -1,24 +1,46 @@
 import classNames from "classnames";
 import styles from "@/styles/term.module.css";
-import { forwardRef, KeyboardEventHandler, ReactNode, useState } from "react";
-import { TerminalCommands } from "@/hooks/useTerminal";
+import {
+  forwardRef,
+  ForwardRefRenderFunction,
+  KeyboardEventHandler,
+  ReactNode,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 
 type TermProps = {
   children?: ReactNode;
-  commands: TerminalCommands;
+  executeCommand: (str: string) => void;
 };
 
-const Term = ({ commands }: TermProps, ref) => {
+type TermHandle = {
+  focus: () => void; // focus input
+  reset: () => void; // reset input
+};
+
+const Term: ForwardRefRenderFunction<TermHandle, TermProps> = (
+  { executeCommand }: TermProps,
+  ref
+) => {
   const [inputValue, setInputValue] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useImperativeHandle(ref, () => ({
+    reset() {
+      setInputValue("");
+    },
+    focus() {
+      inputRef.current.focus();
+    },
+  }));
 
   const handleKeyDown: KeyboardEventHandler = (event) => {
     if (event.key === "Enter") {
       console.log("Pressed Enter");
 
-      const commandToExecute = commands[inputValue.toLowerCase()];
-      if (commandToExecute) {
-        commandToExecute();
-      }
+      executeCommand(inputValue);
       setInputValue("");
 
       event.preventDefault();
@@ -37,8 +59,9 @@ const Term = ({ commands }: TermProps, ref) => {
       <div className="font-bold">guest@miguel ~ %&nbsp;</div>
       <span className={classNames(styles.growingInput, "inline-grid group")}>
         <input
-          ref={ref}
+          ref={inputRef}
           onKeyDown={handleKeyDown}
+          value={inputValue}
           type="text"
           maxLength={20}
           className="font-bold focus:outline-0 border-none focus:ring-0 p-0 w-full block relative caret-transparent"
@@ -59,4 +82,4 @@ const Term = ({ commands }: TermProps, ref) => {
   );
 };
 
-export default forwardRef<HTMLInputElement, TermProps>(Term);
+export default forwardRef(Term);

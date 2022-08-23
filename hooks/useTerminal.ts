@@ -17,8 +17,13 @@ export const useTerminal = () => {
     setHistory((old) => [...old, item]);
   }, []);
 
+  const resetHistory = useCallback(() => {
+    setHistory([]);
+  }, []);
+
   return {
     history,
     pushToHistory,
+    resetHistory,
   };
 };
