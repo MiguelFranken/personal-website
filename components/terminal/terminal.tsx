@@ -16,6 +16,7 @@ import {
 type TermHandle = ElementRef<typeof Term>;
 
 export default function Terminal() {
+  const containerRef = useRef<HTMLDivElement>(null);
   const term = useRef<TermHandle>(null);
   const { history, pushToHistory, resetHistory } = useTerminal();
 
@@ -89,6 +90,7 @@ export default function Terminal() {
   );
 
   const focusInput = useCallback(() => {
+    containerRef.current.scrollTop = containerRef.current.scrollHeight; // scroll to bottom
     term.current.focus();
   }, []);
 
@@ -138,7 +140,7 @@ export default function Terminal() {
     >
       <TerminalHeader />
 
-      <div className="flex-1 px-4 pb-3">
+      <div className="flex-1 px-4 pb-3" ref={containerRef}>
         <TerminalBodyHistory />
         <Term ref={term} executeCommand={executeCommand} />
       </div>
