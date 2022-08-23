@@ -121,7 +121,7 @@ export default function Terminal() {
 
   const TerminalBodyHistory = useCallback(() => {
     return (
-      <div onClick={(e) => e.stopPropagation()}>
+      <div className="pointer-events-none">
         {history.map((item, index) => (
           <div key={index}>
             <div className="font-bold">guest@miguel ~ % {item.command}</div>
@@ -136,7 +136,7 @@ export default function Terminal() {
     <div
       onClick={focusInput}
       onKeyDown={onKeyDown}
-      className="w-full h-full overflow-scroll focus-within:ring-4 focus-within:ring-yellow-400 font-mono flex flex-col bg-white border-2 border-current space-y-3"
+      className="cursor-text w-full h-full overflow-scroll focus-within:ring-4 focus-within:ring-yellow-400 font-mono flex flex-col bg-white border-2 border-current space-y-3"
     >
       <TerminalHeader />
 
