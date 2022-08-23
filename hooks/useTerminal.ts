@@ -7,7 +7,7 @@ export type TerminalHistoryItem = {
 export type TerminalHistory = TerminalHistoryItem[];
 
 export type TerminalCommands = {
-  [command: string]: () => void;
+  [command: string]: (...args: unknown[]) => void;
 };
 
 export const useTerminal = () => {

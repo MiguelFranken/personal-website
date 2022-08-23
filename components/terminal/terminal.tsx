@@ -35,6 +35,12 @@ export default function Terminal() {
         };
         await pushToHistory(item);
       },
+      "not-found": (command: string) => {
+        pushToHistory({
+          command,
+          response: `Command not found : '${command}'. Type 'help' for available commands.`,
+        });
+      },
       clear: async () => {
         await resetHistory();
       },
@@ -86,13 +92,16 @@ export default function Terminal() {
     term.current.focus();
   }, []);
 
+  // TODO: Command might load data async
   const executeCommand = useCallback(
-    (str) => {
+    (str: string) => {
       const commandToExecute = commands[str.toLowerCase()];
       if (commandToExecute) {
         commandToExecute();
-        focusInput();
+      } else {
+        commands["not-found"](str);
       }
+      focusInput();
     },
     [commands, focusInput]
   );
