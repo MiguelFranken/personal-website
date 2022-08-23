@@ -6,6 +6,10 @@ export type TerminalHistoryItem = {
 };
 export type TerminalHistory = TerminalHistoryItem[];
 
+export type TerminalCommands = {
+  [command: string]: () => void;
+};
+
 export const useTerminal = () => {
   const [history, setHistory] = useState<TerminalHistory>([]);
 

@@ -1,44 +1,26 @@
 import classNames from "classnames";
 import styles from "@/styles/term.module.css";
-import { forwardRef, KeyboardEventHandler, useState } from "react";
+import { forwardRef, KeyboardEventHandler, ReactNode, useState } from "react";
+import { TerminalCommands } from "@/hooks/useTerminal";
 
-const Term = (props, ref) => {
-  const [value, setValue] = useState("");
+type TermProps = {
+  children?: ReactNode;
+  commands: TerminalCommands;
+};
 
-  /*
-  const commands = useMemo(
-    () => ({
-      start: async () => {
-        await pushToHistory(
-          <>
-            <div>
-              <strong>Starting</strong> the server...{" "}
-              <span style={{ color: "green" }}>Done</span>
-            </div>
-          </>
-        );
-      },
-      alert: async () => {
-        alert("Hello!");
-        await pushToHistory(
-          <>
-            <div>
-              <strong>Alert</strong>
-              <span style={{ color: "orange", marginLeft: 10 }}>
-                <strong>Shown in the browser</strong>
-              </span>
-            </div>
-          </>
-        );
-      },
-    }),
-    [pushToHistory]
-  );
-   */
+const Term = ({ commands }: TermProps, ref) => {
+  const [inputValue, setInputValue] = useState("");
 
   const handleKeyDown: KeyboardEventHandler = (event) => {
     if (event.key === "Enter") {
       console.log("Pressed Enter");
+
+      const commandToExecute = commands[inputValue.toLowerCase()];
+      if (commandToExecute) {
+        commandToExecute();
+      }
+      setInputValue("");
+
       event.preventDefault();
     } else if (event.key === "Tab") {
       console.log("Pressed tab");
@@ -47,7 +29,7 @@ const Term = (props, ref) => {
   };
 
   const changeInput = (value) => {
-    setValue(value.replaceAll(" ", "&nbsp;"));
+    setInputValue(value.replaceAll(" ", "&nbsp;"));
   };
 
   return (
@@ -70,11 +52,11 @@ const Term = (props, ref) => {
             "after:visible after:absolute after:inset-y-0.5 after:-right-3 after:inline-block after:bg-gray-900 after:align-top after:aspect-[9/16]",
             "group-focus-within:after:animate-none"
           )}
-          dangerouslySetInnerHTML={{ __html: value }}
+          dangerouslySetInnerHTML={{ __html: inputValue }}
         ></span>
       </span>
     </div>
   );
 };
 
-export default forwardRef<HTMLInputElement>(Term);
+export default forwardRef<HTMLInputElement, TermProps>(Term);

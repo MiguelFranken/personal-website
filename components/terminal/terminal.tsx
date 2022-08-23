@@ -1,6 +1,10 @@
 import Term from "@/components/terminal/term";
-import { useCallback, useEffect, useRef } from "react";
-import { useTerminal } from "@/hooks/useTerminal";
+import { useCallback, useEffect, useMemo, useRef } from "react";
+import {
+  TerminalCommands,
+  TerminalHistoryItem,
+  useTerminal,
+} from "@/hooks/useTerminal";
 
 export default function Terminal() {
   const term = useRef<HTMLInputElement>(null);
@@ -16,6 +20,28 @@ export default function Terminal() {
         "Hey Folks! Welcome to my personal website where you can discover more about me, my interest for web development and where you can find me when I'm not working.",
     });
   }, [pushToHistory]);
+
+  const commands: TerminalCommands = useMemo(
+    () => ({
+      ls: async () => {
+        console.log("Execute ls command");
+        const item: TerminalHistoryItem = {
+          command: "ls",
+          response: "TODO Result of LS Command",
+        };
+        await pushToHistory(item);
+      },
+      cat: async () => {
+        console.log("Execute cat command");
+        const item: TerminalHistoryItem = {
+          command: "cat",
+          response: "TODO Result of cat command",
+        };
+        await pushToHistory(item);
+      },
+    }),
+    [pushToHistory]
+  );
 
   const focusInput = useCallback(() => {
     term.current.focus();
@@ -37,19 +63,17 @@ export default function Terminal() {
 
   const TerminalBody = useCallback(
     () => (
-      <div className="flex-1">
+      <div className="flex-1" onClick={(e) => e.stopPropagation()}>
         {history.map((item, index) => (
           <div key={index}>
             <div className="font-bold">guest@miguel ~ % {item.command}</div>
-            <div className="text-gray-700" onClick={(e) => e.stopPropagation()}>
-              {item.response}
-            </div>
+            <div className="text-gray-700">{item.response}</div>
           </div>
         ))}
-        <Term ref={term} />
+        <Term ref={term} commands={commands} />
       </div>
     ),
-    [history]
+    [commands, history]
   );
 
   return (
