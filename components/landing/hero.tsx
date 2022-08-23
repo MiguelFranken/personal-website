@@ -107,9 +107,13 @@ export default function Hero() {
   return (
     <div>
       <div className="relative mb-4 -pb-4">
-        <Container className="mt-12 sm:mt-24 xl:mt-48 lg:grid lg:grid-cols-2 lg:gap-24">
+        <Container className="mt-12 sm:mt-24 xl:mt-48 lg:grid lg:grid-cols-2 lg:gap-24 max-h-min">
           <HeroText />
-          <Terminal />
+          <div className="bg-red-900 relative">
+            <div className="absolute inset-0">
+              <Terminal />
+            </div>
+          </div>
         </Container>
       </div>
 

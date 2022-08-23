@@ -19,31 +19,35 @@ export default function Terminal() {
   const term = useRef<TermHandle>(null);
   const { history, pushToHistory, resetHistory } = useTerminal();
 
-  // add initial history
-  useEffect(() => {
-    pushToHistory({
-      command: "cat welcome.txt",
-      response:
-        "Hey Folks! Welcome to my personal website where you can discover more about me, my interest for web development and where you can find me when I'm not working.",
-    });
-  }, [pushToHistory]);
-
-  const onKeyDown: KeyboardEventHandler = useCallback(
-    (event) => {
-      if (event.ctrlKey && event.key === "l") {
-        resetHistory();
-        term.current.reset();
-      }
-    },
-    [resetHistory]
-  );
-
   const commands: TerminalCommands = useMemo(
     () => ({
+      help: async () => {
+        const item: TerminalHistoryItem = {
+          command: "help",
+          response: (
+            <>
+              <p>ls [-l]: list directory contents</p>
+              <p>cat: print files</p>
+              <p>clear: clear output</p>
+              <p>sh: run an executable file</p>
+            </>
+          ),
+        };
+        await pushToHistory(item);
+      },
+      clear: async () => {
+        await resetHistory();
+      },
       ls: async () => {
         const item: TerminalHistoryItem = {
           command: "ls",
-          response: "TODO Result of LS Command",
+          response: (
+            <div className="space-x-8">
+              <span>welcome.txt</span>
+              <span>hobbies.txt</span>
+              <span>do-not-run</span>
+            </div>
+          ),
         };
         await pushToHistory(item);
       },
@@ -56,6 +60,26 @@ export default function Terminal() {
       },
     }),
     [pushToHistory]
+  );
+
+  // add initial history
+  useEffect(() => {
+    pushToHistory({
+      command: "cat welcome.txt",
+      response:
+        "Hey Folks! Welcome to my personal website where you can discover more about me, my interest for web development and where you can find me when I'm not working.",
+    });
+    commands["help"]();
+  }, [commands, pushToHistory]);
+
+  const onKeyDown: KeyboardEventHandler = useCallback(
+    (event) => {
+      if (event.ctrlKey && event.key === "l") {
+        resetHistory();
+        term.current.reset();
+      }
+    },
+    [resetHistory]
   );
 
   const focusInput = useCallback(() => {
@@ -101,7 +125,7 @@ export default function Terminal() {
     <div
       onClick={focusInput}
       onKeyDown={onKeyDown}
-      className="focus-within:ring-4 focus-within:ring-yellow-400 font-mono flex flex-col bg-white border-2 border-current px-4 py-3 space-y-6"
+      className="w-full h-full overflow-scroll focus-within:ring-4 focus-within:ring-yellow-400 font-mono flex flex-col bg-white border-2 border-current px-4 py-3 space-y-6"
     >
       <TerminalHeader />
 
