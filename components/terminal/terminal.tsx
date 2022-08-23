@@ -136,7 +136,7 @@ export default function Terminal() {
     <div
       onClick={focusInput}
       onKeyDown={onKeyDown}
-      className="cursor-text w-full h-full overflow-scroll focus-within:ring-4 focus-within:ring-yellow-400 font-mono flex flex-col bg-white border-2 border-current space-y-3"
+      className="cursor-text w-full h-full overflow-scroll focus-within:ring-4 focus-within:ring-yellow-300 font-mono flex flex-col bg-white border-2 border-current space-y-3 transition ease-in-out"
     >
       <TerminalHeader />
 
