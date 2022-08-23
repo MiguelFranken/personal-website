@@ -90,8 +90,11 @@ export default function Terminal() {
   );
 
   const focusInput = useCallback(() => {
-    containerRef.current.scrollTop = containerRef.current.scrollHeight; // scroll to bottom
-    term.current.focus();
+    // focus only when no text is selected
+    if (window.getSelection().isCollapsed) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight; // scroll to bottom
+      term.current.focus();
+    }
   }, []);
 
   // TODO: Command might load data async
