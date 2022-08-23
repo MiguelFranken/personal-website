@@ -2,8 +2,47 @@ import classNames from "classnames";
 import styles from "@/styles/term.module.css";
 import { forwardRef, KeyboardEventHandler, useState } from "react";
 
+export type TerminalCommands = {
+  [command: string]: () => void;
+};
+
 const Term = (props, ref) => {
   const [value, setValue] = useState("");
+
+  const pushToHistory = () => {
+    console.log("push to history");
+  };
+
+  /*
+  const commands = useMemo(
+    () => ({
+      start: async () => {
+        await pushToHistory(
+          <>
+            <div>
+              <strong>Starting</strong> the server...{" "}
+              <span style={{ color: "green" }}>Done</span>
+            </div>
+          </>
+        );
+      },
+      alert: async () => {
+        alert("Hello!");
+        await pushToHistory(
+          <>
+            <div>
+              <strong>Alert</strong>
+              <span style={{ color: "orange", marginLeft: 10 }}>
+                <strong>Shown in the browser</strong>
+              </span>
+            </div>
+          </>
+        );
+      },
+    }),
+    [pushToHistory]
+  );
+   */
 
   const handleKeyDown: KeyboardEventHandler = (event) => {
     if (event.key === "Enter") {
