@@ -3,6 +3,7 @@ import portrait from "../../public/portrait.webp";
 import heroImage from "../../public/hero-image.webp";
 import Image from "next/image";
 import Container from "@/components/layout/container";
+import Terminal from "@/components/terminal/terminal";
 
 const navigation = [
   {
@@ -40,7 +41,7 @@ const navigation = [
 
 export default function Hero() {
   const HeroText = () => (
-    <div className="lg:col-span-2">
+    <div>
       <div>
         <div className="w-48 h-48 relative border-2 border-current">
           <Image width={192} height={192} src={portrait} alt="Miguel Franken" />
@@ -62,11 +63,6 @@ export default function Hero() {
             </div>
           </div>
 
-          <p className="mt-6 text-xl text-gray-500">
-            Hey Folks! Welcome to my personal website where you can discover
-            more about me, my interest for web development and where you can
-            find me when I&apos;m not working.
-          </p>
           <div className="mt-6 sm:max-w-lg sm:w-full sm:flex">
             <div className="items-baseline mt-6 sm:mt-0 flex-col md:flex md:flex-row gap-4 space-y-4 lg:space-y-0 md:order-2 w-full lg:w-min">
               {navigation.map((item) => (
@@ -94,20 +90,6 @@ export default function Hero() {
   const alt =
     "Abstract 3D art image showing a dog paw, a music note, the tailwind wave logo and a yellow floating javascript logo";
 
-  const HeroImageLarge = () => (
-    <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:-left-72 lg:-right-72 2xl:inset-x-0 lg:grid lg:grid-cols-2 lg:gap-24 lg:pr-16 pointer-events-none">
-      <div className="lg:h-full relative lg:col-start-2">
-        <Image
-          src={heroImage}
-          layout="fill"
-          priority
-          className="object-contain object-left 2xl:object-center"
-          alt={alt}
-        />
-      </div>
-    </div>
-  );
-
   const HeroImageSmall = () => (
     <div className="lg:hidden w-full aspect-square md:aspect-video mt-24 relative overflow-hidden">
       <div className="absolute inset-y-0 -inset-x-1/3">
@@ -123,11 +105,11 @@ export default function Hero() {
   );
 
   return (
-    <div className="overflow-hidden">
+    <div>
       <div className="relative mb-4 -pb-4">
-        <Container className="mt-12 sm:mt-24 xl:mt-48 lg:grid lg:grid-cols-3 lg:gap-24">
+        <Container className="mt-12 sm:mt-24 xl:mt-48 lg:grid lg:grid-cols-2 lg:gap-24">
           <HeroText />
-          <HeroImageLarge />
+          <Terminal />
         </Container>
       </div>
 
