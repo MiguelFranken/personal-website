@@ -10,6 +10,14 @@ export type TerminalCommands = {
   [command: string]: (...args: unknown[]) => void;
 };
 
+export const files = new Map([
+  [
+    "welcome.txt",
+    "Hey Folks! Welcome to my personal website where you can discover more about me, my interest for web development and where you can find me when I'm not working.",
+  ],
+  ["hobbies.txt", "TODO"],
+]);
+
 export const useTerminal = () => {
   const [history, setHistory] = useState<TerminalHistory>([]);
 

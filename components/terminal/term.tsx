@@ -9,10 +9,11 @@ import {
   useRef,
   useState,
 } from "react";
+import { files } from "@/hooks/useTerminal";
 
-type TermProps = {
+export type TermProps = {
   children?: ReactNode;
-  executeCommand: (str: string) => void;
+  executeCommand: (...args: string[]) => void;
 };
 
 type TermHandle = {
@@ -38,20 +39,23 @@ const Term: ForwardRefRenderFunction<TermHandle, TermProps> = (
 
   const handleKeyDown: KeyboardEventHandler = (event) => {
     if (event.key === "Enter") {
-      console.log("Pressed Enter");
-
-      executeCommand(inputValue);
+      executeCommand(...inputValue.split(" "));
       setInputValue("");
 
       event.preventDefault();
     } else if (event.key === "Tab") {
-      console.log("Pressed tab");
+      const inputs = inputValue.split(" ");
+      const lastArg = inputs.pop();
+      const fileNames = Array.from(files.keys());
+      const foundFileName = fileNames.find((str) => str.startsWith(lastArg));
+
+      if (foundFileName) {
+        inputs.push(foundFileName);
+        setInputValue(inputs.join(" "));
+      }
+
       event.preventDefault();
     }
-  };
-
-  const changeInput = (value) => {
-    setInputValue(value.replaceAll(" ", "&nbsp;"));
   };
 
   return (

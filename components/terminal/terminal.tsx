@@ -1,4 +1,4 @@
-import Term from "@/components/terminal/term";
+import Term, { TermProps } from "@/components/terminal/term";
 import {
   ElementRef,
   KeyboardEventHandler,
@@ -8,6 +8,7 @@ import {
   useRef,
 } from "react";
 import {
+  files,
   TerminalCommands,
   TerminalHistoryItem,
   useTerminal,
@@ -50,18 +51,20 @@ export default function Terminal() {
           command: "ls",
           response: (
             <div className="space-x-8">
-              <span>welcome.txt</span>
-              <span>hobbies.txt</span>
-              <span>do-not-run</span>
+              {Array.from(files.keys()).map((fileName) => (
+                <span key={fileName}>{fileName}</span>
+              ))}
             </div>
           ),
         };
         await pushToHistory(item);
       },
-      cat: async () => {
+      cat: async (fileName: string) => {
         const item: TerminalHistoryItem = {
-          command: "cat",
-          response: "TODO Result of cat command",
+          command: `cat ${fileName}`,
+          response:
+            files.get(fileName) ||
+            `cat: ${fileName}: No such file or directory`,
         };
         await pushToHistory(item);
       },
@@ -98,13 +101,13 @@ export default function Terminal() {
   }, []);
 
   // TODO: Command might load data async
-  const executeCommand = useCallback(
-    (str: string) => {
-      const commandToExecute = commands[str.toLowerCase()];
+  const executeCommand: TermProps["executeCommand"] = useCallback(
+    (command: string, arg?: string) => {
+      const commandToExecute = commands[command.toLowerCase()];
       if (commandToExecute) {
-        commandToExecute();
+        commandToExecute(arg);
       } else {
-        commands["not-found"](str);
+        commands["not-found"](command);
       }
       focusInput();
     },
