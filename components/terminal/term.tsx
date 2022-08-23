@@ -69,7 +69,7 @@ const Term: ForwardRefRenderFunction<TermHandle, TermProps> = (
           autoComplete="off"
           maxLength={20}
           className="font-bold focus:outline-0 border-none focus:ring-0 p-0 w-full block relative caret-transparent"
-          onChange={(event) => changeInput(event.target.value)}
+          onChange={(event) => setInputValue(event.target.value)}
         />
         <span
           className={classNames(
@@ -79,7 +79,9 @@ const Term: ForwardRefRenderFunction<TermHandle, TermProps> = (
             "after:visible after:absolute after:inset-y-0.5 after:-right-3 after:inline-block after:bg-gray-900 after:align-top after:aspect-[9/16]",
             "group-focus-within:after:animate-none"
           )}
-          dangerouslySetInnerHTML={{ __html: inputValue }}
+          dangerouslySetInnerHTML={{
+            __html: inputValue.replaceAll(" ", "&nbsp;"),
+          }}
         ></span>
       </form>
     </div>
