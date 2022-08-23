@@ -57,12 +57,16 @@ const Term: ForwardRefRenderFunction<TermHandle, TermProps> = (
   return (
     <div className="flex">
       <div className="font-bold">guest@miguel ~ %&nbsp;</div>
-      <span className={classNames(styles.growingInput, "inline-grid group")}>
+      <form
+        autoComplete="off"
+        className={classNames(styles.growingInput, "inline-grid group")}
+      >
         <input
           ref={inputRef}
           onKeyDown={handleKeyDown}
           value={inputValue}
           type="text"
+          autoComplete="off"
           maxLength={20}
           className="font-bold focus:outline-0 border-none focus:ring-0 p-0 w-full block relative caret-transparent"
           onChange={(event) => changeInput(event.target.value)}
@@ -77,7 +81,7 @@ const Term: ForwardRefRenderFunction<TermHandle, TermProps> = (
           )}
           dangerouslySetInnerHTML={{ __html: inputValue }}
         ></span>
-      </span>
+      </form>
     </div>
   );
 };
