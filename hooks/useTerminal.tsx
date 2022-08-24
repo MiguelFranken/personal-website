@@ -1,6 +1,7 @@
 import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 
 export type TerminalHistoryItem = {
+  id?: string;
   command: string;
   response?: ReactNode | string;
 };
@@ -10,43 +11,55 @@ export type TerminalCommands = {
   [command: string]: (...args: unknown[]) => void;
 };
 
-export const files = new Map([
-  [
-    "welcome.txt",
-    {
-      type: "text",
-      content:
-        "Hey Folks! Welcome to my personal website where you can discover more about me, my interest for web development and where you can find me when I'm not working.",
-    },
-  ],
-  ["hobbies.txt", { type: "text", content: "TODO" }],
-  [
-    "do-not-run",
-    {
-      type: "executable",
-      content: (
-        <iframe
-          onClick={(event) => {
-            event.stopPropagation();
-            event.preventDefault();
-          }}
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-      ),
-    },
-  ],
-]);
-
 export const useTerminal = () => {
   const [history, setHistory] = useState<TerminalHistory>([]);
 
+  const video = useMemo(() => {
+    console.log("rerender video");
+    return (
+      <iframe
+        onClick={(event) => {
+          event.stopPropagation();
+          event.preventDefault();
+        }}
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
+    );
+  }, []);
+
+  const files = useMemo(
+    () =>
+      new Map([
+        [
+          "welcome.txt",
+          {
+            type: "text",
+            content:
+              "Hey Folks! Welcome to my personal website where you can discover more about me, my interest for web development and where you can find me when I'm not working.",
+          },
+        ],
+        ["hobbies.txt", { type: "text", content: "TODO" }],
+        [
+          "do-not-run",
+          {
+            type: "executable",
+            content: video,
+          },
+        ],
+      ]),
+    [video]
+  );
+
   const pushToHistory = useCallback((item: TerminalHistoryItem) => {
+    const timestamp = new Date().toISOString();
+    // add random number so that we can add for the initial history multiple items at once
+    item.id = `${Math.floor(Math.random() * 1000)}-${timestamp}`;
     setHistory((old) => [...old, item]);
   }, []);
 
@@ -132,8 +145,12 @@ export const useTerminal = () => {
         await pushToHistory(item);
       },
     }),
-    [pushToHistory, resetHistory]
+    [files, pushToHistory, resetHistory]
   );
+
+  useEffect(() => {
+    console.log("Init useTerminal hook");
+  }, []);
 
   // add initial history
   useEffect(() => {
@@ -146,5 +163,6 @@ export const useTerminal = () => {
     pushToHistory,
     resetHistory,
     commands,
+    files,
   };
 };

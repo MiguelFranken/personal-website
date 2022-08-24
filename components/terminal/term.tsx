@@ -9,7 +9,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { files } from "@/hooks/useTerminal";
+import { useTerminal } from "@/hooks/useTerminal";
 
 export type TermProps = {
   children?: ReactNode;
@@ -27,6 +27,7 @@ const Term: ForwardRefRenderFunction<TermHandle, TermProps> = (
 ) => {
   const [inputValue, setInputValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const { files } = useTerminal();
 
   useImperativeHandle(ref, () => ({
     reset() {

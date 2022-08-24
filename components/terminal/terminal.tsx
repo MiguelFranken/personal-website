@@ -3,16 +3,10 @@ import {
   ElementRef,
   KeyboardEventHandler,
   useCallback,
-  useEffect,
   useMemo,
   useRef,
 } from "react";
-import {
-  files,
-  TerminalCommands,
-  TerminalHistoryItem,
-  useTerminal,
-} from "@/hooks/useTerminal";
+import { useTerminal } from "@/hooks/useTerminal";
 
 type TermHandle = ElementRef<typeof Term>;
 
@@ -68,11 +62,11 @@ export default function Terminal() {
     [commands, focusInput]
   );
 
-  const TerminalBodyHistory = useCallback(() => {
+  const TerminalBodyHistory = useMemo(() => {
     return (
       <div>
-        {history.map((item, index) => (
-          <div key={index}>
+        {history.map((item) => (
+          <div key={item.id}>
             <div className="font-bold">guest@miguel ~ % {item.command}</div>
             <div className="text-gray-700">{item.response}</div>
           </div>
@@ -90,7 +84,7 @@ export default function Terminal() {
       <TerminalHeader />
 
       <div className="flex-1 px-4 pb-3" ref={containerRef}>
-        <TerminalBodyHistory />
+        {TerminalBodyHistory}
         <Term ref={term} executeCommand={executeCommand} />
       </div>
     </div>
