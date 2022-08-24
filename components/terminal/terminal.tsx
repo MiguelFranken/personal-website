@@ -1,4 +1,6 @@
-import Term, { TermProps } from "@/components/terminal/term";
+import TerminalPrompt, {
+  TerminalPromptProps,
+} from "@/components/terminal/prompt";
 import {
   ElementRef,
   KeyboardEventHandler,
@@ -11,7 +13,7 @@ import { useTerminal } from "@/hooks/useTerminal";
 import { TerminalContext } from "@/lib/store";
 import TerminalHistory from "@/components/terminal/history";
 
-type TermHandle = ElementRef<typeof Term>;
+type TerminalPromptHandle = ElementRef<typeof TerminalPrompt>;
 
 const TerminalHeader = () => (
   <div className="shrink-0 sticky inset-x-0 top-0 bg-white/50 backdrop-blur-md grid grid-cols-3 px-4 py-3 border-b">
@@ -26,7 +28,7 @@ const TerminalHeader = () => (
 
 export default function Terminal() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const term = useRef<TermHandle>(null);
+  const prompt = useRef<TerminalPromptHandle>(null);
   const { commands } = useTerminal();
   const { dispatch } = useContext(TerminalContext);
 
@@ -36,7 +38,7 @@ export default function Terminal() {
         dispatch({
           type: "RESET_HISTORY",
         });
-        term.current.reset();
+        prompt.current.reset();
       }
     },
     [dispatch]
@@ -47,11 +49,11 @@ export default function Terminal() {
     // focus only when no text is selected
     if (window.getSelection().isCollapsed) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight; // scroll to bottom
-      term.current.focus();
+      prompt.current.focus();
     }
   }, []);
 
-  const executeCommand: TermProps["executeCommand"] = useCallback(
+  const executeCommand: TerminalPromptProps["executeCommand"] = useCallback(
     async (command: string, arg?: string) => {
       if (command) {
         const commandToExecute = commands[command.toLowerCase()];
@@ -85,7 +87,7 @@ export default function Terminal() {
 
       <div className="flex-1 px-4 pb-3">
         <TerminalHistory />
-        <Term ref={term} executeCommand={executeCommand} />
+        <TerminalPrompt ref={prompt} executeCommand={executeCommand} />
       </div>
     </div>
   );

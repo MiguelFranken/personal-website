@@ -11,20 +11,20 @@ import {
 } from "react";
 import { useTerminal } from "@/hooks/useTerminal";
 
-export type TermProps = {
+export type TerminalPromptProps = {
   children?: ReactNode;
   executeCommand: (...args: string[]) => void;
 };
 
-type TermHandle = {
+type TerminalPromptHandle = {
   focus: () => void; // focus input
   reset: () => void; // reset input
 };
 
-const Term: ForwardRefRenderFunction<TermHandle, TermProps> = (
-  { executeCommand }: TermProps,
-  ref
-) => {
+const TerminalPrompt: ForwardRefRenderFunction<
+  TerminalPromptHandle,
+  TerminalPromptProps
+> = ({ executeCommand }: TerminalPromptProps, ref) => {
   const [inputValue, setInputValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const { files } = useTerminal();
@@ -93,4 +93,4 @@ const Term: ForwardRefRenderFunction<TermHandle, TermProps> = (
   );
 };
 
-export default forwardRef(Term);
+export default forwardRef(TerminalPrompt);
