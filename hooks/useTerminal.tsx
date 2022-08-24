@@ -34,10 +34,17 @@ export const useTerminal = () => {
           {
             type: "text",
             content:
-              "Hey Folks! Welcome to my personal website where you can discover more about me, my interest for web development and where you can find me when I'm not working.",
+              "Hey Folks! Welcome to my personal website where you can discover more about me, my interest for web development and where you can find me when I'm not working. Use this interactive bash to learn more!",
           },
         ],
-        ["hobbies.txt", { type: "text", content: "TODO" }],
+        [
+          "hobbies.txt",
+          {
+            type: "text",
+            content:
+              "With the beginning of my university studies in 2015 in Aachen, I decided to learn a musical instrument and got myself an electric bass. Learning the instrument was really fun and I could quickly play the first bass licks. But for the sake of my flatmates I switched to a normal guitar, so that I wouldn't annoy them so much with the bass noise. My favorite band currently is Khruangbin. Check out this live performance: https://youtu.be/q4xKvHANqjk",
+          },
+        ],
         [
           "do-not-run",
           {
