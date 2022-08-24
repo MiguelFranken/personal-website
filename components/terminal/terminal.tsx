@@ -65,9 +65,7 @@ export default function Terminal() {
       cat: async (fileName: string) => {
         const item: TerminalHistoryItem = {
           command: `cat ${fileName}`,
-          response:
-            files.get(fileName) ||
-            `cat: ${fileName}: No such file or directory`,
+          response: files.get(fileName) || `cat: ${fileName}: No such file`,
         };
         await pushToHistory(item);
       },
