@@ -1,0 +1,15 @@
+.growingInput input, .dummy {
+    grid-area: 1 / 1;
+    @apply m-0 p-0;
+
+    white-space: nowrap;
+}
+
+.dummy::after {
+    animation: blink-animation 1.2s steps(4, start) infinite;
+}
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}

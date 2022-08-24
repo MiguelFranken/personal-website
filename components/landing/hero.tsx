@@ -3,6 +3,8 @@ import portrait from "../../public/portrait.webp";
 import heroImage from "../../public/hero-image.webp";
 import Image from "next/image";
 import Container from "@/components/layout/container";
+import Terminal from "@/components/terminal/terminal";
+import { TerminalContextProvider } from "@/lib/store";
 
 const navigation = [
   {
@@ -38,96 +40,83 @@ const navigation = [
   },
 ];
 
+const alt =
+  "Abstract 3D art image showing a dog paw, a music note, the tailwind wave logo and a yellow floating javascript logo";
+
+const HeroImageSmall = () => (
+  <div className="md:hidden w-full aspect-square md:aspect-video mt-24 relative overflow-hidden">
+    <div className="absolute inset-y-0 -inset-x-1/3">
+      <Image
+        src={heroImage}
+        layout="fill"
+        objectFit="contain"
+        objectPosition="center"
+        alt={alt}
+      />
+    </div>
+  </div>
+);
+
+const HeroText = () => (
+  <div>
+    <div>
+      <div className="w-48 h-48 relative border-2 border-current">
+        <Image width={192} height={192} src={portrait} alt="Miguel Franken" />
+      </div>
+    </div>
+    <div className="mt-20">
+      <div className="mt-6 sm:max-w-xl">
+        <h1 className="text-5xl sm:text-7xl lg:text-6xl xl:text-7xl font-extrabold pb-1 -mb-1 text-gray-900 tracking-normal">
+          Miguel Franken
+        </h1>
+        <div className="font-light text-gray-700 mt-6 flex flex-col gap-1">
+          <div className="flex gap-1.5">
+            <GlobeIcon className="h-6 w-6" aria-hidden="true" />
+            <span>Cologne, Germany</span>
+          </div>
+          <div className="flex gap-1.5">
+            <BriefcaseIcon className="h-6 w-6" aria-hidden="true" />
+            <span>Fullstack Software Engineer (3+ Years)</span>
+          </div>
+        </div>
+
+        <div className="mt-6 sm:max-w-lg sm:w-full sm:flex">
+          <div className="items-baseline mt-6 sm:mt-0 flex-col md:flex md:flex-row md:flex-wrap gap-4 space-y-4 lg:space-y-0 md:order-2 w-full lg:w-min flex-1">
+            {navigation.map((item) => (
+              <div key={item.name}>
+                <a
+                  href={item.href}
+                  className="relative inline-block group focus:outline-none focus:ring w-full"
+                >
+                  <span className="absolute inset-0 transition-transform translate-x-0 translate-y-0 bg-gradient-to-r from-yellow-300 to-yellow-200 group-hover:translate-y-1.5 group-hover:translate-x-1.5"></span>
+
+                  <span className="w-full relative inline-flex justify-center items-center gap-2 px-6 py-3 text-sm font-bold tracking-widest uppercase border-2 border-current">
+                    <item.icon className="h-6 w-6" aria-hidden="true" />
+                    <span>{item.name}</span>
+                  </span>
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 export default function Hero() {
-  const HeroText = () => (
-    <div className="lg:col-span-2">
-      <div>
-        <div className="w-48 h-48 relative border-2 border-current">
-          <Image width={192} height={192} src={portrait} alt="Miguel Franken" />
-        </div>
-      </div>
-      <div className="mt-20">
-        <div className="mt-6 sm:max-w-xl">
-          <h1 className="text-5xl font-extrabold pb-1 -mb-1 bg-clip-text text-gray-900 sm:text-7xl tracking-wide">
-            Miguel Franken
-          </h1>
-          <div className="font-light text-gray-700 mt-6 flex flex-col gap-1">
-            <div className="flex gap-1.5">
-              <GlobeIcon className="h-6 w-6" aria-hidden="true" />
-              <span>Cologne</span>
-            </div>
-            <div className="flex gap-1.5">
-              <BriefcaseIcon className="h-6 w-6" aria-hidden="true" />
-              <span>Fullstack Software Engineer (3+ Years)</span>
-            </div>
-          </div>
-
-          <p className="mt-6 text-xl text-gray-500">
-            Hey Folks! Welcome to my personal website where you can discover
-            more about me, my interest for web development and where you can
-            find me when I&apos;m not working.
-          </p>
-          <div className="mt-6 sm:max-w-lg sm:w-full sm:flex">
-            <div className="items-baseline mt-6 sm:mt-0 flex-col md:flex md:flex-row gap-4 space-y-4 lg:space-y-0 md:order-2 w-full lg:w-min">
-              {navigation.map((item) => (
-                <div key={item.name}>
-                  <a
-                    href={item.href}
-                    className="relative inline-block group focus:outline-none focus:ring w-full"
-                  >
-                    <span className="absolute inset-0 transition-transform translate-x-0 translate-y-0 bg-gradient-to-r from-yellow-300 to-yellow-200 group-hover:translate-y-1.5 group-hover:translate-x-1.5"></span>
-
-                    <span className="w-full relative inline-flex justify-center items-center gap-2 px-8 py-3 text-sm font-bold tracking-widest uppercase border-2 border-current">
-                      <item.icon className="h-6 w-6" aria-hidden="true" />
-                      <span>{item.name}</span>
-                    </span>
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  const alt =
-    "Abstract 3D art image showing a dog paw, a music note, the tailwind wave logo and a yellow floating javascript logo";
-
-  const HeroImageLarge = () => (
-    <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:-left-72 lg:-right-72 2xl:inset-x-0 lg:grid lg:grid-cols-2 lg:gap-24 lg:pr-16 pointer-events-none">
-      <div className="lg:h-full relative lg:col-start-2">
-        <Image
-          src={heroImage}
-          layout="fill"
-          priority
-          className="object-contain object-left 2xl:object-center"
-          alt={alt}
-        />
-      </div>
-    </div>
-  );
-
-  const HeroImageSmall = () => (
-    <div className="lg:hidden w-full aspect-square md:aspect-video mt-24 relative overflow-hidden">
-      <div className="absolute inset-y-0 -inset-x-1/3">
-        <Image
-          src={heroImage}
-          layout="fill"
-          objectFit="contain"
-          objectPosition="center"
-          alt={alt}
-        />
-      </div>
-    </div>
-  );
-
   return (
-    <div className="overflow-hidden">
-      <div className="relative mb-4 -pb-4">
-        <Container className="mt-12 sm:mt-24 xl:mt-48 lg:grid lg:grid-cols-3 lg:gap-24">
+    <div>
+      <div className="mb-4 -pb-4">
+        <Container className="mt-12 sm:mt-24 xl:mt-48 space-y-20 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-8 max-h-min">
           <HeroText />
-          <HeroImageLarge />
+          <div className="relative hidden md:block">
+            <div className="lg:absolute lg:inset-0 aspect-video lg:aspect-[0]">
+              <TerminalContextProvider>
+                <Terminal />
+              </TerminalContextProvider>
+            </div>
+          </div>
         </Container>
       </div>
 
