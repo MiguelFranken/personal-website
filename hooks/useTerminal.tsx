@@ -77,7 +77,7 @@ export const useTerminal = () => {
           command: "help",
           response: (
             <>
-              <p>ls [-l]: list directory contents</p>
+              <p>ls: list directory contents</p>
               <p>cat: print files</p>
               <p>clear: clear output</p>
               <p>sh: run an executable file</p>
