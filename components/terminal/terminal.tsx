@@ -23,6 +23,9 @@ export default function Terminal() {
 
   const commands: TerminalCommands = useMemo(
     () => ({
+      empty: async () => {
+        await pushToHistory({ command: "" });
+      },
       help: async () => {
         const item: TerminalHistoryItem = {
           command: "help",
@@ -100,14 +103,17 @@ export default function Terminal() {
     }
   }, []);
 
-  // TODO: Command might load data async
   const executeCommand: TermProps["executeCommand"] = useCallback(
-    (command: string, arg?: string) => {
-      const commandToExecute = commands[command.toLowerCase()];
-      if (commandToExecute) {
-        commandToExecute(arg);
+    async (command: string, arg?: string) => {
+      if (command) {
+        const commandToExecute = commands[command.toLowerCase()];
+        if (commandToExecute) {
+          await commandToExecute(arg);
+        } else {
+          await commands["not-found"](command);
+        }
       } else {
-        commands["not-found"](command);
+        await commands["empty"]();
       }
       focusInput();
     },
