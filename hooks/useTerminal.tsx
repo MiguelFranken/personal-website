@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useState } from "react";
+import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 
 export type TerminalHistoryItem = {
   command: string;
@@ -54,9 +54,97 @@ export const useTerminal = () => {
     setHistory([]);
   }, []);
 
+  const commands: TerminalCommands = useMemo(
+    () => ({
+      empty: async () => {
+        await pushToHistory({ command: "" });
+      },
+      help: async () => {
+        const item: TerminalHistoryItem = {
+          command: "help",
+          response: (
+            <>
+              <p>ls [-l]: list directory contents</p>
+              <p>cat: print files</p>
+              <p>clear: clear output</p>
+              <p>sh: run an executable file</p>
+            </>
+          ),
+        };
+        await pushToHistory(item);
+      },
+      "not-found": (command: string) => {
+        pushToHistory({
+          command,
+          response: `Command not found : '${command}'. Type 'help' for available commands.`,
+        });
+      },
+      clear: async () => {
+        await resetHistory();
+      },
+      ls: async () => {
+        const item: TerminalHistoryItem = {
+          command: "ls",
+          response: (
+            <div className="space-x-8">
+              {Array.from(files.keys()).map((fileName) => (
+                <span key={fileName}>{fileName}</span>
+              ))}
+            </div>
+          ),
+        };
+        await pushToHistory(item);
+      },
+      cat: async (fileName: string) => {
+        const file = files.get(fileName);
+        let response;
+        if (file) {
+          if (file.type === "text") {
+            response = file.content;
+          } else {
+            response = "cat: cannot read executable file";
+          }
+        } else {
+          response = `cat: ${fileName}: No such file`;
+        }
+        const item: TerminalHistoryItem = {
+          command: `cat ${fileName}`,
+          response,
+        };
+        await pushToHistory(item);
+      },
+      sh: async (fileName: string) => {
+        const file = files.get(fileName);
+        let response;
+        if (file) {
+          if (file.type === "executable") {
+            response = file.content;
+          } else {
+            response = "sh: cannot execute this file type";
+          }
+        } else {
+          response = `sh: ${fileName}: No such file`;
+        }
+        const item: TerminalHistoryItem = {
+          command: `sh ${fileName}`,
+          response,
+        };
+        await pushToHistory(item);
+      },
+    }),
+    [pushToHistory, resetHistory]
+  );
+
+  // add initial history
+  useEffect(() => {
+    commands["cat"]("welcome.txt");
+    commands["help"]();
+  }, [commands, pushToHistory]);
+
   return {
     history,
     pushToHistory,
     resetHistory,
+    commands,
   };
 };
