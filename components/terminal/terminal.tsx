@@ -63,9 +63,38 @@ export default function Terminal() {
         await pushToHistory(item);
       },
       cat: async (fileName: string) => {
+        const file = files.get(fileName);
+        let response;
+        if (file) {
+          if (file.type === "text") {
+            response = file.content;
+          } else {
+            response = "cat: cannot read executable file";
+          }
+        } else {
+          response = `cat: ${fileName}: No such file`;
+        }
         const item: TerminalHistoryItem = {
           command: `cat ${fileName}`,
-          response: files.get(fileName) || `cat: ${fileName}: No such file`,
+          response,
+        };
+        await pushToHistory(item);
+      },
+      sh: async (fileName: string) => {
+        const file = files.get(fileName);
+        let response;
+        if (file) {
+          if (file.type === "executable") {
+            response = file.content;
+          } else {
+            response = "sh: cannot execute this file type";
+          }
+        } else {
+          response = `sh: ${fileName}: No such file`;
+        }
+        const item: TerminalHistoryItem = {
+          command: `sh ${fileName}`,
+          response,
         };
         await pushToHistory(item);
       },
@@ -131,7 +160,7 @@ export default function Terminal() {
 
   const TerminalBodyHistory = useCallback(() => {
     return (
-      <div className="pointer-events-none">
+      <div>
         {history.map((item, index) => (
           <div key={index}>
             <div className="font-bold">guest@miguel ~ % {item.command}</div>
@@ -146,7 +175,7 @@ export default function Terminal() {
     <div
       onClick={focusInput}
       onKeyDown={onKeyDown}
-      className="cursor-text w-full h-full overflow-scroll focus-within:ring-4 focus-within:ring-yellow-300 font-mono flex flex-col bg-white border-2 border-current space-y-3 transition ease-in-out"
+      className="w-full h-full overflow-scroll focus-within:ring-4 focus-within:ring-yellow-300 font-mono flex flex-col bg-white border-2 border-current space-y-3 transition ease-in-out"
     >
       <TerminalHeader />
 
