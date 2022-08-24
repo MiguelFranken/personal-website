@@ -4,6 +4,7 @@ import heroImage from "../../public/hero-image.webp";
 import Image from "next/image";
 import Container from "@/components/layout/container";
 import Terminal from "@/components/terminal/terminal";
+import { TerminalContextProvider } from "@/lib/store";
 
 const navigation = [
   {
@@ -111,7 +112,9 @@ export default function Hero() {
           <HeroText />
           <div className="relative hidden md:block">
             <div className="lg:absolute lg:inset-0 aspect-video lg:aspect-[0]">
-              <Terminal />
+              <TerminalContextProvider>
+                <Terminal />
+              </TerminalContextProvider>
             </div>
           </div>
         </Container>

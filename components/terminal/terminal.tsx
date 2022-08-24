@@ -3,10 +3,13 @@ import {
   ElementRef,
   KeyboardEventHandler,
   useCallback,
-  useMemo,
+  useContext,
+  useEffect,
   useRef,
 } from "react";
 import { useTerminal } from "@/hooks/useTerminal";
+import { TerminalContext } from "@/lib/store";
+import TerminalHistory from "@/components/terminal/history";
 
 type TermHandle = ElementRef<typeof Term>;
 
@@ -24,16 +27,19 @@ const TerminalHeader = () => (
 export default function Terminal() {
   const containerRef = useRef<HTMLDivElement>(null);
   const term = useRef<TermHandle>(null);
-  const { history, resetHistory, commands } = useTerminal();
+  const { commands } = useTerminal();
+  const { dispatch } = useContext(TerminalContext);
 
   const onKeyDown: KeyboardEventHandler = useCallback(
     (event) => {
       if (event.ctrlKey && event.key === "l") {
-        resetHistory();
+        dispatch({
+          type: "RESET_HISTORY",
+        });
         term.current.reset();
       }
     },
-    [resetHistory]
+    [dispatch]
   );
 
   // focus and scroll to terminal prompt input field
@@ -62,29 +68,23 @@ export default function Terminal() {
     [commands, focusInput]
   );
 
-  const TerminalBodyHistory = useMemo(() => {
-    return (
-      <div>
-        {history.map((item) => (
-          <div key={item.id}>
-            <div className="font-bold">guest@miguel ~ % {item.command}</div>
-            <div className="text-gray-700">{item.response}</div>
-          </div>
-        ))}
-      </div>
-    );
-  }, [history]);
+  // add initial history
+  useEffect(() => {
+    commands["cat"]("welcome.txt");
+    commands["help"]();
+  }, [commands]);
 
   return (
     <div
       onClick={focusInput}
       onKeyDown={onKeyDown}
+      ref={containerRef}
       className="w-full h-full overflow-scroll focus-within:ring-4 focus-within:ring-yellow-300 font-mono flex flex-col bg-white border-2 border-current space-y-3 transition ease-in-out"
     >
       <TerminalHeader />
 
-      <div className="flex-1 px-4 pb-3" ref={containerRef}>
-        {TerminalBodyHistory}
+      <div className="flex-1 px-4 pb-3">
+        <TerminalHistory />
         <Term ref={term} executeCommand={executeCommand} />
       </div>
     </div>

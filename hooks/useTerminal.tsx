@@ -1,21 +1,14 @@
-import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
-
-export type TerminalHistoryItem = {
-  id?: string;
-  command: string;
-  response?: ReactNode | string;
-};
-export type TerminalHistory = TerminalHistoryItem[];
+import { useCallback, useContext, useMemo } from "react";
+import { TerminalContext, TerminalHistoryItem } from "@/lib/store";
 
 export type TerminalCommands = {
   [command: string]: (...args: unknown[]) => void;
 };
 
 export const useTerminal = () => {
-  const [history, setHistory] = useState<TerminalHistory>([]);
+  const { dispatch } = useContext(TerminalContext);
 
   const video = useMemo(() => {
-    console.log("rerender video");
     return (
       <iframe
         onClick={(event) => {
@@ -56,16 +49,16 @@ export const useTerminal = () => {
     [video]
   );
 
-  const pushToHistory = useCallback((item: TerminalHistoryItem) => {
-    const timestamp = new Date().toISOString();
-    // add random number so that we can add for the initial history multiple items at once
-    item.id = `${Math.floor(Math.random() * 1000)}-${timestamp}`;
-    setHistory((old) => [...old, item]);
-  }, []);
+  const pushToHistory = useCallback(
+    (item: TerminalHistoryItem) => {
+      dispatch({ type: "ADD_HISTORY_ITEM", payload: item });
+    },
+    [dispatch]
+  );
 
   const resetHistory = useCallback(() => {
-    setHistory([]);
-  }, []);
+    dispatch({ type: "RESET_HISTORY" });
+  }, [dispatch]);
 
   const commands: TerminalCommands = useMemo(
     () => ({
@@ -99,11 +92,11 @@ export const useTerminal = () => {
         const item: TerminalHistoryItem = {
           command: "ls",
           response: (
-            <div className="space-x-8">
+            <ul className="flex" style={{ gap: "2rem" }}>
               {Array.from(files.keys()).map((fileName) => (
-                <span key={fileName}>{fileName}</span>
+                <li key={fileName}>{fileName}</li>
               ))}
-            </div>
+            </ul>
           ),
         };
         await pushToHistory(item);
@@ -148,18 +141,7 @@ export const useTerminal = () => {
     [files, pushToHistory, resetHistory]
   );
 
-  useEffect(() => {
-    console.log("Init useTerminal hook");
-  }, []);
-
-  // add initial history
-  useEffect(() => {
-    commands["cat"]("welcome.txt");
-    commands["help"]();
-  }, [commands, pushToHistory]);
-
   return {
-    history,
     pushToHistory,
     resetHistory,
     commands,

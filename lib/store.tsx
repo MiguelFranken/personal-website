@@ -4,55 +4,52 @@ type ContextProviderProps = {
   children?: ReactNode;
 };
 
-type Article = {
-  title: string;
-  body: string;
-  date: string;
-  datetime: string;
+export type TerminalHistoryItem = {
+  id?: string;
+  command: string;
+  response?: ReactNode | string;
+};
+export type TerminalHistory = TerminalHistoryItem[];
+
+type TerminalState = {
+  history: TerminalHistory;
 };
 
-type ArticleState = {
-  articles: Article[];
+type Action =
+  | { type: "ADD_HISTORY_ITEM"; payload: TerminalHistoryItem }
+  | { type: "RESET_HISTORY" };
+
+const initialState: TerminalState = {
+  history: [],
 };
 
-type Action = { type: "ADD_ARTICLE"; payload: Article };
-
-const initialState: ArticleState = {
-  articles: [
-    {
-      title: "Title 1",
-      body: "Body 1",
-      datetime: "2020-01-29",
-      date: "Jan 29, 2020",
-    },
-    {
-      title: "Title 2",
-      body: "Body 2",
-      datetime: "2020-01-29",
-      date: "Jan 29, 2020",
-    },
-  ],
-};
-
-export const ArticlesContext = createContext<{
-  state: ArticleState;
+export const TerminalContext = createContext<{
+  state: TerminalState;
   dispatch: Dispatch<Action>;
 }>(null);
 
-const reducer = (state: ArticleState, action: Action) => {
+const reducer = (state: TerminalState, action: Action) => {
   switch (action.type) {
-    case "ADD_ARTICLE":
-      return { articles: [action.payload, ...state.articles] };
+    case "ADD_HISTORY_ITEM":
+      const item = action.payload;
+
+      // add random number so that we can add for the initial history multiple items at once
+      const timestamp = new Date().toISOString();
+      item.id = `${Math.floor(Math.random() * 1000)}-${timestamp}`;
+
+      return { history: [...state.history, item] };
+    case "RESET_HISTORY":
+      return { history: [] };
     default:
       throw new Error();
   }
 };
 
-export const ArticlesContextProvider: FC<ContextProviderProps> = (props) => {
+export const TerminalContextProvider: FC<ContextProviderProps> = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <ArticlesContext.Provider value={{ state, dispatch }}>
+    <TerminalContext.Provider value={{ state, dispatch }}>
       {props.children}
-    </ArticlesContext.Provider>
+    </TerminalContext.Provider>
   );
 };
