@@ -65,7 +65,7 @@ const HeroText = () => (
     </div>
     <div className="mt-20">
       <div className="mt-6 sm:max-w-xl">
-        <h1 className="text-5xl font-extrabold pb-1 -mb-1 bg-clip-text text-gray-900 sm:text-7xl tracking-wide">
+        <h1 className="text-5xl sm:text-7xl lg:text-6xl xl:text-7xl font-extrabold pb-1 -mb-1 text-gray-900 tracking-normal">
           Miguel Franken
         </h1>
         <div className="font-light text-gray-700 mt-6 flex flex-col gap-1">
@@ -107,7 +107,7 @@ export default function Hero() {
   return (
     <div>
       <div className="mb-4 -pb-4">
-        <Container className="mt-12 sm:mt-24 xl:mt-48 space-y-20 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-24 max-h-min">
+        <Container className="mt-12 sm:mt-24 xl:mt-48 space-y-20 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-8 max-h-min">
           <HeroText />
           <div className="relative hidden md:block">
             <div className="lg:absolute lg:inset-0 aspect-video lg:aspect-[0]">
