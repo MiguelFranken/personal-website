@@ -110,11 +110,13 @@ export const useTerminal = () => {
           } else {
             response = "cat: cannot read executable file";
           }
-        } else {
+        } else if (fileName) {
           response = `cat: ${fileName}: No such file`;
+        } else {
+          response = "cat: You have to specify a file";
         }
         const item: TerminalHistoryItem = {
-          command: `cat ${fileName}`,
+          command: `cat ${fileName || ""}`,
           response,
         };
         await pushToHistory(item);
@@ -128,11 +130,13 @@ export const useTerminal = () => {
           } else {
             response = "sh: cannot execute this file type";
           }
-        } else {
+        } else if (fileName) {
           response = `sh: ${fileName}: No such file`;
+        } else {
+          response = "sh: You have to specify a file";
         }
         const item: TerminalHistoryItem = {
-          command: `sh ${fileName}`,
+          command: `sh ${fileName || ""}`,
           response,
         };
         await pushToHistory(item);
