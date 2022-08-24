@@ -79,7 +79,7 @@ export default function Terminal() {
       onClick={focusInput}
       onKeyDown={onKeyDown}
       ref={containerRef}
-      className="w-full h-full overflow-scroll focus-within:ring-4 focus-within:ring-yellow-300 font-mono flex flex-col bg-white border-2 border-current space-y-3 transition ease-in-out"
+      className="selection:text-white selection:bg-gray-900 w-full h-full overflow-scroll focus-within:ring-4 focus-within:ring-yellow-300 font-mono flex flex-col bg-white border-2 border-current space-y-3 transition ease-in-out"
     >
       <TerminalHeader />
 
