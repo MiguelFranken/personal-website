@@ -32,10 +32,7 @@ const reducer = (state: TerminalState, action: Action) => {
   switch (action.type) {
     case "ADD_HISTORY_ITEM":
       const item = action.payload;
-
-      // add random number so that we can add for the initial history multiple items at once
-      const timestamp = new Date().toISOString();
-      item.id = `${Math.floor(Math.random() * 1000)}-${timestamp}`;
+      item.id = window.crypto.randomUUID();
 
       return { history: [...state.history, item] };
     case "RESET_HISTORY":
