@@ -9,6 +9,7 @@ import fs from "fs";
 import { serialize } from "next-mdx-remote/serialize";
 import rehypeSlug from "rehype-slug";
 import rehypeExtractHeadings from "@/lib/rehype-extract-headings";
+import Footer from "@/components/footer";
 
 export type Props = {
   frontmatters: Record<string, string>[];
@@ -55,6 +56,10 @@ export default function Gallery({ frontmatters }: Props) {
         <Container className="pt-8">
           <GalleryCards cards={props.cards} />
         </Container>
+      </div>
+
+      <div className="pt-48">
+        <Footer />
       </div>
     </>
   );
