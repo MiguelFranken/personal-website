@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "cp:images": "cp -a creative-coding/website/images/. public/cc/",
+    "cp:mdx": "cp -a creative-coding/website/mdx/. gallery/",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
