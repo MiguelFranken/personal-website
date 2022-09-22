@@ -228,7 +228,7 @@ export default function GalleryHeader() {
             <Nav />
             <ArticleHero
               title="Creative Coding"
-              description="Creative Coding Description"
+              description="Creative coding, real-time and interactive graphics."
             />
           </Container>
         </div>
