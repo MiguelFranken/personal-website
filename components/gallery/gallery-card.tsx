@@ -3,15 +3,16 @@ import Link from "next/link";
 export type GalleryCardProps = {
   href: string;
   title: string;
+  image: string;
 };
 
-export default function GalleryCard({ href, title }: GalleryCardProps) {
+export default function GalleryCard({ href, title, image }: GalleryCardProps) {
   return (
     <Link href={href}>
       <a className="block space-y-1 transition transform hover:scale-[102%]">
         <img
           alt="Lava"
-          src="/triangulation.TriangulationStudy4-2022-09-22-15.42.00-e4624a1.png"
+          src={`/cc/${image}`}
           className="object-cover w-full h-56 border-2 border-current"
         />
 

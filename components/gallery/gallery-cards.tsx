@@ -1,18 +1,36 @@
 import GalleryCard from "@/components/gallery/gallery-card";
 
-const studies = [
-  {
-    title: "Triangle Study 1",
-    href: "/gallery/study1",
-  },
-];
+export type Study = {
+  qualifier: string;
+  image: string;
+};
 
-export default function GalleryCards() {
+export type GalleryCardsProps = {
+  cards: Study[];
+};
+
+export default function GalleryCards({ cards }: GalleryCardsProps) {
+  const augmentedCards = cards.map((card) => {
+    const split = card.qualifier.split(".");
+    const title = split
+      .at(-1)
+      .split(/(?=[A-Z1-9])/)
+      .join(" ");
+
+    return {
+      ...card,
+      href: "#",
+      title,
+    };
+  });
+
+  console.log(augmentedCards);
+
   return (
     <div>
       <div className="grid grid-cols-3 gap-8">
-        {studies.map((study) => (
-          <GalleryCard {...study} key={study.title} />
+        {augmentedCards.map((card) => (
+          <GalleryCard {...card} key={card.qualifier} />
         ))}
       </div>
     </div>
