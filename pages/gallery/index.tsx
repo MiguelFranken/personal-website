@@ -58,7 +58,7 @@ export default function Gallery({ frontmatters }: Props) {
         </Container>
       </div>
 
-      <div className="pt-48">
+      <div className="pt-52">
         <Footer />
       </div>
     </>
