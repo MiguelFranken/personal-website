@@ -224,7 +224,7 @@ export default function GalleryHeader() {
       <div className="overflow-hidden">
         <div className="relative z-0">
           <Pattern />
-          <Container className="relative pt-32 pb-24">
+          <Container className="relative py-32">
             <Nav />
             <ArticleHero
               title="Creative Coding"
