@@ -44,11 +44,13 @@ export default function ArticleLayout({
 
       <ArticleHeader {...heroProps} />
 
-      <div className="bg-white">
-        <Container className="pt-16 pb-32 space-y-32">
-          <ArticleBody {...bodyProps} />
-        </Container>
-      </div>
+      {headings.length > 0 && (
+        <div className="bg-white">
+          <Container className="pt-16 pb-32 space-y-32">
+            <ArticleBody {...bodyProps} />
+          </Container>
+        </div>
+      )}
 
       <Footer />
     </>
