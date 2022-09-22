@@ -1,5 +1,7 @@
 import ArticleHead from "@/components/article/article-head";
-import GalleryHeader from "./GalleryHeader";
+import GalleryHeader from "@/components/gallery/gallery-header";
+import GalleryCards from "@/components/gallery/gallery-cards";
+import Container from "@/components/layout/container";
 
 export default function Gallery() {
   return (
@@ -8,7 +10,10 @@ export default function Gallery() {
 
       <div className="min-h-screen bg-white">
         <GalleryHeader />
-        <div>BELOW THAT</div>
+
+        <Container className="pt-8">
+          <GalleryCards />
+        </Container>
       </div>
     </>
   );

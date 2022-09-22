@@ -194,7 +194,7 @@ export default function GalleryHeader() {
 
   const Nav = () => (
     <div className="flex justify-center">
-      <Link href="/">
+      <Link href="/pages">
         <a
           className={classNames(
             styles.logo,
