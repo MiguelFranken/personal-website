@@ -248,36 +248,34 @@ export default function ArticleHeader({
   };
 
   return (
-    <div className="min-h-screen">
-      <div className="bg-yellow-400 overflow-hidden">
-        <div className="relative overflow-hidden">
-          <Pattern />
+    <div className="bg-yellow-400 overflow-hidden">
+      <div className="relative overflow-hidden">
+        <Pattern />
 
-          <Container className="relative pt-32 pb-24">
-            <Nav />
-            <ArticleHero {...articleHeroProps} />
+        <Container className="relative pt-32 pb-24">
+          <Nav />
+          <ArticleHero {...articleHeroProps} />
+        </Container>
+
+        <div className="relative">
+          <Divider />
+          <Wave />
+
+          <Container>
+            <div className="relative w-full aspect-video border-2 border-current box-border">
+              {image && (
+                <Image
+                  layout="fill"
+                  src={image}
+                  alt={title}
+                  priority={true}
+                  objectFit="cover"
+                  objectPosition="center"
+                />
+              )}
+              {video && <Video src={video} />}
+            </div>
           </Container>
-
-          <div className="relative">
-            <Divider />
-            <Wave />
-
-            <Container>
-              <div className="relative w-full aspect-video border-2 border-current box-border">
-                {image && (
-                  <Image
-                    layout="fill"
-                    src={image}
-                    alt={title}
-                    priority={true}
-                    objectFit="cover"
-                    objectPosition="center"
-                  />
-                )}
-                {video && <Video src={video} />}
-              </div>
-            </Container>
-          </div>
         </div>
       </div>
     </div>

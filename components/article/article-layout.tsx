@@ -42,15 +42,17 @@ export default function ArticleLayout({
     <>
       <ArticleHead {...headProps} />
 
-      <ArticleHeader {...heroProps} />
+      <div className="min-h-screen bg-white">
+        <ArticleHeader {...heroProps} />
 
-      {headings.length > 0 && (
-        <div className="bg-white">
-          <Container className="pt-16 pb-32 space-y-32">
-            <ArticleBody {...bodyProps} />
-          </Container>
-        </div>
-      )}
+        {headings.length > 0 && (
+          <div className="bg-white">
+            <Container className="pt-16 pb-32 space-y-32">
+              <ArticleBody {...bodyProps} />
+            </Container>
+          </div>
+        )}
+      </div>
 
       <Footer />
     </>
