@@ -18,11 +18,24 @@ interface ProjectPageProps {
 export async function getStaticPaths() {
   const files = fs.readdirSync("gallery");
 
-  const paths = files.map((fileName) => ({
-    params: {
-      slug: fileName.replace(".mdx", ""),
-    },
-  }));
+  const paths = files.map((fileName) => {
+    const fileNameWithoutExtension = fileName.replace(".mdx", "");
+
+    const slug = fileNameWithoutExtension.split(".");
+    const name = slug
+      .pop()
+      .split(/(?=[A-Z1-9])/)
+      .join("-")
+      .toLowerCase();
+    const path = [...slug, name];
+    console.log("getStaticPaths path", path);
+
+    return {
+      params: {
+        slug: path,
+      },
+    };
+  });
 
   return {
     paths,
@@ -35,7 +48,17 @@ export const getStaticProps: GetStaticProps<{
 }> = async ({ params: { slug } }) => {
   const headings = [];
 
-  const content = fs.readFileSync(`gallery/${slug}.mdx`, "utf-8");
+  console.log("getStaticProps", slug);
+
+  const path = Array.isArray(slug) ? slug : [slug];
+  const name = path
+    .pop()
+    .split("-")
+    .map((s) => s[0].toUpperCase() + s.slice(1))
+    .join("");
+  const unslugified = [...path, name].join(".");
+
+  const content = fs.readFileSync(`gallery/${unslugified}.mdx`, "utf-8");
   const mdxSource = await serialize(content, {
     parseFrontmatter: true,
     mdxOptions: {
@@ -77,7 +100,7 @@ export default function ProjectPage({
     <ArticleLayout
       title={frontmatter.title}
       description={frontmatter.description}
-      image={frontmatter.image}
+      image={`/cc/${frontmatter.image}`}
       video={frontmatter.video}
       demo={frontmatter.demo}
       github={frontmatter.github}

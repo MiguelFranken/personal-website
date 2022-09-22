@@ -37,5 +37,6 @@ yarn-error.log*
 # generated
 next-env.d.ts
 
-public/cc
-gallery
+/public/cc
+/gallery
+!/pages/gallery/\[...slug\].tsx
