@@ -17,9 +17,17 @@ export default function GalleryCards({ cards }: GalleryCardsProps) {
       .split(/(?=[A-Z1-9])/)
       .join(" ");
 
+    const slug = card.qualifier.split(".");
+    const name = slug
+      .pop()
+      .split(/(?=[A-Z1-9])/)
+      .join("-")
+      .toLowerCase();
+    const path = [...slug, name].join("/");
+
     return {
       ...card,
-      href: "#",
+      href: `/gallery/${path}`,
       title,
     };
   });
