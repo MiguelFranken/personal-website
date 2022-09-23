@@ -3,6 +3,9 @@ import GalleryCard from "@/components/gallery/gallery-card";
 export type Study = {
   qualifier: string;
   image: string;
+  title: string;
+  description: string;
+  hash: string;
 };
 
 export type GalleryCardsProps = {
@@ -11,12 +14,6 @@ export type GalleryCardsProps = {
 
 export default function GalleryCards({ cards }: GalleryCardsProps) {
   const augmentedCards = cards.map((card) => {
-    const split = card.qualifier.split(".");
-    const title = split
-      .at(-1)
-      .split(/(?=[A-Z1-9])/)
-      .join(" ");
-
     const slug = card.qualifier.split(".");
     const name = slug
       .pop()
@@ -28,11 +25,8 @@ export default function GalleryCards({ cards }: GalleryCardsProps) {
     return {
       ...card,
       href: `/gallery/${path}`,
-      title,
     };
   });
-
-  console.log(augmentedCards);
 
   return (
     <div>

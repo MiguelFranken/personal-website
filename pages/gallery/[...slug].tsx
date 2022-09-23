@@ -28,7 +28,6 @@ export async function getStaticPaths() {
       .join("-")
       .toLowerCase();
     const path = [...slug, name];
-    console.log("getStaticPaths path", path);
 
     return {
       params: {
@@ -96,6 +95,10 @@ export default function ProjectPage({
   frontmatter,
   headings,
 }: ProjectPageProps) {
+  const github = `https://github.com/MiguelFranken/creative-coding/blob/${
+    frontmatter.hash
+  }/src/main/kotlin/${frontmatter.qualifier.split(".").join("/")}.kt`;
+
   return (
     <ArticleLayout
       title={frontmatter.title}
@@ -103,7 +106,7 @@ export default function ProjectPage({
       image={`/cc/${frontmatter.image}`}
       video={frontmatter.video}
       demo={frontmatter.demo}
-      github={frontmatter.github}
+      github={github}
       headings={headings}
     >
       <MDXRemote {...mdxSource} components={components} />

@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "cp:images": "cp -a creative-coding/website/images/. public/cc/",
-    "cp:mdx": "cp -a creative-coding/website/mdx/. gallery/",
+    "cp:images": "cp -a creative-coding/assets/images/. public/cc/",
+    "cp:mdx": "cp -a creative-coding/assets/mdx/. gallery/",
+    "cp": "npm run cp:images && npm run cp:mdx",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
