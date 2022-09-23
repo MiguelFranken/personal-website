@@ -1,13 +1,10 @@
-import Container from "@/components/layout/container";
 import Footer from "@/components/footer";
 import {
-  ArticleBodyProps,
   ArticleHeaderProps,
   ArticleHeadProps,
   ProjectArticleProps,
 } from "@/components/article/types";
 import ArticleHead from "@/components/article/article-head";
-import ArticleBody from "@/components/article/article-body";
 import ArticleHeader from "@/components/article/article-header";
 
 export default function GalleryLayout({
@@ -15,10 +12,8 @@ export default function GalleryLayout({
   description,
   image,
   video,
-  children,
   demo,
   github,
-  headings,
 }: ProjectArticleProps) {
   const heroProps: ArticleHeaderProps = {
     demo,
@@ -27,11 +22,6 @@ export default function GalleryLayout({
     video,
     title,
     description,
-  };
-
-  const bodyProps: ArticleBodyProps = {
-    headings,
-    children,
   };
 
   const headProps: ArticleHeadProps = {
