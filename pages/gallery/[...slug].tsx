@@ -1,5 +1,4 @@
 import fs from "fs";
-import ArticleLayout from "@/components/article/article-layout";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { GetStaticProps } from "next";
@@ -8,6 +7,7 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneLight } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import rehypeSlug from "rehype-slug";
 import rehypeExtractHeadings, { Heading } from "@/lib/rehype-extract-headings";
+import GalleryLayout from "@/components/gallery/gallery-layout";
 
 interface ProjectPageProps {
   mdxSource: MDXRemoteSerializeResult;
@@ -100,16 +100,15 @@ export default function ProjectPage({
   }/src/main/kotlin/${frontmatter.qualifier.split(".").join("/")}.kt`;
 
   return (
-    <ArticleLayout
+    <GalleryLayout
       title={frontmatter.title}
       description={frontmatter.description}
       image={`/cc/${frontmatter.image}`}
       video={frontmatter.video}
-      demo={frontmatter.demo}
       github={github}
       headings={headings}
     >
       <MDXRemote {...mdxSource} components={components} />
-    </ArticleLayout>
+    </GalleryLayout>
   );
 }
